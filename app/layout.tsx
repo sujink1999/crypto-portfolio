@@ -14,9 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sujin.tech"),
   title: "Sujin K",
   description:
     "I build fast, polished interfaces that make complex systems feel simple.",
+  openGraph: {
+    title: "Sujin K",
+    description:
+      "I build fast, polished interfaces that make complex systems feel simple.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sujin K",
+    description:
+      "I build fast, polished interfaces that make complex systems feel simple.",
+  },
 };
 
 export default function RootLayout({
