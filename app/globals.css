@@ -1,26 +1,179 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
+  --accent: #4ade80;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: #000000;
+  color: var(--foreground);
+}
+
+@property --sweep-pos {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+
+@keyframes pulse-sweep {
+  0% { --sweep-pos: 120%; }
+  100% { --sweep-pos: -20%; }
+}
+
+.hero-title-sweep {
+  --sweep-pos: 120%;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.18) calc(var(--sweep-pos) - 15%),
+    rgba(255, 255, 255, 1) var(--sweep-pos),
+    rgba(255, 255, 255, 0.18) calc(var(--sweep-pos) + 15%),
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulse-sweep 3s linear infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.status-dot {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+/* Thin dark scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Caddi Widget Styles */
+.caddi-widget .animate-fadeIn {
+  animation: caddi-fadeIn 200ms ease-out forwards;
+}
+
+.caddi-widget .animate-scaleIn {
+  animation: caddi-scaleIn 150ms ease-out forwards;
+}
+
+.caddi-widget .animate-spin-slow {
+  animation: spin 2s linear infinite;
+  color: #A3E2E3;
+}
+
+.caddi-widget .disable-scrollbars {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.caddi-widget .disable-scrollbars::-webkit-scrollbar {
+  display: none;
+}
+
+.caddi-glow {
+  animation: caddi-greenShadow 2s ease-in-out infinite;
+}
+
+.caddi-loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #A3E2E3;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes caddi-fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes caddi-scaleIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes caddi-greenShadow {
+  0% { box-shadow: 0 0 10px rgba(163, 226, 227, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(163, 226, 227, 0.6); transform: scale(1.05); }
+  100% { box-shadow: 0 0 10px rgba(163, 226, 227, 0.3); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Golf animation: tunnel pump */
+.tunnel-pump {
+  animation: tunnelPumping 1s infinite forwards ease-in-out;
+}
+
+@keyframes tunnelPumping {
+  0% { transform: scale(1); }
+  50% { transform: scaleX(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Tx loader (radial spinner) */
+.cadd-tx-loader {
+  width: 20px;
+  aspect-ratio: 1;
+  --c: no-repeat radial-gradient(farthest-side, #a3e2e3 92%, #0000);
+  background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%, var(--c) 0 50%;
+  background-size: 4px 4px;
+  animation: l18 1s infinite;
+  position: relative;
+}
+
+.cadd-tx-loader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: 1.5px;
+  background: repeating-conic-gradient(#0000 0 35deg, #a3e2e3 0 90deg);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 1.2px), #000 0);
+  border-radius: 50%;
+}
+
+@keyframes l18 {
+  100% { transform: rotate(0.5turn); }
+}
+
+/* Green shadow highlight */
+.highlight-selection-caddi-shadow {
+  animation: caddi-greenShadow 2s infinite;
+}
+
+@keyframes arch-flow {
+  to { stroke-dashoffset: -20; }
 }
