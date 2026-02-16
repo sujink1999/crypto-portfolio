@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sujin K | Frontend Engineer",
+  title: "Sujin K",
   description:
     "I build fast, polished interfaces that make complex systems feel simple.",
 };

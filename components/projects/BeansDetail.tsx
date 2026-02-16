@@ -126,8 +126,8 @@ export default function BeansDetail({ onClose }: { onClose: () => void }) {
 
           {/* Waitlist iframe */}
           <BrowserFrame
-            url="beans.trade"
-            src="http://localhost:3001"
+            url="beans.fun"
+            src="https://beans-frontend-liard.vercel.app/"
             wrapRef={wrapRef}
             scale={scale}
             iframeW={IFRAME_W}
@@ -147,8 +147,8 @@ export default function BeansDetail({ onClose }: { onClose: () => void }) {
 
           {/* NFT claim iframe */}
           <BrowserFrame
-            url="beans.trade/claim"
-            src="http://localhost:3001/claim"
+            url="beans.fun/claim"
+            src="https://beans-frontend-liard.vercel.app/claim"
             wrapRef={wrapRef2}
             scale={scale2}
             iframeW={IFRAME_W}
