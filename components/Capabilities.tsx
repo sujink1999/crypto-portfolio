@@ -9,28 +9,28 @@ const cards = [
     title: "Design with",
     highlight: "purpose",
     description:
-      "From Figma to production — designing systems that translate cleanly into real, shippable interfaces.",
+      "From Figma to production, designing systems that translate cleanly into real, shippable interfaces.",
     Demo: DesignDemo,
   },
   {
     title: "Build interfaces that",
     highlight: "feel alive",
     description:
-      "React, React Native, real-time data, fluid animations — frontends that users remember.",
+      "React, React Native, real-time data, fluid animations. Frontends that users remember.",
     Demo: TokenListDemo,
   },
   {
     title: "Wire the full",
     highlight: "stack",
     description:
-      "Node.js, Express, databases, APIs — connecting every layer from client to server to data.",
+      "Node.js, Express, databases, APIs. Connecting every layer from client to server to data.",
     Demo: ApiDemo,
   },
   {
     title: "Connect to the",
     highlight: "chain",
     description:
-      "Wallet flows, contract reads, transaction signing — bridging users to onchain systems.",
+      "Transaction builders, signing flows, live chain reads. Making protocol interactions feel native.",
     Demo: TxBuilderDemo,
   },
 ];
@@ -49,7 +49,7 @@ export default function Capabilities() {
           <h2 className="text-3xl md:text-4xl font-medium text-white tracking-tight">
             Core Skills
           </h2>
-          <div className="flex items-center gap-4 text-sm font-mono text-white/40">
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap text-xs sm:text-sm font-mono text-white/40">
             {tags.map((tag) => (
               <span key={tag}>// {tag}</span>
             ))}
@@ -61,7 +61,7 @@ export default function Capabilities() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {cards.map((card, i) => (
           <ScrollReveal key={card.highlight} delay={i * 100}>
-            <div className="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-white/10">
+            <div className="group rounded-2xl border border-white/5 bg-white/[0.02] p-4 sm:p-6 overflow-hidden transition-colors duration-300 hover:border-white/10">
               <h3 className="text-lg font-medium text-white/80 mb-2">
                 {card.title}{" "}
                 <span className="bg-gradient-to-r from-accent to-emerald-300 bg-clip-text text-transparent">

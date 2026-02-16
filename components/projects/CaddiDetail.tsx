@@ -130,7 +130,7 @@ export default function CaddiDetail({ onClose }: { onClose: () => void }) {
             <div className="w-8 h-0.5 bg-[#A3E2E3]/60 rounded-full mb-6" />
             <p className="text-base text-white/60 leading-relaxed">
               Full-stack engineer and sole technical owner. Designed and built
-              the Chrome extension from scratch — including the injected widget
+              the Chrome extension from scratch, including the injected widget
               UI, background service workers, cross-origin messaging, bridge
               aggregation engine, and route optimization logic. Owned the
               product end-to-end from Figma designs through Chrome Web Store

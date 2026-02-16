@@ -51,12 +51,6 @@ export default function Navbar() {
             SHIPPING
           </span>
         </div>
-        {/* Mobile menu button */}
-        <button className="md:hidden flex h-9 w-9 items-center justify-center rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-md">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 4h10M2 7h10M2 10h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </button>
       </div>
     </nav>
   );

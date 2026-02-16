@@ -45,7 +45,7 @@ export default function DesignDemo() {
   const [selected, setSelected] = useState<string | null>("avatar");
 
   return (
-    <div className="flex gap-3 h-[220px]">
+    <div className="flex flex-col sm:flex-row gap-3 h-auto sm:h-[220px]">
       {/* Mockup preview */}
       <div className="flex-1 rounded-xl bg-white/[0.03] border border-white/5 p-3 flex flex-col gap-2">
         <div className="text-[10px] font-mono text-white/30 mb-1">Preview</div>
@@ -104,9 +104,9 @@ export default function DesignDemo() {
       </div>
 
       {/* Layer panel */}
-      <div className="w-[170px] shrink-0 rounded-xl bg-white/[0.03] border border-white/5 p-3 overflow-y-auto">
+      <div className="w-full sm:w-[170px] shrink-0 rounded-xl bg-white/[0.03] border border-white/5 p-3 overflow-y-auto">
         <div className="text-[10px] font-mono text-white/30 mb-2">Layers</div>
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-row flex-wrap sm:flex-col gap-0.5">
           {layers.map((layer) => (
             <button
               key={layer.id}

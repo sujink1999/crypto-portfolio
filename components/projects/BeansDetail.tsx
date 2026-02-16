@@ -181,7 +181,7 @@ export default function BeansDetail({ onClose }: { onClose: () => void }) {
               winning token from each auction round got launched on Pump.fun,
               and once it graduated from the bonding curve it would hit
               decentralized exchanges with full liquidity. The system created a
-              competitive, game-like dynamic around token launches — instead of
+              competitive, game-like dynamic around token launches. Instead of
               anyone launching anything, the community decided what shipped.
             </p>
           </div>

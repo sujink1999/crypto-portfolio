@@ -24,7 +24,7 @@ export default function Hero() {
           <ScrollReveal className="flex max-w-4xl flex-col gap-8">
             <HeroTitle />
 
-            <p className="max-w-lg text-base leading-relaxed text-white md:text-lg">
+            <p className="max-w-lg text-sm leading-relaxed text-white sm:text-base md:text-lg sm:leading-relaxed">
               I build fast, polished interfaces that make complex systems feel
               simple. Obsessed with performance, precision, and getting the
               details right.
