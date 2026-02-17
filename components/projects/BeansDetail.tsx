@@ -183,6 +183,8 @@ export default function BeansDetail({ onClose }: { onClose: () => void }) {
               decentralized exchanges with full liquidity. The system created a
               competitive, game-like dynamic around token launches. Instead of
               anyone launching anything, the community decided what shipped.
+              The backend was powered by AWS Lambda functions handling auction
+              logic, token graduation triggers, and Pump.fun integration.
             </p>
           </div>
 

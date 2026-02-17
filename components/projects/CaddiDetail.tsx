@@ -147,8 +147,9 @@ export default function CaddiDetail({ onClose }: { onClose: () => void }) {
             <p className="text-base text-white/60 leading-relaxed">
               The widget injected into any webpage as a floating overlay. Users
               selected source and destination chains, picked tokens, and the
-              system fetched optimized routes from multiple bridge protocols in
-              real-time. A golf-themed animation played during bridge execution
+              backend fetched optimized routes from multiple bridge protocols in
+              real-time — AWS-based Lambdas handled route optimization across
+              providers. A golf-themed animation played during bridge execution
               to make the wait feel shorter.
             </p>
           </div>

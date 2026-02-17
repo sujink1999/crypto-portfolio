@@ -35,7 +35,7 @@ const cards = [
   },
 ];
 
-const tags = ["DESIGN", "FRONTEND", "SYSTEMS", "WEB3"];
+const tags = ["DESIGN", "FRONTEND", "BACKEND", "WEB3"];
 
 export default function Capabilities() {
   return (
