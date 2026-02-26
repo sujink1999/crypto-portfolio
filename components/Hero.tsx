@@ -10,7 +10,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center grayscale"
         style={{
           backgroundImage:
-            'url("https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/fc03fa5a-129a-4943-8063-30b7b6d88a78_3840w.webp")',
+            'url("/hero-bg.webp")',
           maskImage:
             "linear-gradient(to bottom, transparent, black 0%, black 20%, transparent)",
           WebkitMaskImage:
