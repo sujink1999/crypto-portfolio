@@ -80,7 +80,26 @@ export default async function OgImage({
           />
         ))}
 
-        <div style={{ display: "flex", fontSize: 15, ...mono, marginBottom: 34 }}>
+        {/* classified stamp */}
+        <div
+          style={{
+            position: "absolute",
+            top: 64,
+            right: 70,
+            display: "flex",
+            transform: "rotate(9deg)",
+            border: `2px solid ${accent}aa`,
+            color: accent,
+            padding: "8px 18px",
+            fontSize: 20,
+            letterSpacing: "0.35em",
+            fontWeight: 700,
+          }}
+        >
+          CLASSIFIED
+        </div>
+
+        <div style={{ display: "flex", fontSize: 22, ...mono, marginBottom: 40 }}>
           AN INVITATION FOR
         </div>
 
@@ -98,9 +117,9 @@ export default async function OgImage({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: 300,
-              height: 300,
-              borderRadius: 150,
+              width: 340,
+              height: 340,
+              borderRadius: 170,
               border: `1px solid ${accent}55`,
               boxShadow: `0 0 60px ${accent}22`,
             }}
@@ -110,16 +129,16 @@ export default async function OgImage({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 244,
-                height: 244,
-                borderRadius: 122,
+                width: 280,
+                height: 280,
+                borderRadius: 140,
                 border: "1px solid rgba(255,255,255,0.15)",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  fontSize: 84,
+                  fontSize: 96,
                   fontWeight: 600,
                   color: "#ffffff",
                   letterSpacing: "-0.02em",
@@ -137,8 +156,8 @@ export default async function OgImage({
             display: "flex",
             alignItems: "center",
             gap: 20,
-            fontSize: 15,
-            marginTop: 34,
+            fontSize: 20,
+            marginTop: 40,
           }}
         >
           <span style={{ display: "flex", ...mono, letterSpacing: "0.35em" }}>
