@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <style>
+    path, rect { stroke: #111111; }
+    @media (prefers-color-scheme: dark) {
+      path, rect { stroke: #ededed; }
+    }
+  </style>
+  <!-- envelope body -->
+  <rect x="14" y="26" width="72" height="50" rx="6" stroke-width="7" stroke-linejoin="round"/>
+  <!-- flap: the unmistakable V -->
+  <path d="M17 31 L50 58 L83 31" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

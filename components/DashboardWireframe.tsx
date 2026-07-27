@@ -90,7 +90,7 @@ export default function DashboardWireframe() {
         strokeWidth="0.5"
       />
 
-      {/* Main content area — large card */}
+      {/* Main content area - large card */}
       <rect
         x="116"
         y="76"

@@ -69,7 +69,7 @@ function Edge({
   const d = `M ${start.x} ${start.y} L ${end.x} ${end.y}`;
   const dur = EDGE_DURATIONS[index % EDGE_DURATIONS.length];
 
-  // Label position — offset perpendicular to avoid overlap with line
+  // Label position - offset perpendicular to avoid overlap with line
   const midX = (start.x + end.x) / 2;
   const midY = (start.y + end.y) / 2;
   const isVertical = Math.abs(end.x - start.x) < 10;

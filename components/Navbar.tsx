@@ -3,14 +3,13 @@
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Skills", id: "capabilities" },
   { label: "Projects", id: "work" },
   { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
 ] as const;
 
 export default function Navbar() {
-  const [active, setActive] = useState<string>("Skills");
+  const [active, setActive] = useState<string>("Projects");
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4">
@@ -43,7 +42,7 @@ export default function Navbar() {
         ))}
       </div>
 
-      {/* Right — status */}
+      {/* Right - status */}
       <div className="flex items-center gap-3">
         <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/5 bg-white/[0.02] px-4 py-2 backdrop-blur-md">
           <span className="status-dot inline-block h-1.5 w-1.5 rounded-full bg-accent" />

@@ -1,0 +1,115 @@
+/* Scoped styles for the Beans showcase. Keyframes are quoted verbatim from
+   beans-ui src/app/globals.css (only the ones the live-round screen uses).
+   Everything is namespaced under .root so nothing leaks globally. */
+
+/* Retro pixel numeric font - copied from beans-ui/public/fonts/Retro.ttf.
+   @font-face is global by nature, but the family name is unique so it is safe. */
+@font-face {
+  font-family: "BeansRetro";
+  src: url("/showcase/beans/fonts/Retro.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+.root {
+  /* body font is Roboto Mono, passed in via next/font className on the wrapper */
+  color: #000;
+  -webkit-font-smoothing: auto;
+}
+
+/* .font-number equivalent (production applies font-size:0.9em !important) */
+.number {
+  font-family: "BeansRetro", sans-serif;
+  font-size: 0.9em;
+}
+
+/* Reusable pixel-font class for general UI text (labels, buttons, badges,
+   card copy, etc). Same family as .number but without the 0.9em shrink -
+   Retro.ttf has full upper/lower/digit/punct coverage so it's safe to use
+   on any UI string here. */
+.pixel {
+  font-family: "BeansRetro", sans-serif;
+  /* Retro ships one weight; block synthetic bolding from font-semibold etc. */
+  font-synthesis: none;
+  font-weight: normal;
+}
+
+/* Rolling track (BeansRace background) - verbatim */
+@keyframes beansSlideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(750px);
+  }
+}
+
+.rollingBg {
+  animation: beansSlideDown 4s linear infinite;
+}
+
+/* Card highlight pulse when a live event hits a card - verbatim */
+.highlightAuctionCard {
+  background-color: #5ae000b3 !important;
+  transform: scale(0.96);
+}
+
+/* Rank-1 card subtle pulse - verbatim pumped-up-size */
+@keyframes beansPumpedUpSize {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pumpedUpSize {
+  animation: beansPumpedUpSize 0.5s steps(1) infinite;
+}
+
+/* FlyingBeans single transient sprite - verbatim pop-fly / pop-drop */
+.flyingBean {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  animation: beansPopFly 2s ease-in-out;
+}
+@keyframes beansPopFly {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  15% {
+    transform: translate(-50%, -60%) scale(1.1);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(var(--random-x, 0%), -100vh);
+  }
+}
+.droppingBean {
+  position: absolute;
+  width: 25px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  animation: beansPopDrop 2s ease-in-out;
+}
+@keyframes beansPopDrop {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  15% {
+    transform: translate(-50%, -60%) scale(1.1);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(var(--random-x, 0%), 100vh);
+  }
+}

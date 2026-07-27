@@ -139,7 +139,7 @@ export default function TxBuilderDemo() {
       {/* Main area */}
       <div className="flex-1 rounded-xl bg-black/40 border border-white/5 p-3 font-mono text-[11px] overflow-y-auto">
 
-        {/* Phase: Disconnected — wallet selection */}
+        {/* Phase: Disconnected - wallet selection */}
         {phase === "disconnected" && (
           <div className="h-full flex flex-col items-center justify-center gap-3 animate-[fadeIn_0.2s_ease-out]">
             <div className="text-white/20 text-[10px] mb-1">Connect a wallet to begin</div>
@@ -170,7 +170,7 @@ export default function TxBuilderDemo() {
           </div>
         )}
 
-        {/* Phase: Connected — ready to build */}
+        {/* Phase: Connected - ready to build */}
         {phase === "connected" && (
           <div className="h-full flex flex-col items-center justify-center gap-3 animate-[fadeIn_0.2s_ease-out]">
             <div className="text-white/20 text-[10px]">Wallet connected</div>
@@ -184,7 +184,7 @@ export default function TxBuilderDemo() {
           </div>
         )}
 
-        {/* Phase: Building / Done — tx steps */}
+        {/* Phase: Building / Done - tx steps */}
         {(phase === "building" || phase === "done") && (
           <div className="space-y-1.5">
             {txSteps.map((step) => {

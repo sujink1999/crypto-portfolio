@@ -17,7 +17,7 @@ export default function BrowserFrame({
 }) {
   return (
     <div className="border border-white/5 bg-[#1a1a1a] rounded-2xl overflow-hidden">
-      {/* Browser chrome — rounded top only */}
+      {/* Browser chrome - rounded top only */}
       <div className="flex items-center gap-3 px-4 py-3 bg-white/[0.03] border-b border-white/5">
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
@@ -43,7 +43,7 @@ export default function BrowserFrame({
           </div>
         </div>
       </div>
-      {/* Iframe — 16:9 aspect ratio, scaled to fit */}
+      {/* Iframe - 16:9 aspect ratio, scaled to fit */}
       <div
         ref={wrapRef}
         className="relative w-full"

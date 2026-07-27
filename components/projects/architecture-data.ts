@@ -107,3 +107,26 @@ export const KEOM_ARCHITECTURE: ProjectArchitecture = {
     { from: "solidity", to: "chainlink", label: "Price Feeds" },
   ],
 };
+
+export const VANTA_ARCHITECTURE: ProjectArchitecture = {
+  projectId: "vanta",
+  nodes: [
+    { id: "nextjs", label: "Next.js Apps", category: "Frontend", worked: true, x: 12, y: 30 },
+    { id: "mobile", label: "Expo Mobile App", category: "Mobile", worked: true, x: 12, y: 66 },
+    { id: "express", label: "Express APIs", category: "Backend", worked: true, x: 34, y: 48 },
+    { id: "shopify", label: "Shopify", category: "Commerce", worked: true, x: 34, y: 84 },
+    { id: "postgres", label: "Postgres / Drizzle", category: "Database", worked: true, x: 56, y: 74 },
+    { id: "wearables", label: "Garmin / WHOOP", category: "Wearables", worked: true, x: 56, y: 16 },
+    { id: "recon", label: "Reconciliation Engine", category: "Backend", worked: true, x: 62, y: 44 },
+    { id: "llm", label: "LLM Plans + Evals", category: "AI", worked: true, x: 84, y: 44 },
+  ],
+  edges: [
+    { from: "nextjs", to: "express", label: "API" },
+    { from: "mobile", to: "express", label: "API" },
+    { from: "express", to: "shopify", label: "Store" },
+    { from: "express", to: "postgres", label: "Read/Write" },
+    { from: "wearables", to: "recon", label: "Sync" },
+    { from: "recon", to: "llm", label: "Context" },
+    { from: "llm", to: "express", label: "Daily plans" },
+  ],
+};

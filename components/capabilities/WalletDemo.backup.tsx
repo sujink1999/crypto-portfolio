@@ -80,7 +80,7 @@ export default function WalletDemo() {
 
   return (
     <div className="flex flex-col items-center justify-center h-[220px] gap-4">
-      {/* Disconnected — show connect button */}
+      {/* Disconnected - show connect button */}
       {state === "disconnected" && (
         <button
           onClick={() => setState("selecting")}

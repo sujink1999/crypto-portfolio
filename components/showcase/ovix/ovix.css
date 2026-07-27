@@ -1,0 +1,172 @@
+/* 0VIX showcase - scoped styles.
+ * Custom design tokens and utilities ported verbatim from the 0vix-frontend
+ * repo (tailwind.config.js, App.css, index.css, Loaders/styles.css,
+ * TransactionToast/styles.css, Switch/switch.css). Only tokens/utilities that
+ * are NOT part of default Tailwind v4 are defined here; standard utilities
+ * (flex, gap, px-3, rounded-lg, text-sm, backdrop-blur-md, ...) still come
+ * from the global Tailwind stylesheet.
+ *
+ * All rules are namespaced under .ovix-root so they cannot leak into the rest
+ * of the portfolio. */
+
+.ovix-root {
+    /* Page background: dark glow image over near-black, from App.css body. */
+    background: url('/showcase/ovix/0vix-bg.png'), #040301;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: top;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ---- Color tokens (verbatim palette) ---- */
+.ovix-root .bg-card { background-color: #1b2127; }
+.ovix-root .bg-darkCard { background-color: #161b20; }
+.ovix-root .bg-chip { background-color: #242b33; }
+.ovix-root .bg-dropdown { background-color: #4d5966; }
+.ovix-root .bg-mobileHeader { background-color: #13171b; }
+.ovix-root .bg-purple { background-color: #967cc9; }
+.ovix-root .bg-mcard { background-color: rgba(27, 33, 38, 0.2); }
+.ovix-root .bg-mcardLight { background-color: rgba(27, 33, 38, 0.8); }
+.ovix-root .bg-card-expanded { background-color: #313d49; }
+.ovix-root .bg-cardLight { background-color: #313d49; }
+
+.ovix-root .text-secondary { color: #c7c9cc; }
+.ovix-root .text-tertiary { color: #7c8792; }
+.ovix-root .text-purple { color: #967cc9; }
+.ovix-root .text-primary-purple { color: #967cc9; }
+.ovix-root .text-naColor { color: #d9d9d9; }
+.ovix-root .text-green { color: #22c55e; }
+.ovix-root .text-red { color: #ff0000; }
+
+.ovix-root .border-chip { border-color: #242b33; }
+.ovix-root .border-border { border-color: #bdbdbd; }
+.ovix-root .border-border\/20 { border-color: rgba(189, 189, 189, 0.2); }
+.ovix-root .border-purple { border-color: #967cc9; }
+.ovix-root .border-dropdown { border-color: #4d5966; }
+
+.ovix-root .bg-border { background-color: #bdbdbd; }
+
+/* Opacity-modifier variants on custom colors (Tailwind can't derive these). */
+.ovix-root .bg-dropdown\/50 { background-color: rgba(77, 89, 102, 0.5); }
+.ovix-root .bg-dropdown\/70 { background-color: rgba(77, 89, 102, 0.7); }
+.ovix-root .bg-purple\/70 { background-color: rgba(150, 124, 201, 0.7); }
+.ovix-root .text-tertiary\/40 { color: rgba(124, 135, 146, 0.4); }
+
+/* ---- Hover variants ---- */
+.ovix-root .hover\:bg-mcardLight:hover { background-color: rgba(27, 33, 38, 0.8); }
+.ovix-root .hover\:bg-purple\/70:hover { background-color: rgba(150, 124, 201, 0.7); }
+.ovix-root .hover\:bg-dropdown\/70:hover { background-color: rgba(77, 89, 102, 0.7); }
+.ovix-root .hover\:text-purple:hover { color: #967cc9; }
+.ovix-root .hover\:text-primary-purple:hover { color: #967cc9; }
+
+/* ---- Flex weight utilities (App.css) ---- */
+.ovix-root .flex-2 { flex: 2 2; }
+.ovix-root .flex-3 { flex: 3 3; }
+.ovix-root .flex-4 { flex: 4; }
+.ovix-root .flex-5 { flex: 5; }
+.ovix-root .flex-pt5 { flex: 0.5; }
+
+/* ---- Sizing tokens ---- */
+.ovix-root .max-w-250 { max-width: 250px; }
+.ovix-root .max-w-1400 { max-width: 1400px; }
+.ovix-root .min-h-500 { min-height: 500px; }
+.ovix-root .border-b-px { border-bottom-width: 1px; }
+
+/* ---- fade-in (App.css) ---- */
+.ovix-root .fade-in { animation: ovix-fadeIn 1.5s; }
+@keyframes ovix-fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ---- Status gradients (App.css) ---- */
+.ovix-root .normal-status-gradient {
+    background: linear-gradient(274.72deg, rgba(120, 255, 204, 0.5) 0%, rgba(120, 255, 204, 0.1) 51.56%, rgba(217, 217, 217, 0.1) 100%);
+}
+.ovix-root .warning-status-gradient {
+    background: linear-gradient(274.72deg, rgba(255, 186, 106, 0.5) 0%, rgba(255, 186, 106, 0.1) 51.56%, rgba(217, 217, 217, 0.1) 100%);
+}
+.ovix-root .bad-status-gradient {
+    background: linear-gradient(274.72deg, rgba(183, 30, 39, 0.5) 0%, rgba(183, 30, 39, 0.1) 51.56%, rgba(217, 217, 217, 0.1) 100%) !important;
+}
+
+/* ---- TransactionToast slide (TransactionToast/styles.css) ---- */
+.ovix-root .show-toast { transform: translateX(0); }
+.ovix-root .hide-toast { transform: translateX(calc(100% + 40px)); }
+
+.ovix-root .load-progress { animation: ovix-extend-width 5s forwards ease-in-out; }
+@keyframes ovix-extend-width {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* ---- 8-dot spinner (Loaders/styles.css) ---- */
+.ovix-root .custom-loader {
+    --d: 10px;
+    width: 1px;
+    height: 1px;
+    border-radius: 100%;
+    color: #6a4af2;
+    box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+        calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 0.3px,
+        calc(0 * var(--d)) calc(1 * var(--d)) 0 0.8px,
+        calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+        calc(-1 * var(--d)) calc(0 * var(--d)) 0 1.5px,
+        calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 2px,
+        calc(0 * var(--d)) calc(-1 * var(--d)) 0 2px;
+    animation: ovix-s7 1s infinite steps(8);
+}
+@keyframes ovix-s7 {
+    100% { transform: rotate(1turn); }
+}
+
+/* ---- Collateral switch (Switch/switch.css) ---- */
+.ovix-root .switch {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+}
+.ovix-root .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.ovix-root .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+.ovix-root .slider-disabled {
+    background-color: rgb(155, 153, 153) !important;
+    opacity: 0.5;
+}
+.ovix-root .slider-disabled:before { background-color: #ccc !important; }
+.ovix-root .slider:before {
+    position: absolute;
+    content: '';
+    height: 15px;
+    width: 15px;
+    top: 2.5px;
+    left: 3px;
+    background-color: white;
+    transition: 0.4s;
+}
+.ovix-root input:checked + .slider { background-color: #ac90e3; }
+.ovix-root input:checked + .slider:before { transform: translateX(14px); }
+.ovix-root .slider.round { border-radius: 18px; }
+.ovix-root .slider.round:before { border-radius: 50%; }
+
+/* ---- Custom scrollbar (App.css) ---- */
+.ovix-root ::-webkit-scrollbar { width: 5px; }
+.ovix-root ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); }
+.ovix-root ::-webkit-scrollbar-thumb { background: #ac90e3; border-radius: 5px; }
+
+/* zkEVM banner card */
+.ovix-root .banner-card {
+    background: linear-gradient(96deg, rgba(150, 124, 201, 0.14) 0%, rgba(22, 27, 32, 0.6) 55%);
+    border: 1px solid rgba(150, 124, 201, 0.25);
+}

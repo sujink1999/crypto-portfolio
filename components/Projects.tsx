@@ -63,7 +63,7 @@ function ProjectRow({
       onMouseLeave={() => setHovered(false)}
     >
       <div className="flex items-center gap-4 md:gap-8 py-6 md:py-8 transition-all duration-300 group-hover:px-2">
-        {/* Number — green only on hover */}
+        {/* Number - green only on hover */}
         <span className="font-mono text-xs md:text-sm text-white/30 transition-colors duration-300 group-hover:text-accent shrink-0 w-6">
           {project.number}
         </span>
@@ -88,7 +88,7 @@ function ProjectRow({
           </span>
         </div>
 
-        {/* Arrow — always visible */}
+        {/* Arrow - always visible */}
         <svg
           className="w-4 h-4 md:w-5 md:h-5 text-white/20 transition-all duration-300 group-hover:text-accent group-hover:translate-x-1 shrink-0"
           fill="none"
@@ -100,7 +100,7 @@ function ProjectRow({
         </svg>
       </div>
 
-      {/* Hover preview — right-aligned, slight 3D curve */}
+      {/* Hover preview - right-aligned, slight 3D curve */}
       <div
         className={`pointer-events-none absolute z-10 left-1/2 top-1/2 hidden md:block rounded-2xl overflow-hidden transition-all duration-300 ease-out ${
           project.name === "Caddi" || project.name === "Mudrex" ? "w-48 lg:w-56" : "w-96 lg:w-[28rem]"

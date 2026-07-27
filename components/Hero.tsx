@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen max-h-[1200px] overflow-hidden">
+    <section className="relative h-full snap-start overflow-hidden">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale"
@@ -24,7 +24,7 @@ export default function Hero() {
           <ScrollReveal className="flex max-w-4xl flex-col gap-8">
             <HeroTitle />
 
-            <p className="max-w-lg text-sm leading-relaxed text-white sm:text-base md:text-lg sm:leading-relaxed">
+            <p className="max-w-md text-sm leading-relaxed text-white/80 sm:text-[15px]">
               I build fast, polished interfaces that make complex systems feel
               simple. Obsessed with performance, precision, and getting the
               details right.
