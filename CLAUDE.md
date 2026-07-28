@@ -66,3 +66,6 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 - Prefer server components; use `"use client"` only when needed
 - Keep animations performant - prefer CSS transforms and `will-change`
 - No emoji in code or UI unless explicitly requested
+
+## Chat Output Formatting
+- When giving copy-paste text (outreach messages, notes, emails), NEVER use blockquotes — the left border makes terminal copying painful. Use plain fenced code blocks instead.

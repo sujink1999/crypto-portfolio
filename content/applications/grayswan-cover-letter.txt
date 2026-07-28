@@ -1,0 +1,20 @@
+Hey Gray Swan team,
+
+I made you a page instead of a normal cover letter: https://sujin.tech/grayswan - it maps your JD to things I've actually shipped, takes about two minutes.
+
+I've spent six years building full stack, frontend and backend in the same role every time. Most of it in crypto, where every input is hostile and a bug means someone drains real money - so the security mindset part of your post isn't a stretch for me, it was the job.
+
+The short version:
+
+Keom - lending and borrowing protocol, $500k to $10M TVL, basically solo on the frontend. Real adversaries probing a live protocol, oracles, bridges, the whole surface.
+
+Vanta - co-founded it, ship the entire product myself: Next.js frontend, Express APIs, Postgres, and LLM pipelines with an eval harness behind the product. The "collaborate with ML research to integrate AI into product" line in your JD is literally my current week.
+
+Before all that, I built a trading app solo that hit 10M+ downloads.
+
+A ~50 person team red-teaming frontier models, with real influence on how labs deploy - that's exactly the size and kind of problem I do my best work at. No process, just ownership is how Vanta runs today.
+
+Would love to talk.
+
+Sujin
+lksujins@gmail.com · github.com/sujink1999

@@ -1,0 +1,10 @@
+Hey, I'm Sujin.
+
+I've been building React Native apps from scratch for years. The biggest one: Mudrex (YC W19) - built the mobile app solo, it grew to 10M+ downloads and carried the company from pre-seed to Series A. Right now I'm a co-founder at Vanta, where I shipped the Society app to the App Store (Expo, EAS pipeline) plus the web platform and the Express backend behind it. So owning a mobile app end to end, including the APIs it talks to, is literally what I do every day.
+
+The AppraisalPRO setup - greenfield app, an SDK partners integrate, small team, direct customer contact - is exactly the kind of ownership I'm looking for.
+
+I made a short page mapping your JD to my actual work: https://sujin.tech/fixd
+
+Sujin
+lksujins@gmail.com

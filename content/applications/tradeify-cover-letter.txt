@@ -1,0 +1,23 @@
+Hey Tradeify team,
+
+I made you a page instead of a normal cover letter: https://sujin.tech/tradeify - it maps your JD to things I've actually shipped, takes about two minutes.
+
+I've spent six years building trading products, frontend and backend in the same role every time. The most performance-sensitive ones:
+
+Keom - lending and borrowing protocol ($500k to $10M TVL, basically solo on the frontend):
+- Wrote a custom JsonRpcProvider that memoizes duplicate eth_call reads per block. Five components asking for the same data = one RPC call.
+- Rotated multicall reads across 3 RPC providers every 10s for load spread and free failover. Batching tuned per chain (2 blocks on zkEVM, 15 on Arbitrum).
+- Live price feeds polled every 3s, one fetch fanned out to all subscribers. Between ticks we extrapolated prices forward so the UI reads real-time instead of stepping every 3 seconds.
+
+Beans - Solana token launcher (traffic spiked hard during 1-2 hour launch/auction windows):
+- Transactions kept failing during congestion, so before sending we fetched current Solana network traffic and set priority fees dynamically off it. Launch failures went from ~60% to under 5% during peak windows.
+- Moved the backend to Redis/BullMQ workers with per-queue concurrency, retry ladders that treat rate limits as retryable and bad balances as terminal.
+
+Before all that, I built a trading app that hit 10M+ downloads.
+
+Your line about a 200ms dashboard lag being a real problem is the reason I applied. Most job posts say performance matters, yours says why.
+
+Would love to talk.
+
+Sujin
+lksujins@gmail.com · github.com/sujink1999
