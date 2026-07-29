@@ -183,7 +183,7 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
           {pitch.story.map((line, i) => (
             <p
               key={i}
-              className={`story-line max-w-3xl text-balance text-lg md:text-2xl font-normal leading-normal tracking-tight text-white/55 ${section(1)}`}
+              className={`story-line max-w-5xl text-balance text-lg md:text-2xl font-normal leading-normal tracking-tight text-white/55 ${section(1)}`}
               style={{ "--d": `${0.15 + i * 0.3}s` } as React.CSSProperties}
             >
               {/* **text** renders white against the muted line */}
