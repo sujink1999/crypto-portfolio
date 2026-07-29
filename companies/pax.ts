@@ -3,7 +3,7 @@ import type { CompanyPitch } from "./types";
 export const pax: CompanyPitch = {
   slug: "pax",
   company: "Pax",
-  role: "Senior Software Engineer",
+  role: "Software Engineer",
   accent: "#7c5cf0",
   accentFrom: "#57a9dd",
   hook: "You picked a 200-year-old paperwork problem where AI recovers real dollars. That's the kind of unglamorous-but-huge bet I want to build on.",
