@@ -304,7 +304,7 @@ export default function ExhibitStage({
               /* hero is already big and sits at the rail edge - scaling it
                  clips against the scroll container, so only 2/3 grow */
               isLive && i > 0 ? "scale-[1.07]" : "scale-100"
-            } ${onOpen ? "cursor-pointer" : ""}`}
+            } ${onOpen ? "group cursor-pointer" : ""}`}
             onClick={onOpen ? () => onOpen(ex.id) : undefined}
             role={onOpen ? "button" : undefined}
             tabIndex={onOpen ? 0 : undefined}
@@ -319,7 +319,23 @@ export default function ExhibitStage({
                 : undefined
             }
           >
-            <ExhibitMedia ex={ex} playing={isLive} />
+            <div className="relative">
+              <ExhibitMedia ex={ex} playing={isLive} />
+              {/* hover affordance: the frame is clickable, say so quietly */}
+              {onOpen && (
+                <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span
+                    className={`rounded-full border border-white/15 bg-black/60 font-mono uppercase whitespace-nowrap text-white/75 backdrop-blur-sm ${
+                      ex.device === "phone"
+                        ? "px-2.5 py-1 text-[8px] tracking-[0.2em]"
+                        : "px-3.5 py-1.5 text-[9px] tracking-[0.3em]"
+                    }`}
+                  >
+                    click to open
+                  </span>
+                </div>
+              )}
+            </div>
             {/* only the name breathes with focus - the product never dims.
                 laptop: name left, tags right end. phone: tags drop below. */}
             <CaptionRow

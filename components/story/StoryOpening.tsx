@@ -149,6 +149,7 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
                 charDelay={55}
                 startDelay={300}
                 gradientFrom={1}
+                gradientStart={pitch.accentFrom}
                 onDone={() => setGreetDone(true)}
               />
             )}

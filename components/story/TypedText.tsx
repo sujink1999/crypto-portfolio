@@ -11,8 +11,10 @@ interface TypedTextProps {
   startDelay?: number;
   /** render fully visible immediately (skip / reduced motion) */
   instant?: boolean;
-  /** word index from which the text renders as a white → accent gradient */
+  /** word index from which the text renders as a gradientStart → accent gradient */
   gradientFrom?: number;
+  /** color the gradient ramps from (default white) */
+  gradientStart?: string;
   onDone?: () => void;
 }
 
@@ -28,6 +30,7 @@ export default function TypedText({
   startDelay = 0,
   instant = false,
   gradientFrom,
+  gradientStart = "#ffffff",
   onDone,
 }: TypedTextProps) {
   const doneRef = useRef(false);
@@ -74,7 +77,7 @@ export default function TypedText({
                 gradientIndex++;
                 color = `color-mix(in srgb, var(--accent) ${Math.round(
                   10 + 80 * t
-                )}%, #ffffff)`;
+                )}%, ${gradientStart})`;
               }
               return (
                 <span

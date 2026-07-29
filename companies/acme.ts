@@ -45,7 +45,7 @@ export const acme: CompanyPitch = {
     {
       label: "Reliability",
       need: "Care about reliability: queues, retries, tests",
-      proofs: ["queues", "keom", "oss"],
+      proofs: ["queues", "keom"],
       claim: "Queues, retries, backups, tests - by default.",
       note: "BullMQ workers with retries, backups and Jest coverage - built in weeks, run like it matters.",
     },

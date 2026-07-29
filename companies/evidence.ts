@@ -142,19 +142,6 @@ export const EVIDENCE: Record<string, Evidence> = {
       "LLM evals and structured pipelines, not just prompt calls",
     ],
   },
-  "oss": {
-    id: "oss",
-    device: "laptop",
-    title: "Open Source - StegCloak, AirShare, Teleport",
-    period: "pre-2022",
-    what: "StegCloak: 2.5K-star JS steganography library. AirShare: 600-star P2P LAN transfer, 40K downloads. Teleport: WebRTC P2P file sharing, won India's largest community hackathon.",
-    stack: ["JavaScript", "Python", "WebRTC"],
-    proofPoints: [
-      "2.5K+ GitHub stars, featured in Awesome-Nodejs/Security lists",
-      "Featured in The Hindu and by Facebook",
-    ],
-    link: "https://github.com/kurolabs/stegcloak",
-  },
   "fincorpx": {
     id: "fincorpx",
     device: "laptop",

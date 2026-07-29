@@ -7,7 +7,8 @@ import { tradeify } from "./tradeify";
 import { fixd } from "./fixd";
 import { grayswan } from "./grayswan";
 import { material } from "./material";
-import { errgo } from "./errgo";
+import { pax } from "./pax";
+import { broccoli } from "./broccoli";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   acme,
@@ -18,7 +19,8 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   fixd,
   grayswan,
   material,
-  errgo,
+  broccoli,
+  pax,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);

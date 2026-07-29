@@ -1,0 +1,7 @@
+Hey, I'm Sujin.
+
+I've been shipping production systems for 6+ years. The YC 0-to-1 I know best: Mudrex (W19) - built the mobile app solo, it grew to 10M+ downloads and carried the company from pre-seed to Series A. After that I co-founded Vanta, a health platform, where I built the whole product - Next.js frontend, Express backend, data model, App Store app. Including the LLM side: daily-plan generation with an eval harness, agent pipelines with human-in-loop review. Not prompt demos, stuff users depend on.
+
+The door-to-door-in-Sacramento story is why I'm applying. Agents that answer real phones for real plumbers is the hardest, most honest version of this product.
+
+I made a short page mapping your JD to my actual work: https://sujin.tech/broccoli

@@ -37,6 +37,8 @@ export interface CompanyPitch {
   role: string;
   /** Hex color used to theme the page (defaults to site accent) */
   accent?: string;
+  /** Greeting gradient start color - the "Hey Company," ramp runs accentFrom → accent (defaults to white) */
+  accentFrom?: string;
   /** One-line opener addressed to the reviewer - the hook */
   hook: string;
   /** Short intro paragraphs, story-style, speaking directly to them */
