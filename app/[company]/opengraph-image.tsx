@@ -41,8 +41,14 @@ export default async function OgImage({
   const accent = pitch.accent;
   const mono = {
     letterSpacing: "0.4em",
-    color: "rgba(255,255,255,0.45)",
+    color: "rgba(255,255,255,0.65)",
   } as const;
+
+  const name = pitch.company.toLowerCase();
+  /* long names can't live in the fixed circle - stretch the seal into a
+     pill and step the wordmark down so it never wraps */
+  const isLong = name.length > 7;
+  const wordmarkSize = name.length > 14 ? 64 : name.length > 10 ? 80 : isLong ? 92 : 104;
 
   return new ImageResponse(
     (
@@ -84,22 +90,22 @@ export default async function OgImage({
         <div
           style={{
             position: "absolute",
-            top: 64,
-            right: 70,
+            top: 48,
+            right: 56,
             display: "flex",
             transform: "rotate(9deg)",
-            border: `2px solid ${accent}aa`,
+            border: `3px solid ${accent}`,
             color: accent,
-            padding: "8px 18px",
-            fontSize: 20,
-            letterSpacing: "0.35em",
+            padding: "10px 22px",
+            fontSize: 28,
+            letterSpacing: "0.3em",
             fontWeight: 700,
           }}
         >
           CLASSIFIED
         </div>
 
-        <div style={{ display: "flex", fontSize: 22, ...mono, marginBottom: 40 }}>
+        <div style={{ display: "flex", fontSize: 28, ...mono, marginBottom: 36 }}>
           AN INVITATION FOR
         </div>
 
@@ -117,9 +123,8 @@ export default async function OgImage({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: 340,
-              height: 340,
-              borderRadius: 170,
+              ...(isLong ? { padding: "36px 64px" } : { width: 340, height: 340 }),
+              borderRadius: 999,
               border: `1px solid ${accent}55`,
               boxShadow: `0 0 60px ${accent}22`,
             }}
@@ -129,22 +134,22 @@ export default async function OgImage({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 280,
-                height: 280,
-                borderRadius: 140,
+                ...(isLong ? { padding: "26px 48px" } : { width: 280, height: 280 }),
+                borderRadius: 999,
                 border: "1px solid rgba(255,255,255,0.15)",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  fontSize: 96,
+                  fontSize: wordmarkSize,
                   fontWeight: 600,
                   color: "#ffffff",
                   letterSpacing: "-0.02em",
+                  whiteSpace: "nowrap",
                 }}
               >
-                {pitch.company.toLowerCase()}
+                {name}
                 <span style={{ color: accent }}>.</span>
               </div>
             </div>
@@ -156,8 +161,8 @@ export default async function OgImage({
             display: "flex",
             alignItems: "center",
             gap: 20,
-            fontSize: 20,
-            marginTop: 40,
+            fontSize: 25,
+            marginTop: 36,
           }}
         >
           <span style={{ display: "flex", ...mono, letterSpacing: "0.35em" }}>
