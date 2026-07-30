@@ -53,7 +53,7 @@ const NODES: Node[] = [
     id: "prompt",
     label: "PROMPT",
     detail:
-      "The snapshot lands in the next turn. The agent remembers months of history in about 1k tokens, and the user never waited for any of it.",
+      "The snapshot is assembled once at chat start and stays fixed, so the cache keeps hitting. The agent remembers months of history in about 1k tokens, and the user never waited for any of it.",
   },
 ];
 
