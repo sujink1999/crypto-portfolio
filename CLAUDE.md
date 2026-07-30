@@ -67,5 +67,23 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 - Keep animations performant - prefer CSS transforms and `will-change`
 - No emoji in code or UI unless explicitly requested
 
+## Copywriting Rules
+- Requirement `claim` lines render as big display text. One or two short sentences, ~15-22 words total. Not longer: a skimming reviewer won't read three sentences of display text. Not shorter either: a bare slogan with no facts reads as vague. Every claim carries 1-2 concrete facts (numbers, named projects, real stack), like "I built Vanta end to end: data model, Express APIs, dashboards, App Store. Before that: Mudrex, solo, to 10M+ downloads."
+- Don't repeat the page's one big theme (e.g. memory for Mem0) across multiple claims. Say it once in the requirement where it belongs; the other claims prove different strengths with different evidence.
+- NEVER use em dashes (—) or hyphens-as-punctuation ( - ) in any copy: pitch pages, outreach, cover letters, UI text, story lines. They read as AI-written. Restructure into separate sentences, or use commas, colons, or periods instead.
+
+## Connection Notes (LinkedIn outreach)
+- Never pitch credentials in a connection note (no downloads, YC, years of experience).
+- Locked format (Pax/Penny note, 2026-07-30):
+
+  Hey [Name], I applied for the [Role] role. Instead of a cover letter I built a page mapping your JD to work I've shipped:
+
+  https://sujin.tech/[slug]
+
+  Two minute read, curious what you think.
+
+- Link always with https://, on its own line.
+- Closer varies by persona: CEO/founder and recruiter get "Two minute read, curious what you think." Software engineer (peer): never ask them to review it, no hedging ("if it feels worth it") — say "It would be great if you could put it in front of the team."
+
 ## Chat Output Formatting
 - When giving copy-paste text (outreach messages, notes, emails), NEVER use blockquotes — the left border makes terminal copying painful. Use plain fenced code blocks instead.

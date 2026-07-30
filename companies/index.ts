@@ -9,6 +9,8 @@ import { grayswan } from "./grayswan";
 import { material } from "./material";
 import { pax } from "./pax";
 import { broccoli } from "./broccoli";
+import { tailor } from "./tailor";
+import { mem0 } from "./mem0";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   acme,
@@ -21,6 +23,8 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   material,
   broccoli,
   pax,
+  tailor,
+  mem0,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);

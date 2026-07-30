@@ -1,0 +1,9 @@
+Hey, I'm Sujin.
+
+I made a short page mapping your JD to my actual work: https://sujin.tech/tailor
+
+Quick version: 6+ years of React/TypeScript. At Mudrex (YC W19) I built the mobile app solo. It hit 10M+ downloads and carried the company from pre-seed to Series A. Then at Vanta, a health platform, I built the whole product: Next.js 16 frontend, the component library that runs across five app surfaces (store, labs, admin, marketing, mobile), Express backend, App Store app. The store side runs on headless Shopify (storefront, embedded admin app, App Bridge), and I spent months hand-building the ops glue around it. Which is basically the problem Tailor sells the fix for.
+
+The Console work is the part I want. Dashboards and developer-facing surfaces are most of what I've shipped: Vanta's biomarker dashboards and admin, and before that two years on DeFi frontends holding $10M where the UI had to be exact.
+
+No Terraform or Go yet, happy to learn both.
