@@ -50,6 +50,12 @@ const NODES: Node[] = [
       "Every tier assembled into one byte-stable context block, so the prompt-cache prefix survives across turns.",
   },
   {
+    id: "modules",
+    label: "MODULES",
+    detail:
+      "Structured data modules: sleep, nutrition, blood, training. Fixed schema fields, stored and retrieved with tools, feeding into the turn alongside the snapshot. Memory holds only what doesn't fit these schemas.",
+  },
+  {
     id: "prompt",
     label: "PROMPT",
     detail:
@@ -64,6 +70,7 @@ const EDGES: [string, string][] = [
   ["facts", "snapshot"],
   ["rollups", "snapshot"],
   ["snapshot", "prompt"],
+  ["modules", "prompt"],
 ];
 
 /* node centers in diagram space - HTML cards and SVG edges share these */
@@ -73,6 +80,7 @@ const POS_H: Record<string, [number, number]> = {
   facts: [520, 115],
   rollups: [520, 385],
   snapshot: [740, 250],
+  modules: [925, 415],
   prompt: [925, 250],
 };
 const POS_V: Record<string, [number, number]> = {
@@ -81,6 +89,7 @@ const POS_V: Record<string, [number, number]> = {
   facts: [90, 345],
   rollups: [270, 345],
   snapshot: [180, 485],
+  modules: [270, 550],
   prompt: [180, 615],
 };
 
@@ -183,6 +192,19 @@ function SnapshotWidget() {
   );
 }
 
+function ModulesWidget() {
+  const chip =
+    "rounded border border-white/12 bg-white/[0.04] px-1.5 py-0.5 text-center";
+  return (
+    <div className="grid w-full grid-cols-2 gap-1 font-mono text-[7px] leading-none text-white/60">
+      <div className={chip}>sleep</div>
+      <div className={chip}>nutrition</div>
+      <div className={chip}>blood</div>
+      <div className={chip}>training</div>
+    </div>
+  );
+}
+
 function PromptWidget() {
   return (
     <div className="w-full rounded border border-white/15 bg-[#0a0a0a]">
@@ -204,6 +226,7 @@ const WIDGETS: Record<string, () => React.ReactElement> = {
   facts: FactsWidget,
   rollups: RollupsWidget,
   snapshot: SnapshotWidget,
+  modules: ModulesWidget,
   prompt: PromptWidget,
 };
 
