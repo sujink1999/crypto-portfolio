@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CompanyPitch } from "@/companies/types";
 import { EVIDENCE } from "@/companies/evidence";
+import MemoryConstellation from "./MemoryConstellation";
 import MetalCard from "./MetalCard";
 import RoleMatch from "./RoleMatch";
 import SmokeCanvas from "./SmokeCanvas";
@@ -31,6 +32,7 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
   const [greetDone, setGreetDone] = useState(false);
   const [opened, setOpened] = useState(false);
   const [hint, setHint] = useState(false);
+  const [widgetOpen, setWidgetOpen] = useState(false);
   const hintDismissed = useRef(false);
 
   /* ---------- preloader: line = progress, brief bloom, then the document.
@@ -199,6 +201,40 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
               )}
             </p>
           ))}
+          {pitch.storyWidget === "memory" && (
+            <button
+              onClick={() => setWidgetOpen(true)}
+              className={`mem-chip story-line group mt-6 ${section(1)}`}
+              style={{ "--d": "0.9s" } as React.CSSProperties}
+              aria-label="Open the memory system"
+            >
+              {/* memory core: nucleus + orbiting fact-dots, alive at rest */}
+              <span className="mem-chip-orb">
+                <svg viewBox="0 0 48 48" className="h-full w-full overflow-visible">
+                  <circle cx="24" cy="24" r="5" className="mem-orb-core" />
+                  <circle cx="24" cy="24" r="5" className="mem-orb-halo" />
+                  <g className="mem-orbit mem-orbit-a">
+                    <circle cx="24" cy="24" r="12" fill="none" stroke="currentColor" strokeOpacity="0.25" strokeWidth="0.75" strokeDasharray="2 4" />
+                    <circle cx="36" cy="24" r="1.6" fill="currentColor" />
+                  </g>
+                  <g className="mem-orbit mem-orbit-b">
+                    <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" strokeOpacity="0.15" strokeWidth="0.75" strokeDasharray="1 5" />
+                    <circle cx="6" cy="24" r="1.3" fill="currentColor" />
+                    <circle cx="42" cy="24" r="1" fill="currentColor" fillOpacity="0.7" />
+                  </g>
+                </svg>
+              </span>
+              <span className="text-left">
+                <span className="block font-mono text-[10px] tracking-[0.28em] text-white/40 transition-colors group-hover:text-white/70">
+                  THE SYSTEM I BUILT
+                </span>
+                <span className="mt-1 block font-mono text-[10px] tracking-[0.28em] text-accent">
+                  OPEN
+                  <span className="mem-chip-arrow ml-2 inline-block">-&gt;</span>
+                </span>
+              </span>
+            </button>
+          )}
         </section>
 
         {/* 03 - the pivot gets its own beat: the loud turn into the case */}
@@ -407,6 +443,13 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
 
       {/* film grain over everything */}
       <div className="story-grain absolute inset-0 z-50 pointer-events-none" />
+
+      {widgetOpen && pitch.storyWidget === "memory" && (
+        <MemoryConstellation
+          accent={pitch.accent ?? "#4ade80"}
+          onClose={() => setWidgetOpen(false)}
+        />
+      )}
     </div>
   );
 }

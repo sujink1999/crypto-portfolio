@@ -43,6 +43,11 @@ export interface CompanyPitch {
   hook: string;
   /** Short intro paragraphs, story-style, speaking directly to them */
   story: string[];
+  /**
+   * Opt-in interactive chip rendered under the story lines.
+   * "memory" opens the Vanta agent-memory constellation overlay.
+   */
+  storyWidget?: "memory";
   requirements: Requirement[];
   /** Optional 30/60/90 plan (config-only: not rendered by the current design) */
   plan90?: { phase: string; goal: string; detail: string }[];

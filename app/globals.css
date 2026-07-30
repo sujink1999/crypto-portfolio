@@ -295,6 +295,139 @@ body {
   .story-line { transition: opacity 0.3s ease; transform: none; filter: none; }
 }
 
+/* ---------- memory constellation (story widget) ---------- */
+
+/* the chip: a small glass artifact holding a live memory core - the one
+   clickable object in the room, breathing so the eye finds it */
+.mem-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.4rem 0.8rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 6%, rgba(255, 255, 255, 0.02));
+  cursor: pointer;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 0 transparent;
+  animation: mem-chip-breathe 3.2s ease-in-out infinite;
+}
+.mem-chip:hover {
+  border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  box-shadow: 0 0 42px color-mix(in srgb, var(--accent) 22%, transparent);
+  transform: translateY(-2px);
+  animation: none;
+}
+@keyframes mem-chip-breathe {
+  0%, 100% { box-shadow: 0 0 0 transparent; }
+  50% { box-shadow: 0 0 30px color-mix(in srgb, var(--accent) 14%, transparent); }
+}
+
+.mem-chip-orb {
+  width: 3rem;
+  height: 3rem;
+  color: var(--accent);
+  display: block;
+}
+.mem-orb-core {
+  fill: var(--accent);
+}
+.mem-orb-halo {
+  fill: var(--accent);
+  filter: blur(6px);
+  opacity: 0.55;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mem-ring-pulse 2.6s ease-in-out infinite;
+}
+.mem-orbit {
+  transform-box: view-box;
+  transform-origin: 24px 24px;
+}
+.mem-orbit-a {
+  animation: mem-orbit-spin 7s linear infinite;
+}
+.mem-orbit-b {
+  animation: mem-orbit-spin 13s linear infinite reverse;
+}
+@keyframes mem-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+.mem-chip-arrow {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mem-chip:hover .mem-chip-arrow {
+  transform: translateX(4px);
+}
+
+.mem-overlay {
+  animation: mem-overlay-in 0.5s ease forwards;
+}
+@keyframes mem-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* nodes bloom in, staggered */
+.mem-node {
+  opacity: 0;
+  animation: mem-node-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes mem-node-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* edges draw themselves after their endpoints exist */
+.mem-edge {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: mem-edge-draw 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes mem-edge-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* active node's orbit ring breathes */
+.mem-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mem-ring-pulse 2.4s ease-in-out infinite;
+}
+@keyframes mem-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.35); opacity: 0.25; }
+}
+
+/* blinking caret in the prompt miniature */
+.mem-caret {
+  animation: mem-caret-blink 1.1s steps(1) infinite;
+}
+@keyframes mem-caret-blink {
+  50% { opacity: 0; }
+}
+
+/* detail text crossfades on node change (keyed remount) */
+.mem-detail {
+  animation: mem-detail-in 0.45s ease forwards;
+}
+@keyframes mem-detail-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mem-chip, .mem-orb-halo, .mem-orbit-a, .mem-orbit-b { animation: none; }
+  .mem-node { animation: none; opacity: 1; }
+  .mem-edge { animation: none; stroke-dashoffset: 0; }
+  .mem-ring { animation: none; }
+  .mem-caret { animation: none; }
+  .mem-detail { animation: none; }
+}
+
 /* 404 room: the wrong door */
 .wrong-door-stage {
   perspective: 900px;
