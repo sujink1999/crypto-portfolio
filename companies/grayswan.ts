@@ -5,7 +5,6 @@ export const grayswan: CompanyPitch = {
   company: "Gray Swan",
   role: "Full Stack Software Engineer",
   accent: "#ef4444",
-  hook: "You're writing the threat model for AI. I've spent six years shipping in crypto, where the attacker is part of the spec.",
   story: [
     "Red-teaming frontier models is the most interesting security problem there is right now, and you're doing it with **~50 people**.",
     "I've built end to end my whole career - frontend, APIs, data layer, same person - most of it in **DeFi, where a bug means drained funds** and someone is always probing.",

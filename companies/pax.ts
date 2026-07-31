@@ -6,7 +6,6 @@ export const pax: CompanyPitch = {
   role: "Software Engineer",
   accent: "#7c5cf0",
   accentFrom: "#57a9dd",
-  hook: "You picked a 200-year-old paperwork problem where AI recovers real dollars. That's the kind of unglamorous-but-huge bet I want to build on.",
   story: [
     "Most AI startups are demos looking for a problem. You found **billions a year sitting unclaimed** and built the thing that files it.",
     "I've been shipping for **6+ years**: a trading app built solo to **10M+ downloads**, a lending protocol that held **$10M**, and Vanta - a health platform I co-founded and built end to end.",

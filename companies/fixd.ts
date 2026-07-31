@@ -5,7 +5,6 @@ export const fixd: CompanyPitch = {
   company: "FIXD",
   role: "Senior Engineer, React Native",
   accent: "#34d399",
-  hook: "You want one engineer to own AppraisalPRO end to end. That's how I've always shipped React Native apps - one of them hit 10M downloads.",
   story: [
     "I like tools that stop people from getting ripped off - a dealer seeing the **real recon cost** before the deal, not after.",
     "I've been shipping React Native apps for years: one grew to **10M+ downloads**, the latest is **live on the App Store** right now.",

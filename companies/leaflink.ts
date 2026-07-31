@@ -5,7 +5,6 @@ export const leaflink: CompanyPitch = {
   company: "LeafLink",
   role: "Senior Full Stack Engineer (Frontend Leaning)",
   accent: "#8b93ff",
-  hook: "You're overhauling the platform that runs an industry's wholesale trade. Rich, complex, large-scale frontends are exactly what I build.",
   story: [
     "A wholesale marketplace is one of the hardest frontend problems there is - **dense data, real money**, users who live in it all day.",
     "I've spent six years shipping exactly that: **trading UIs holding $10M**, marketplaces, daily dashboards.",

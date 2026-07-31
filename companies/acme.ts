@@ -6,7 +6,6 @@ export const acme: CompanyPitch = {
   company: "Acme",
   role: "Senior Full-Stack Engineer",
   accent: "#7c8cf8",
-  hook: "You're building onchain infra people actually use. I've shipped that, end to end.",
   story: [
     "I've been following what you're building -",
     "real onchain infrastructure, shipped fast, without the noise.",

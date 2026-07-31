@@ -1,5 +1,17 @@
+import { readFileSync, existsSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { COMPANIES } from "@/companies";
+
+function logoDataUri(slug: string): string | null {
+  for (const [ext, mime] of [
+    ["png", "image/png"], ["jpg", "image/jpeg"], ["webp", "image/webp"],
+  ] as const) {
+    const p = join(process.cwd(), "public", "logos", `${slug}.${ext}`);
+    if (existsSync(p)) return `data:${mime};base64,${readFileSync(p).toString("base64")}`;
+  }
+  return null;
+}
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -39,16 +51,12 @@ export default async function OgImage({
   if (!pitch) return new ImageResponse(<div style={{ display: "flex" }} />, size);
 
   const accent = pitch.accent;
-  const mono = {
-    letterSpacing: "0.4em",
-    color: "rgba(255,255,255,0.65)",
-  } as const;
+  const logo = logoDataUri(company);
 
   const name = pitch.company.toLowerCase();
-  /* long names can't live in the fixed circle - stretch the seal into a
-     pill and step the wordmark down so it never wraps */
-  const isLong = name.length > 7;
-  const wordmarkSize = name.length > 14 ? 64 : name.length > 10 ? 80 : isLong ? 92 : 104;
+  /* the wordmark owns the card - step down only as far as the name forces */
+  const wordmarkSize =
+    name.length > 14 ? 120 : name.length > 10 ? 160 : name.length > 7 ? 200 : 240;
 
   return new ImageResponse(
     (
@@ -86,92 +94,48 @@ export default async function OgImage({
           />
         ))}
 
-        {/* classified stamp */}
-        <div
-          style={{
-            position: "absolute",
-            top: 48,
-            right: 56,
-            display: "flex",
-            transform: "rotate(9deg)",
-            border: `3px solid ${accent}`,
-            color: accent,
-            padding: "10px 22px",
-            fontSize: 28,
-            letterSpacing: "0.3em",
-            fontWeight: 700,
-          }}
-        >
-          CLASSIFIED
-        </div>
-
-        <div style={{ display: "flex", fontSize: 28, ...mono, marginBottom: 36 }}>
-          AN INVITATION FOR
-        </div>
-
-        {/* the seal + stamp */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "relative",
-          }}
-        >
+        {/* the wordmark owns the card, unless a real logo is available */}
+        {logo ? (
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
+            <img src={logo} width={200} height={200} style={{ borderRadius: 32, objectFit: "contain" }} alt="" />
+            <div style={{ display: "flex", fontSize: 64, fontWeight: 600, color: "#ffffff", letterSpacing: "-0.02em" }}>
+              {name}
+              <span style={{ color: accent }}>.</span>
+            </div>
+          </div>
+        ) : (
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              ...(isLong ? { padding: "36px 64px" } : { width: 340, height: 340 }),
-              borderRadius: 999,
-              border: `1px solid ${accent}55`,
-              boxShadow: `0 0 60px ${accent}22`,
+              fontSize: wordmarkSize,
+              fontWeight: 600,
+              color: "#ffffff",
+              letterSpacing: "-0.02em",
+              whiteSpace: "nowrap",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                ...(isLong ? { padding: "26px 48px" } : { width: 280, height: 280 }),
-                borderRadius: 999,
-                border: "1px solid rgba(255,255,255,0.15)",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  fontSize: wordmarkSize,
-                  fontWeight: 600,
-                  color: "#ffffff",
-                  letterSpacing: "-0.02em",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {name}
-                <span style={{ color: accent }}>.</span>
-              </div>
-            </div>
+            {name}
+            <span style={{ color: accent }}>.</span>
           </div>
-        </div>
+        )}
 
+        {/* classified: stamped in red across the lower half of the name */}
         <div
           style={{
+            position: "absolute",
+            top: "56%",
             display: "flex",
-            alignItems: "center",
-            gap: 20,
-            fontSize: 25,
-            marginTop: 36,
+            transform: "rotate(-7deg)",
+            border: "6px solid #dc2626",
+            color: "#dc2626",
+            padding: "14px 36px",
+            fontSize: 58,
+            letterSpacing: "0.3em",
+            fontWeight: 700,
+            backgroundColor: "rgba(5,5,5,0.55)",
           }}
         >
-          <span style={{ display: "flex", ...mono, letterSpacing: "0.35em" }}>
-            RE: {pitch.role.toUpperCase()}
-          </span>
-          <span style={{ color: "rgba(255,255,255,0.2)" }}>|</span>
-          <span style={{ display: "flex", letterSpacing: "0.35em", color: accent }}>
-            A TWO-MINUTE READ →
-          </span>
+          CLASSIFIED
         </div>
       </div>
     ),

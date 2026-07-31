@@ -12,7 +12,7 @@ import { broccoli } from "./broccoli";
 import { tailor } from "./tailor";
 import { mem0 } from "./mem0";
 import { fieldguide } from "./fieldguide";
-import { koalafi } from "./koalafi";
+import { deeptune } from "./deeptune";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   acme,
@@ -28,7 +28,7 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   tailor,
   mem0,
   fieldguide,
-  koalafi,
+  deeptune,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);

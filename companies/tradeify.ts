@@ -5,7 +5,6 @@ export const tradeify: CompanyPitch = {
   company: "Tradeify",
   role: "Full Stack Engineer",
   accent: "#4ade80",
-  hook: "You said a 200ms lag on a dashboard is a real problem for real traders. I've spent six years living by that rule.",
   story: [
     "Trading interfaces are where I grew up as an engineer. **Live prices, real money**, users who notice every dropped frame.",
     "I've built a margin protocol that grew to **$10M TVL**, a live token-launch game, and a trading app with **10M+ downloads**.",

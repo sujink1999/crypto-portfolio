@@ -6,7 +6,6 @@ export const tailor: CompanyPitch = {
   role: "Senior Frontend Engineer",
   accent: "#5b5bd6",
   accentFrom: "#8f8fe8",
-  hook: "Every ops team I've built for ended up running the real business in spreadsheets because their ERP couldn't bend. You're building the one that bends.",
   story: [
     "At Vanta I built a store on **headless Shopify**. Then I spent months gluing the operations together around it: orders, lab bookings, fulfillment, referrals, admin. I was hand-building the thing you sell.",
     "I've been shipping for **6+ years**: a YC-backed trading app built solo to **10M+ downloads**, DeFi frontends holding **$10M**, and Vanta, a health platform where I built the entire product end to end.",
