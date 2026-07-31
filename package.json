@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "tsx --test lib/condition-tree/*.test.ts lib/pipeline/*.test.ts"
+    "test": "tsx --test 'lib/**/*.test.ts'"
   },
   "dependencies": {
     "gsap": "^3.15.0",

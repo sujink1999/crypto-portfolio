@@ -34,9 +34,10 @@ A minimal `pipeline/<slug>.json` looks like this. See `lib/pipeline/types.ts` fo
 
 Read every file in `pipeline/*.json`. Report to Sujin:
 
-- Companies awaiting Sujin at a gate (status `page_draft`, `app_text`, or `notes`, i.e. work is
-  done and a decision is needed before the pipeline can advance them).
-- Companies mid-build (status `researching` or `build`).
+- Companies awaiting Sujin at a gate (status `page_draft`, `app_text`, `notes`, or `pages_ready`,
+  plus `proposed` awaiting an accept/reject decision, i.e. work is done and a decision is needed
+  before the pipeline can advance them).
+- Companies mid-build (status `researching`, `page_approved`, or `build`).
 - Batch capacity: the target is 5 companies active at once, where "active" means any status
   before `applied` or `rejected`. If fewer than 5 are active, there is room to intake more.
 
@@ -97,6 +98,10 @@ There are three sequential gates, each reviewed by Sujin on the `/pipeline/<slug
 Feedback comes through chat, not the UI. When Sujin gives feedback on a gate, edit the state file
 directly and leave `status` where it was (do not advance status until the gate is actually
 approved).
+
+Approving Gate 1 (page copy) moves status directly from `page_draft` to `app_text` (the
+transient `page_approved` status is not set by the UI; it exists in `STATUS_ORDER` for manual/
+build-tooling use only).
 
 Build is a **batch gate**: it does not start until every active company has passed Gate 3.
 

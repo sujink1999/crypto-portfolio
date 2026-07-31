@@ -64,7 +64,7 @@ async function candidates(): Promise<string[]> {
 }
 
 const EXT: Record<string, string> = {
-  "image/png": ".png", "image/jpeg": ".jpg", "image/svg+xml": ".svg", "image/webp": ".webp",
+  "image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp",
 };
 
 (async () => {

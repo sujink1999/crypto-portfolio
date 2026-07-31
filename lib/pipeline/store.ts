@@ -33,12 +33,12 @@ export function patchCompany(
   return next;
 }
 
-/** Forward one-or-more steps, backward for redo, or rejected from anywhere. */
+/** Forward any number of steps, backward for redo, or rejected from anywhere; unknown statuses always fail. */
 export function canAdvance(from: PipelineStatus, to: PipelineStatus): boolean {
   if (to === "rejected") return true;
   if (from === "rejected") return to === "proposed";
   const a = STATUS_ORDER.indexOf(from as (typeof STATUS_ORDER)[number]);
   const b = STATUS_ORDER.indexOf(to as (typeof STATUS_ORDER)[number]);
   if (a === -1 || b === -1) return false;
-  return b === a + 1 || b < a; // one step forward, or any step back for redo
+  return true; // any forward or backward move between valid statuses
 }

@@ -8,10 +8,17 @@ import { WIDGET_MOCKS } from "./mocks";
 
 export default function Detail({ slug }: { slug: string }) {
   const [c, setC] = useState<PipelineCompany | null>(null);
+  const [loaded, setLoaded] = useState(false);
   const load = useCallback(async () => {
     const res = await fetch("/api/pipeline");
+    if (!res.ok) {
+      setC(null);
+      setLoaded(true);
+      return;
+    }
     const data = await res.json();
     setC(data.companies.find((x: PipelineCompany) => x.slug === slug) ?? null);
+    setLoaded(true);
   }, [slug]);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -27,7 +34,13 @@ export default function Detail({ slug }: { slug: string }) {
     load();
   };
 
-  if (!c) return <main className="min-h-screen bg-[#050505] p-8 font-mono text-xs text-white/40">loading</main>;
+  if (!c) {
+    return (
+      <main className="min-h-screen bg-[#050505] p-8 font-mono text-xs text-white/40">
+        {loaded ? "not in pipeline" : "loading"}
+      </main>
+    );
+  }
 
   const d = c.pageDraft;
   const Mock = c.research?.widgetConcept ? WIDGET_MOCKS[c.research.widgetConcept.key] : undefined;
@@ -100,7 +113,7 @@ export default function Detail({ slug }: { slug: string }) {
           </div>
           {c.status === "page_draft" && (
             <div className="mt-4 flex gap-3">
-              {approveBtn("Approve page copy", { status: "page_approved" })}
+              {approveBtn("Approve page copy", { status: "app_text" })}
               <span className="self-center font-mono text-xs text-white/40">changes: come to chat</span>
             </div>
           )}

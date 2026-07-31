@@ -50,5 +50,9 @@ test("canAdvance allows forward, rejected-from-anywhere, and backward for redo",
   assert.equal(canAdvance("page_draft", "page_approved"), true);
   assert.equal(canAdvance("app_text", "rejected"), true);
   assert.equal(canAdvance("page_approved", "page_draft"), true); // needs changes
-  assert.equal(canAdvance("proposed", "applied"), false); // no skipping
+  assert.equal(canAdvance("proposed", "applied"), true); // multi-step forward allowed
+});
+
+test("canAdvance rejects unknown statuses", () => {
+  assert.equal(canAdvance("proposed", "bogus" as never), false);
 });
