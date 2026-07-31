@@ -80,7 +80,8 @@ const EXT: Record<string, string> = {
       mkdirSync(join(process.cwd(), "public", "logos"), { recursive: true });
       const rel = join("public", "logos", `${slug}${ext}`);
       writeFileSync(join(process.cwd(), rel), buf);
-      console.log(`/${rel.replace("public/", "logos/")}  (from ${url}, ${buf.length} bytes)`);
+      console.log(`/logos/${slug}${ext}`);
+      console.error(`fetched from ${url} (${buf.length} bytes)`);
       process.exit(0);
     } catch { /* try next candidate */ }
   }
