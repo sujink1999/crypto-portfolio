@@ -10,7 +10,6 @@ export const template: CompanyPitch = {
   company: "TODO Company",
   role: "TODO Role title from the JD",
   accent: "#4ade80", // TODO their brand color
-  hook: "TODO one line: their pain point + your proof, addressed to the reviewer",
   story: [
     "TODO 2-3 short paragraphs. Speak to the reviewer directly: what about their product/JD caught you, and why this page exists.",
   ],

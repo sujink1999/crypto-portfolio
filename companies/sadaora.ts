@@ -5,7 +5,6 @@ export const sadaora: CompanyPitch = {
   company: "Sadaora",
   role: "Founding Product Engineer (Frontend)",
   accent: "#f0c75e",
-  hook: "You're building an AI platform that helps people improve their lives. I've spent the last year shipping exactly that.",
   story: [
     "I read the Idii pitch twice, because it sounded familiar -",
     "an AI-native product for **making better decisions and continuously improving**.",

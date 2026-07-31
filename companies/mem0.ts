@@ -6,7 +6,6 @@ export const mem0: CompanyPitch = {
   role: "Full Stack Engineer",
   accent: "#a78bfa",
   accentFrom: "#f0abfc",
-  hook: "I hand-built a ChatGPT-style memory system inside Vanta. It convinced me memory should be infrastructure, and that I should build it with the team making it one.",
   story: [
     "Every AI product forgets its user the moment the turn ends. You're building the missing piece: **memory as infrastructure**.",
     "I hit your exact problem at Vanta, the health platform I co-founded: an agent that has to remember **months of a person's health**. So I built ChatGPT-style memory by hand.",

@@ -5,7 +5,6 @@ export const fluent: CompanyPitch = {
   company: "Fluent",
   role: "Frontend Engineer",
   accent: "#e2e2e2",
-  hook: "You need frontend execution that ships pixel-accurate, works on mobile the first time, and speaks EVM natively. That's been my whole career.",
   story: [
     "You're building the chain for consumer culture - and I've already **shipped culture onchain**:",
     "a token launcher played as a **retro desktop game**, DeFi frontends holding **$10M TVL**, consumer apps live on the stores.",

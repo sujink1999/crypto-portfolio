@@ -6,7 +6,6 @@ export const fieldguide: CompanyPitch = {
   role: "Software Engineer",
   accent: "#34d17c",
   accentFrom: "#8ceab5",
-  hook: "Most software gets to pick its users. You're building for practitioners stuck with tools that are decades old, and you set the bar at lovable. That's a fight worth joining.",
   story: [
     "**6+ years** of shipping: a YC-backed trading app built solo to **10M+ downloads**, DeFi frontends holding **$10M**, and Vanta, a health platform I co-founded and built end to end.",
     "Audit software is document software. I've built that twice: Vanta's lab report pipeline, and before that a fintech backend that **OCR'd receipts** into clean transactions.",

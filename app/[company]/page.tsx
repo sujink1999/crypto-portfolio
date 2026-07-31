@@ -21,7 +21,7 @@ export async function generateMetadata({
   const description = `An invitation written for ${pitch.company}. A two-minute read.`;
   return {
     title: `Sujin K - for ${pitch.company}`,
-    description: pitch.hook,
+    description,
     robots: pitch.unlisted === false ? undefined : { index: false, follow: false },
     openGraph: { title, description, type: "website" },
     twitter: { card: "summary_large_image", title, description },

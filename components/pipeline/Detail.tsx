@@ -91,7 +91,6 @@ export default function Detail({ slug }: { slug: string }) {
           {gate("Gate 1: page copy")}
           <div className="max-w-2xl space-y-6 rounded-xl border border-white/10 bg-[#0d0d0d] p-6">
             <p className="text-2xl font-medium">Hey {d.company},</p>
-            <p className="text-lg text-white/80">{d.hook}</p>
             {d.story.map((s, i) => <p key={i} className="text-sm leading-relaxed text-white/70">{s}</p>)}
             {Mock && (
               <div className="rounded-lg border border-white/10 p-4">

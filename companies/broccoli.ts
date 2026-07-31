@@ -6,7 +6,6 @@ export const broccoli: CompanyPitch = {
   role: "Senior Software Engineer",
   accent: "#a78bfa",
   accentFrom: "#8bc53f",
-  hook: "You want engineers who operate like mini founders. I've co-founded one, with 6+ years of production systems behind it - including a YC 0-to-1 run, solo-carrying an app to 10M downloads.",
   story: [
     "Most AI companies demo agents. You went **door-to-door in Sacramento**, met 100+ contractors, and built agents that actually answer the phone and book the job - that's the right order.",
     "I've spent **6+ years shipping production systems** - solo-carried a YC startup's app to **10M+ downloads**, and **co-founded Vanta**, a health platform built the same way you build: direct customer contact, then ship.",

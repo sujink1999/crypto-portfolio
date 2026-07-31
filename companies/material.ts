@@ -5,7 +5,6 @@ export const material: CompanyPitch = {
   company: "Material",
   role: "Full-Stack Software Engineer",
   accent: "#6d3df5",
-  hook: "You're the software a store owner runs their whole day on. I've spent the last year building exactly that kind of system as a team of one.",
   story: [
     "At Vanta I built the **whole commerce stack** myself - the Shopify store, the admin dashboards, the backend, and the integrations that tie them together.",
     "Before that: a margin protocol that grew to **$10M TVL**, and a trading app I built from scratch to **10M+ downloads**.",
