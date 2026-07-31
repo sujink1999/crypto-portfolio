@@ -57,6 +57,15 @@ approve connection notes, review live pages, then apply/send manually.
   3. **Done tracking**: applied / sent checkmarks only.
 - "Needs changes" happens in chat; dashboard just marks the state.
 
+### Design language
+
+Minimal black dashboard (reference: Beast Insights style). Near-black
+background with slightly lighter card surfaces and hairline borders; muted
+gray secondary text, white reserved for key facts; company logos and small
+visuals instead of text labels where possible; slim sidebar or top nav;
+Space Grotesk / Geist Mono from the existing site. No color except status
+accents used sparingly (Linear-style accent-only-on-active).
+
 ## Daily flow
 
 1. **Kickoff** (one command, e.g. "run the pipeline"): Sujin pastes any links;
