@@ -11,6 +11,8 @@ import { pax } from "./pax";
 import { broccoli } from "./broccoli";
 import { tailor } from "./tailor";
 import { mem0 } from "./mem0";
+import { fieldguide } from "./fieldguide";
+import { koalafi } from "./koalafi";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   acme,
@@ -25,6 +27,8 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   pax,
   tailor,
   mem0,
+  fieldguide,
+  koalafi,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);
