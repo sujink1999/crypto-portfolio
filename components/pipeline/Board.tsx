@@ -4,6 +4,17 @@ import Link from "next/link";
 import type { PipelineCompany } from "@/lib/pipeline/types";
 import StatusPill from "./StatusPill";
 
+function postedLabel(postedAt?: string): string {
+  if (!postedAt) return "?";
+  const t = Date.parse(postedAt);
+  if (Number.isNaN(t)) return postedAt; // non-date strings pass through
+  const days = Math.floor((Date.now() - t) / 86400000);
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 30) return `${days} days ago`;
+  return new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
 const GROUPS: { title: string; statuses: PipelineCompany["status"][] }[] = [
   { title: "Proposed", statuses: ["proposed"] },
   { title: "In research", statuses: ["researching"] },
@@ -98,7 +109,7 @@ export default function Board() {
                         <span className="text-white/35">remote</span>
                         <span className="text-white/70">{c.locationPreference ?? "?"}</span>
                         <span className="text-white/35">posted</span>
-                        <span className="text-white/70">{c.postedAt ?? "?"}</span>
+                        <span className="text-white/70">{postedLabel(c.postedAt)}</span>
                         {c.jdUrl && (
                           <>
                             <span className="text-white/35">posting</span>
