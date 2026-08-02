@@ -61,6 +61,8 @@ For each accepted candidate (default target: 5 unless the dispatch says otherwis
 }
 ```
 
+`jdUrl` must be the ACTUAL job posting (the company's careers page or ATS listing: Greenhouse/Lever/Ashby/Workable). When you find a role via an aggregator or HN, take the extra step of locating the company's own posting for that role and link THAT. Only fall back to the HN comment or aggregator page when no direct posting exists (e.g. apply-by-email startups), and say so in the summary.
+
 `salary`, `location`, `locationPreference`, `postedAt`, and `jdUrl` are mandatory: they are the only things shown on the review card. Use "not listed" for salary when the posting omits it; never leave them out. `postedAt` is when the listing was posted, as precise as the source allows.
 
 Do not fetch logos, do not fill hook/humans, do not write page drafts; those belong to later stages.
