@@ -89,8 +89,25 @@ export default function Board() {
                         <Link href={`/pipeline/${c.slug}`} className="font-mono text-xs text-white/50 hover:text-white">open</Link>
                       )}
                     </div>
-                    {c.status === "proposed" && c.research?.summary && (
-                      <p className="mt-3 text-xs leading-relaxed text-white/50">{c.research.summary}</p>
+                    {c.status === "proposed" && (
+                      <div className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 font-mono text-[11px]">
+                        <span className="text-white/35">salary</span>
+                        <span className="text-white">{c.salary ?? "not listed"}</span>
+                        <span className="text-white/35">location</span>
+                        <span className="text-white/70">{c.location ?? "?"}</span>
+                        <span className="text-white/35">remote</span>
+                        <span className="text-white/70">{c.locationPreference ?? "?"}</span>
+                        <span className="text-white/35">posted</span>
+                        <span className="text-white/70">{c.postedAt ?? "?"}</span>
+                        {c.jdUrl && (
+                          <>
+                            <span className="text-white/35">posting</span>
+                            <a href={c.jdUrl} target="_blank" rel="noreferrer" className="truncate text-white/70 underline decoration-white/25 hover:text-white">
+                              {new URL(c.jdUrl).hostname.replace("www.", "")}
+                            </a>
+                          </>
+                        )}
+                      </div>
                     )}
                   </div>
                 ))}

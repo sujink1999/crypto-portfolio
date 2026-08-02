@@ -31,6 +31,13 @@ export interface PipelineCompany {
   role: string;
   source: string; // "was" | "linkedin" | "wellfound" | "sourced:<board>"
   jdUrl?: string;
+  /** display strings for the board card, extracted from the listing */
+  salary?: string;
+  location?: string;
+  /** e.g. "Remote worldwide", "Remote UTC+3", "US hybrid" */
+  locationPreference?: string;
+  /** when the listing was posted, display form (e.g. "2026-07-01" or "Jul 2026") */
+  postedAt?: string;
   jdText?: string;
   domain?: string;
   status: PipelineStatus;

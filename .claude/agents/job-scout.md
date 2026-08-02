@@ -47,6 +47,10 @@ For each accepted candidate (default target: 5 unless the dispatch says otherwis
   "jdUrl": "https://...",
   "domain": "acme.com",
   "jdText": "full JD text you fetched",
+  "salary": "$120k-160k + equity",
+  "location": "San Francisco (company HQ)",
+  "locationPreference": "Remote worldwide",
+  "postedAt": "2026-07-01",
   "status": "proposed",
   "research": {
     "summary": "3-4 sentences: what the company does, stage/funding, why this role fits Sujin, eligibility evidence (green flags found or 'unconfirmed').",
@@ -56,6 +60,8 @@ For each accepted candidate (default target: 5 unless the dispatch says otherwis
   "updatedAt": "<current ISO timestamp>"
 }
 ```
+
+`salary`, `location`, `locationPreference`, `postedAt`, and `jdUrl` are mandatory: they are the only things shown on the review card. Use "not listed" for salary when the posting omits it; never leave them out. `postedAt` is when the listing was posted, as precise as the source allows.
 
 Do not fetch logos, do not fill hook/humans, do not write page drafts; those belong to later stages.
 
