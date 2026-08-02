@@ -98,7 +98,20 @@ export default function Board() {
                       </div>
                     </div>
                     <div className="mt-3 flex items-center justify-between">
-                      <StatusPill status={c.status} />
+                      <div className="flex items-center gap-1.5">
+                        <StatusPill status={c.status} />
+                        {c.status === "proposed" && (
+                          <span
+                            className={`inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-[11px] tracking-wide ${
+                              (c.tier ?? "match") === "match"
+                                ? "border-white/40 text-white"
+                                : "border-white/10 text-white/40"
+                            }`}
+                          >
+                            {(c.tier ?? "match") === "match" ? "match" : "longshot"}
+                          </span>
+                        )}
+                      </div>
                       {c.status === "proposed" ? (
                         <div className="flex items-center gap-2">
                           <button onClick={() => decide(c.slug, true)} className="rounded-md border border-white/25 px-2.5 py-1 text-xs hover:bg-white hover:text-black">Accept</button>
