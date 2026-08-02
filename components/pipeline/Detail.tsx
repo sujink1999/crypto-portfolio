@@ -48,7 +48,7 @@ export default function Detail({ slug }: { slug: string }) {
     <h2 className="mb-3 mt-10 font-mono text-xs uppercase tracking-[0.2em] text-white/40">{name}</h2>
   );
   const approveBtn = (label: string, p: Partial<PipelineCompany>) => (
-    <button onClick={() => patch(p)} className="rounded-md border border-white/25 px-3 py-1.5 text-xs hover:bg-white hover:text-black">
+    <button onClick={() => patch(p)} className="rounded-md border border-emerald-400/40 bg-emerald-400/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-400 hover:text-black">
       {label}
     </button>
   );

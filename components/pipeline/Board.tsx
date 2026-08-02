@@ -104,8 +104,8 @@ export default function Board() {
                           <span
                             className={`inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-[11px] tracking-wide ${
                               (c.tier ?? "match") === "match"
-                                ? "border-white/40 text-white"
-                                : "border-white/10 text-white/40"
+                                ? "border-emerald-400/50 text-emerald-400"
+                                : "border-amber-400/30 text-amber-400/70"
                             }`}
                           >
                             {(c.tier ?? "match") === "match" ? "match" : "longshot"}
@@ -114,8 +114,8 @@ export default function Board() {
                       </div>
                       {c.status === "proposed" ? (
                         <div className="flex items-center gap-2">
-                          <button onClick={() => decide(c.slug, true)} className="rounded-md border border-white/25 px-2.5 py-1 text-xs hover:bg-white hover:text-black">Accept</button>
-                          <button onClick={() => decide(c.slug, false)} className="rounded-md border border-white/10 px-2.5 py-1 text-xs text-white/50 hover:border-white/25">Reject</button>
+                          <button onClick={() => decide(c.slug, true)} className="rounded-md border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-1 text-xs text-emerald-300 hover:bg-emerald-400 hover:text-black">Accept</button>
+                          <button onClick={() => decide(c.slug, false)} className="rounded-md border border-red-400/30 bg-red-400/10 px-2.5 py-1 text-xs text-red-300/80 hover:bg-red-400 hover:text-black">Reject</button>
                           <Link href={`/pipeline/${c.slug}`} className="font-mono text-xs text-white/50 hover:text-white">open</Link>
                         </div>
                       ) : (
