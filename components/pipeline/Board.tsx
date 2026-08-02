@@ -29,6 +29,24 @@ const GROUPS: {
   { title: "Rejected", statuses: ["rejected"] },
 ];
 
+function CardShell({
+  slug,
+  clickable,
+  children,
+}: {
+  slug: string;
+  clickable: boolean;
+  children: React.ReactNode;
+}) {
+  const cls = "block rounded-xl border border-white/10 bg-[#0d0d0d] p-4";
+  if (!clickable) return <div className={cls}>{children}</div>;
+  return (
+    <Link href={`/pipeline/${slug}`} className={`${cls} transition-colors hover:border-white/25`}>
+      {children}
+    </Link>
+  );
+}
+
 export default function Board() {
   const [companies, setCompanies] = useState<PipelineCompany[]>([]);
   const [error, setError] = useState(false);
@@ -82,7 +100,7 @@ export default function Board() {
               <h2 className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-white/40">{g.title}</h2>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {list.map((c) => (
-                  <div key={c.slug} className="rounded-xl border border-white/10 bg-[#0d0d0d] p-4">
+                  <CardShell key={c.slug} slug={c.slug} clickable={c.status !== "proposed"}>
                     <div className="flex items-center gap-3">
                       {c.logo?.path ? (
                         /* eslint-disable-next-line @next/next/no-img-element */
@@ -112,14 +130,11 @@ export default function Board() {
                           </span>
                         )}
                       </div>
-                      {c.status === "proposed" ? (
+                      {c.status === "proposed" && (
                         <div className="flex items-center gap-2">
                           <button onClick={() => decide(c.slug, true)} className="rounded-md border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-1 text-xs text-emerald-300 hover:bg-emerald-400 hover:text-black">Accept</button>
                           <button onClick={() => decide(c.slug, false)} className="rounded-md border border-red-400/30 bg-red-400/10 px-2.5 py-1 text-xs text-red-300/80 hover:bg-red-400 hover:text-black">Reject</button>
-                          <Link href={`/pipeline/${c.slug}`} className="font-mono text-xs text-white/50 hover:text-white">open</Link>
                         </div>
-                      ) : (
-                        <Link href={`/pipeline/${c.slug}`} className="font-mono text-xs text-white/50 hover:text-white">open</Link>
                       )}
                     </div>
                     {c.status === "proposed" && (
@@ -142,7 +157,7 @@ export default function Board() {
                         )}
                       </div>
                     )}
-                  </div>
+                  </CardShell>
                 ))}
               </div>
             </section>
