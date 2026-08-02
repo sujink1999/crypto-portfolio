@@ -70,6 +70,8 @@ For each accepted candidate, write `pipeline/<slug>.json` (slug: lowercase compa
 }
 ```
 
+Before writing any file, FETCH the jdUrl and confirm the role is actually live on it (the page loads and shows this role). Aggregators keep dead listings for weeks; a proposal with a dead link wastes a review slot. If the direct posting is gone but the aggregator page is recent, either find the live equivalent on the company's ATS or drop the candidate.
+
 `jdUrl` must be the ACTUAL job posting (the company's careers page or ATS listing: Greenhouse/Lever/Ashby/Workable). When you find a role via an aggregator or HN, take the extra step of locating the company's own posting for that role and link THAT. Only fall back to the HN comment or aggregator page when no direct posting exists (e.g. apply-by-email startups), and say so in the summary.
 
 `salary`, `location`, `locationPreference`, `postedAt`, and `jdUrl` are mandatory: they are the only things shown on the review card. Use "not listed" for salary when the posting omits it; never leave them out. `postedAt` must be an exact ISO date (YYYY-MM-DD) whenever the source has one; the dashboard renders it as "N days ago". HN comments always have exact timestamps in the Algolia API (`created_at`); ATS boards list posted/updated dates; use them. Only fall back to a fuzzy string ("Jul 2026") when the source truly has no timestamp.
