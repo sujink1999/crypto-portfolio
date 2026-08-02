@@ -34,9 +34,17 @@ Ambiguous listings ("Remote" with no location language) from strong companies MA
 
 Before proposing anything, read the slugs already present in `pipeline/*.json` and `companies/*.ts` (repo root). Never re-propose a company that exists in either, regardless of status.
 
+## Tiers
+
+Every proposal carries a `"tier"`:
+- `"match"`: clears every screen rule. Target: 5 matches per run; keep working sources until you have 5 or they are truly exhausted.
+- `"longshot"`: breaks exactly one rule but is worth a swing on profile strength, e.g. geo wording excludes India but the company is early-stage/remote (a strong profile can override), pay is exceptional, or the stack is a stretch he could close. Sujin's view: early projects that say "remote" will bend for really good profiles. Propose these ON TOP of the 5 matches instead of discarding them into the near-miss list; cap at ~3 per run, pick only the ones with real upside, and state the broken rule first in the summary.
+
+Hard-exclude junk (US-hybrid, W2-only enterprise, wrong discipline entirely) still gets rejected outright, not longshotted.
+
 ## Output
 
-For each accepted candidate (default target: 5 unless the dispatch says otherwise), write `pipeline/<slug>.json` (slug: lowercase company name, a-z0-9- only):
+For each accepted candidate, write `pipeline/<slug>.json` (slug: lowercase company name, a-z0-9- only):
 
 ```json
 {
@@ -51,6 +59,7 @@ For each accepted candidate (default target: 5 unless the dispatch says otherwis
   "location": "San Francisco (company HQ)",
   "locationPreference": "Remote worldwide",
   "postedAt": "2026-07-01",
+  "tier": "match",
   "status": "proposed",
   "research": {
     "summary": "3-4 sentences: what the company does, stage/funding, why this role fits Sujin, eligibility evidence (green flags found or 'unconfirmed').",

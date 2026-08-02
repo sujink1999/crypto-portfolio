@@ -41,6 +41,11 @@ export interface PipelineCompany {
   jdText?: string;
   domain?: string;
   status: PipelineStatus;
+  /**
+   * match: clears every screen rule. longshot: breaks a rule (geo wording,
+   * stack stretch, seniority band) but worth a swing on profile strength.
+   */
+  tier?: "match" | "longshot";
   logo?: { sourceUrl: string; path: string; approved: boolean };
   research?: {
     summary: string;

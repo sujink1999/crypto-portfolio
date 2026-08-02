@@ -15,8 +15,13 @@ function postedLabel(postedAt?: string): string {
   return new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-const GROUPS: { title: string; statuses: PipelineCompany["status"][] }[] = [
-  { title: "Proposed", statuses: ["proposed"] },
+const GROUPS: {
+  title: string;
+  statuses: PipelineCompany["status"][];
+  tier?: "match" | "longshot";
+}[] = [
+  { title: "Proposed: matches", statuses: ["proposed"], tier: "match" },
+  { title: "Proposed: longshots", statuses: ["proposed"], tier: "longshot" },
   { title: "In research", statuses: ["researching"] },
   { title: "Awaiting your review", statuses: ["page_draft", "app_text", "notes", "pages_ready"] },
   { title: "Approved, building", statuses: ["page_approved", "build"] },
@@ -66,7 +71,11 @@ export default function Board() {
       )}
       <div className="mt-8 flex flex-col gap-10">
         {GROUPS.map((g) => {
-          const list = companies.filter((c) => g.statuses.includes(c.status));
+          const list = companies.filter(
+            (c) =>
+              g.statuses.includes(c.status) &&
+              (g.tier === undefined || (c.tier ?? "match") === g.tier)
+          );
           if (list.length === 0) return null;
           return (
             <section key={g.title}>
