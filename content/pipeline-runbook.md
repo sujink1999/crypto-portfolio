@@ -64,10 +64,16 @@ Write each accepted company as `pipeline/<slug>.json`:
 
 ## 2. Research fan-out (one agent per accepted company, parallel)
 
+Model policy (Sujin's rule, 2026-08-03): research agents run on SONNET and gather facts only
+(summary, hook material, humans, JD, logo, salary/stage data). All prose the reviewer or a
+company will read (pageDraft copy, appText variants, connection notes) is written by FABLE in a
+second pass from that research. Sonnet must not write the final copy; Fable must not be spent on
+fact-gathering.
+
 Do not deep-research a `"proposed"` sourced candidate until Sujin accepts it. Once a company is
 accepted (status `"researching"` or later), run one research agent per company, in parallel. Each
 agent writes its results directly into that company's state file and moves its status to
-`"page_draft"` when done. Each agent produces:
+`"page_draft"` when done (after the Fable writing pass). Each agent produces:
 
 - `research.summary`: 3-4 sentences on the company.
 - `research.hook`: a genuine, specific line about the company (not generic flattery).
