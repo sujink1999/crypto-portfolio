@@ -56,6 +56,7 @@ export default function Detail({ slug }: { slug: string }) {
 
   return (
     <main className="min-h-screen bg-[#050505] px-8 py-10 text-white">
+      <div className="mx-auto w-full max-w-3xl">
       <Link href="/pipeline" className="font-mono text-xs text-white/40 hover:text-white">back</Link>
       <div className="mt-4 flex items-center gap-4">
         {c.logo?.path && (
@@ -72,7 +73,7 @@ export default function Detail({ slug }: { slug: string }) {
       {c.research && (
         <>
           {gate("Research")}
-          <div className="max-w-2xl rounded-xl border border-white/10 bg-[#0d0d0d] p-4 text-sm leading-relaxed text-white/70">
+          <div className="rounded-xl border border-white/10 bg-[#0d0d0d] p-4 text-sm leading-relaxed text-white/70">
             <p>{c.research.summary}</p>
             <p className="mt-2 text-white/90">Hook: {c.research.hook}</p>
             <ul className="mt-2 list-inside list-disc text-white/60">
@@ -90,7 +91,7 @@ export default function Detail({ slug }: { slug: string }) {
       {d && (
         <>
           {gate("Gate 1: page copy")}
-          <div className="max-w-2xl space-y-6 rounded-xl border border-white/10 bg-[#0d0d0d] p-6">
+          <div className="space-y-6 rounded-xl border border-white/10 bg-[#0d0d0d] p-6">
             <p className="text-2xl font-medium">Hey {d.company},</p>
             {d.story.map((s, i) => <p key={i} className="text-sm leading-relaxed text-white/70">{s}</p>)}
             {Mock && (
@@ -130,7 +131,7 @@ export default function Detail({ slug }: { slug: string }) {
       {c.appText && c.status !== "page_draft" && (
         <>
           {gate("Gate 2: application text")}
-          <div className="max-w-2xl space-y-3">
+          <div className="space-y-3">
             {c.appText.variants.map((v, i) => (
               <div key={v.label} className={c.appText?.approvedIndex === i ? "rounded-xl ring-1 ring-white/40" : ""}>
                 <CopyBlock label={`${v.label}${c.appText?.approvedIndex === i ? " (approved)" : ""}`} text={v.text} />
@@ -148,7 +149,7 @@ export default function Detail({ slug }: { slug: string }) {
       {c.notes && (c.status === "notes" || c.status === "build" || c.status === "pages_ready" || c.status === "applied") && (
         <>
           {gate("Gate 3: connection notes")}
-          <div className="max-w-2xl space-y-3">
+          <div className="space-y-3">
             {c.notes.map((n) => (
               <CopyBlock key={n.persona} label={`${n.persona}${n.target ? `: ${n.target}` : ""}`} text={n.text} />
             ))}
@@ -175,6 +176,7 @@ export default function Detail({ slug }: { slug: string }) {
           </div>
         </>
       )}
+      </div>
     </main>
   );
 }
