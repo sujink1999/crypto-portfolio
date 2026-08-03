@@ -20,10 +20,10 @@ export const sadaora: CompanyPitch = {
       claim: "Elegant, responsive experiences are my whole portfolio - design systems that survived five app surfaces.",
     },
     {
-      label: "5+ years production React",
-      need: "5+ years building production React applications with strong expertise in modern JavaScript and TypeScript; frontend architecture and state management",
+      label: "6+ years production React",
+      need: "6+ years building production React applications with strong expertise in modern JavaScript and TypeScript; frontend architecture and state management",
       proofs: ["keom", "mudrex"],
-      claim: "Six years of production React and TypeScript - all of it live, all of it mine.",
+      claim: "Five years of production React and TypeScript - all of it live, all of it mine.",
       stackMatch: ["React", "TypeScript", "React Native"],
     },
     {

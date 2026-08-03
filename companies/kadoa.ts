@@ -4,83 +4,87 @@ export const kadoa: CompanyPitch = {
   "slug": "kadoa",
   "company": "Kadoa",
   "role": "Senior Software Engineer",
-  "accent": "#38bdf8",
-  "accentFrom": "#bae6fd",
+  "accent": "#fd7412",
+  "accentFrom": "#ffcda3",
   "story": [
-    "**6+ years** shipping zero to one: a YC-backed trading app built solo to **10M+ downloads**, DeFi frontends holding **$10M TVL**, and Vanta, a health platform I co-founded and built end to end.",
-    "Your founders still write **scraping and ETL code almost every day**. Same here. Vanta is one pair of hands: data model, Express APIs, mobile, the App Store release.",
-    "I have pulled data out of messy sources my whole career: exchanges, chains, wearables. The hard part was never extraction, it was making the output **trustworthy enough to ship**. The rest of this page maps your JD to that work."
+    "Your founders still write **scraping and ETL code** almost every day, because that is what the product is: pulling structure out of **messy, hostile data**. I've spent years in exactly that kind of work.",
+    "At **Vanta**, the health platform I co-founded, I reconcile noisy **Garmin and WHOOP** streams into one clean record, and every LLM output ships behind an **eval harness**. Before that: DeFi frontends where a data bug loses real money, **$500k to $10M TVL**.",
+    "Lean team, no egos, everyone **close to the thing that breaks**. I've never worked any other way."
   ],
   "requirements": [
     {
-      "label": "LLM in production",
-      "need": "experience working with LLMs and putting them in production",
+      "label": "LLMs in production",
+      "need": "Experience working with LLMs and putting them in production.",
       "proofs": [
         "vanta-os"
       ],
-      "claim": "At Vanta I run LLM pipelines behind an eval harness: daily plan generation scored before it ships, not after.",
+      "claim": "Vanta's daily-plan engine runs on LLM pipelines with an eval harness: structured outputs scored before a user ever sees them.",
       "stackMatch": [
-        "LLM pipelines"
+        "LLM pipelines",
+        "Express 5"
       ]
     },
     {
       "label": "TypeScript / Node.js",
-      "need": "You're a strong developer across backend and infrastructure (TypeScript, Node.js, Python, Docker, Kubernetes, GCP)",
+      "need": "TypeScript, Node.js, Python, Docker, Kubernetes, GCP, SQL databases.",
       "proofs": [
-        "vanta-os",
-        "beans"
+        "beans",
+        "vanta-os"
       ],
-      "claim": "TypeScript end to end: Vanta's Express APIs and data model, plus BullMQ and Redis workers running Beans' launch queue unattended.",
+      "claim": "Node in production for years: Beans' Bull and Redis workers executed launches, trades, and withdrawals unattended, over $100k an hour.",
       "stackMatch": [
-        "Express 5",
-        "Drizzle / PostgreSQL",
-        "BullMQ",
-        "Redis"
+        "Node.js",
+        "Bull",
+        "Redis",
+        "Express 5"
       ]
     },
     {
-      "label": "Data pipelines & accuracy",
-      "need": "experience with data pipelines, and world-class accuracy and performance",
+      "label": "Data pipelines",
+      "need": "Experience with data pipelines for deterministic, world-class accuracy.",
       "proofs": [
-        "keom",
-        "beans"
+        "beans",
+        "vanta-os",
+        "keom"
       ],
-      "claim": "I ran the frontend of a lending protocol holding $10M TVL, e2e tested with Cypress, where a data bug loses real money.",
+      "claim": "Beans decoded on-chain events in Lambda, dispatched them through SQS, and materialized them into MySQL. Nothing double-processed, ever.",
       "stackMatch": [
-        "TypeScript",
-        "Cypress",
-        "Jest"
+        "AWS Lambda",
+        "SQS",
+        "MySQL / Drizzle"
       ]
     },
     {
       "label": "Low-ego generalist",
-      "need": "low-ego generalists with high agency who can help build a platform combining the most intuitive UX with world-class accuracy and performance",
+      "need": "A lean remote team looking for low-ego generalists with high agency.",
       "proofs": [
         "mudrex",
-        "vanta-os"
+        "vanta-os",
+        "society-mobile"
       ],
-      "claim": "Founding engineer at Mudrex, solo to 10M+ downloads pre Series A. Now I own Vanta end to end: product, backend, data model, mobile.",
+      "claim": "One pair of hands since Mudrex, built solo to 10M+ downloads, through co-founding Vanta and shipping its entire stack.",
       "stackMatch": [
         "React Native",
         "Next.js 16"
       ]
     },
     {
-      "label": "Shipped product",
-      "need": "help build a platform combining the most intuitive UX with world-class accuracy and performance",
+      "label": "Intuitive UX, accurate numbers",
+      "need": "Help build a platform combining the most intuitive UX with world-class accuracy and performance.",
       "proofs": [
-        "vanta-os",
+        "keom",
         "society-mobile"
       ],
-      "claim": "Vanta's reconciliation engine turns noisy wearable streams into numbers users trust. Society shipped to the App Store on a Skia-built design system.",
+      "claim": "Keom held $10M TVL under Cypress e2e coverage. Society shipped to the App Store on custom Skia graphics.",
       "stackMatch": [
-        "Next.js 16",
+        "TypeScript",
+        "Cypress",
         "Expo / React Native"
       ]
     }
   ],
   "closing": {
-    "line": "You still write the scrapers yourselves. I build the same way, hands on everything I ship. If that maps to what you need, the door is open.",
+    "line": "Deterministic pipelines built from a non-deterministic component is a hard, honest problem. I'd like to work on it with you.",
     "email": "lksujins@gmail.com",
     "github": "https://github.com/sujink1999",
     "whatsapp": "+91 7299603606",
@@ -89,7 +93,7 @@ export const kadoa: CompanyPitch = {
   "unlisted": true,
   "evidenceOverrides": {
     "vanta-os": {
-      "period": "Nov 2025 – 2026",
+      "period": "Nov 2025 \u2013 2026",
       "proofPoints": [
         "LLM daily-plan generation with an eval harness",
         "Wearable-data reconciliation engine merging noisy device streams into one clean timeline",

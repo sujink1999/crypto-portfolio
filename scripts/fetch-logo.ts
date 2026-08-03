@@ -1,7 +1,8 @@
 // scripts/fetch-logo.ts
 // Usage: npx tsx scripts/fetch-logo.ts <slug> <page-url> [domain]
-// Tries, in order: og:image / logo <img> on the given page, apple-touch-icon
-// on the domain homepage, then Google favicon service.
+// The COMPANY'S OWN SITE is the source of truth: header logo <img> and
+// apple-touch-icon on the homepage first, then the JD page's logo/og:image,
+// then Google favicon service as last resort.
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
@@ -28,38 +29,53 @@ function absolute(src: string, base: string): string {
   return new URL(src, base).href;
 }
 
+const LOGO_RES = [
+  /<img[^>]+class="[^"]*logo[^"]*"[^>]+src="([^"]+)"/i,
+  /<img[^>]+src="([^"]+)"[^>]+class="[^"]*logo[^"]*"/i,
+  /<img[^>]+src="([^"]*logo[^"]+)"/i,
+  /<img[^>]+alt="[^"]*logo[^"]*"[^>]+src="([^"]+)"/i,
+];
+
 async function candidates(): Promise<string[]> {
   const out: string[] = [];
-  try {
-    const page = await html(pageUrl);
-    for (const re of [
-      /<img[^>]+class="[^"]*logo[^"]*"[^>]+src="([^"]+)"/i,
-      /<img[^>]+src="([^"]+)"[^>]+class="[^"]*logo[^"]*"/i,
-      /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i,
-      /<meta[^>]+content="([^"]+)"[^>]+property="og:image"/i,
-    ]) {
-      const hit = extract(re, page);
-      if (hit) out.push(absolute(hit, pageUrl));
-    }
-  } catch (e) {
-    console.error(`jd page failed: ${e}`);
-  }
   const domain = domainArg ?? null;
+  // 1. the company's own homepage: header logo image, then apple-touch-icon
   if (domain) {
+    const base = `https://${domain}`;
     try {
-      const home = await html(`https://${domain}`);
+      const home = await html(base);
+      for (const re of LOGO_RES) {
+        const hit = extract(re, home);
+        if (hit && !hit.startsWith("data:")) out.push(absolute(hit, base));
+      }
       for (const re of [
         /<link[^>]+rel="apple-touch-icon[^"]*"[^>]+href="([^"]+)"/i,
         /<link[^>]+href="([^"]+)"[^>]+rel="apple-touch-icon[^"]*"/i,
+        /<link[^>]+rel="icon"[^>]+href="([^"]+\.png[^"]*)"/i,
       ]) {
         const hit = extract(re, home);
-        if (hit) out.push(absolute(hit, `https://${domain}`));
+        if (hit) out.push(absolute(hit, base));
       }
     } catch (e) {
       console.error(`homepage failed: ${e}`);
     }
-    out.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=256`);
   }
+  // 2. the JD page: logo img, then og:image
+  try {
+    const page = await html(pageUrl);
+    for (const re of [
+      ...LOGO_RES,
+      /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i,
+      /<meta[^>]+content="([^"]+)"[^>]+property="og:image"/i,
+    ]) {
+      const hit = extract(re, page);
+      if (hit && !hit.startsWith("data:")) out.push(absolute(hit, pageUrl));
+    }
+  } catch (e) {
+    console.error(`jd page failed: ${e}`);
+  }
+  // 3. favicon service, last resort
+  if (domain) out.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=256`);
   return out;
 }
 

@@ -18,7 +18,7 @@ export const GENERIC_REQUIREMENTS: Requirement[] = [
     need: "Solana token launcher rendered as a Windows-95 desktop",
     proofs: ["beans"],
     claim: "Wrote the Anchor program in Rust: launches, betting, staking, NFT claims.",
-    note: "Custom bonding-curve math with bankrun simulation tests, multi-DEX routing across Jupiter, Raydium and pump.fun. Next.js frontend with matter-js physics.",
+    note: "Custom bonding-curve math with bankrun simulation tests, Pump.fun launches with Raydium LP migration. Next.js frontend with matter-js physics.",
   },
   {
     label: "Keom / 0VIX",

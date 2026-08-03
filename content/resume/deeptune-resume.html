@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sujin K Resume</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: letter; margin: 0; }
+  html { -webkit-print-color-adjust: exact; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 9.6px;
+    line-height: 1.42;
+    width: 8.5in;
+    padding: 0.5in 0.6in 0.45in;
+  }
+  a { color: #1a1a1a; text-decoration: none; }
+  h1 { font-size: 21px; letter-spacing: -0.3px; font-weight: 700; }
+  .role-tag { font-size: 10.5px; color: #444; margin-top: 2px; }
+  .contact { margin-top: 5px; font-size: 9px; color: #333; }
+  .contact span { margin: 0 4px; color: #999; }
+  .portfolio-callout {
+    margin: 10px 0 2px;
+    padding: 6px 9px;
+    background: #f4f4f4;
+    border-radius: 4px;
+    font-size: 9.3px;
+    color: #333;
+  }
+  .portfolio-callout a { font-weight: 600; border-bottom: 1px solid #bbb; }
+  .summary { margin-top: 8px; font-size: 9.8px; color: #222; }
+  h2 {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 1.4px;
+    color: #666; font-weight: 700;
+    margin: 12px 0 5px; padding-bottom: 3px; border-bottom: 1px solid #ddd;
+  }
+  .job { margin-bottom: 8px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-size: 10.3px; font-weight: 700; }
+  .job-title .co { font-weight: 600; color: #444; }
+  .job-meta { font-size: 8.8px; color: #777; white-space: nowrap; }
+  .stack { font-size: 8.6px; color: #888; margin-top: 1px; }
+  ul { margin: 2px 0 0 12px; }
+  li { margin-bottom: 1.5px; }
+  .oss li b { font-weight: 600; }
+  .skills, .edu { font-size: 9.4px; }
+  .skills b { font-weight: 600; }
+  .skills div { margin-bottom: 1.5px; }
+  .yoe { text-transform: none; letter-spacing: 0.2px; color: #888; font-weight: 600; }
+  .one-liner { font-size: 9.4px; color: #333; margin-top: 1px; }
+  .earlier { margin-bottom: 5px; }
+  .two-col { display: flex; gap: 24px; margin-top: 2px; }
+  .two-col > div { flex: 1; }
+</style>
+</head>
+<body>
+
+<h1>Sujin K</h1>
+<div class="role-tag">Full-Stack Engineer, TypeScript end to end: backend, product, and the systems behind them</div>
+<div class="contact">
+  <a href="mailto:lksujins@gmail.com">lksujins@gmail.com</a><span>·</span>
+  <a href="https://sujin.tech">sujin.tech</a><span>·</span>
+  <a href="https://github.com/sujink1999">github.com/sujink1999</a><span>·</span>
+  <a href="https://www.linkedin.com/in/sujink/">linkedin.com/in/sujink</a><span>·</span>
+  Chennai, India (remote, US hours)
+</div>
+
+<div class="portfolio-callout">
+  The easier way to review this: <a href="https://sujin.tech/deeptune">sujin.tech/deeptune</a>, a 2 minute page mapping your JD to live demos of everything below.
+</div>
+
+<div class="summary">
+  I ship 0-to-1 and move fastest when the product doesn't exist yet. Co-founded a health platform and built its backend,
+  data model, and production LLM agent behind an eval harness; before that, built a YC startup's app to 10M+ downloads
+  and wrote an on-chain Rust program securing real money. Deeply interested in agentic AI: I run agents daily in my own workflows.
+</div>
+
+<h2>Experience <span class="yoe">· 6+ years</span></h2>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Co-founder <span class="co">· Vanta</span></div>
+    <div class="job-meta">Sep 2025 – Present</div>
+  </div>
+  <div class="stack">Node.js · TypeScript · Express · Drizzle / PostgreSQL · Next.js · React Native (Expo)</div>
+  <ul>
+    <li>Co-founded Vanta, a health/performance platform, and built it end-to-end as the sole engineer: Express APIs, data model, and a wearable-data reconciliation engine (Garmin/WHOOP) shipped through 39 phased rollouts.</li>
+    <li>Built the coach agent that plans each user's day: LLM pipeline with an eval harness scoring outputs before they ship.</li>
+    <li>Shipped the full product surface on top: biomarker dashboards, PDF lab-report ingestion and rendering, e-commerce store, admin dashboards, a Shopify embedded app, and the Society community app on the App Store.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Senior Founding Engineer <span class="co">· Beans</span></div>
+    <div class="job-meta">Jul 2025 – Sep 2025</div>
+  </div>
+  <div class="stack">Rust / Anchor · Next.js · Redis · Bull · Raydium</div>
+  <ul>
+    <li>Wrote the on-chain Anchor (Rust) program for a Solana token-launch platform: launches, betting, staking, NFT claims, with bankrun simulation tests and custom bonding-curve math.</li>
+    <li>Built the launch pipeline behind it: Telegram bots and analytics dashboards backed by Bull/Redis worker queues, with retries, backups, and test coverage.</li>
+    <li>Shipped the frontend as a retro desktop OS: live launches as draggable windows, physics-driven UI, Pump.fun launches with Raydium LP migration.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Founding Engineer <span class="co">· Caddi</span></div>
+    <div class="job-meta">Jul 2024 – Jun 2025</div>
+  </div>
+  <div class="stack">AWS Lambda · Browser extensions · Next.js</div>
+  <ul>
+    <li>Built a Chrome extension that lets users swap and bridge from any website, with an aggregator that inspects the swap and flags a better route when one exists.</li>
+    <li>Ran it on serverless AWS Lambda microservices; early builder on Farcaster Frames (early 2024).</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Senior Web3 Engineer <span class="co">· 0vix / Gogo Protocol</span></div>
+    <div class="job-meta">May 2022 – Jun 2024</div>
+  </div>
+  <div class="stack">React · TypeScript · Cypress · i18n · multi-chain</div>
+  <ul>
+    <li>Built and led frontend development of the GOGOcoin (on-chain asset manager) and 0vix (money market) protocols, including UI/UX design; primary author of the margin-trading and lending dApps.</li>
+    <li>Helped grow protocol TVL from $500K to $10M by introducing pre-mining rewards.</li>
+  </ul>
+</div>
+
+<div class="job earlier">
+  <div class="job-head">
+    <div class="job-title">Founding Engineer <span class="co">· Swix DAO</span></div>
+    <div class="job-meta">Mar 2022 – Jun 2022</div>
+  </div>
+  <div class="one-liner">Built the MVP of a crypto-native Airbnb using React, Node.js, and Web3.js.</div>
+</div>
+
+<div class="job earlier">
+  <div class="job-head">
+    <div class="job-title">Software Engineer <span class="co">· Mudrex (YC W19)</span></div>
+    <div class="job-meta">Sep 2021 – May 2022</div>
+  </div>
+  <div class="one-liner">Built the Mudrex mobile app from scratch in React Native, now 10M+ downloads; pre-seed through Series A.</div>
+</div>
+
+<div class="job earlier">
+  <div class="job-head">
+    <div class="job-title">Software Engineer 1 <span class="co">· Futuryze Digital Venture Studio</span></div>
+    <div class="job-meta">Feb 2021 – Oct 2021</div>
+  </div>
+  <div class="one-liner">Backend (Node.js) and UI (React) for the Fireside app; shipped iOS/Android apps with Flutter.</div>
+</div>
+
+<h2>Selected Projects</h2>
+<div class="skills">
+  <div><b>FincorpX (2024):</b> document-AI expense backend. OCR on receipts (Azure Form Recognizer, Veryfi), Zoho Books sync, WhatsApp bot, Python ML transaction classifiers (word2vec + Random Forest).</div>
+</div>
+
+<h2>Skills</h2>
+<div class="skills">
+  <div><b>Backend:</b> Node.js / Express · TypeScript · PostgreSQL / MySQL · Drizzle · Redis / Bull · GraphQL · AWS Lambda · Vercel · Firebase</div>
+  <div><b>AI:</b> LLM pipelines · agent workflows · eval harnesses · Claude / OpenAI APIs</div>
+  <div><b>Frontend:</b> React / Next.js · Vue · Tailwind · Framer Motion · Three.js / WebGL · browser extensions</div>
+  <div><b>Mobile:</b> React Native (Expo) · Skia · Flutter</div>
+  <div><b>Systems &amp; Web3:</b> Rust / Anchor · Solana · Web3.js / Ethers · Cypress / Jest</div>
+</div>
+
+<h2>Education</h2>
+<div class="edu">B.E. Computer Science, SSN College of Engineering, Chennai (2017 – 2021)</div>
+
+</body>
+</html>

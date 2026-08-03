@@ -24,7 +24,7 @@ export const pax: CompanyPitch = {
       need: "Can go deep on backend architecture and also cares that the UI feels crisp",
       proofs: ["vanta-os", "beans"],
       claim: "The page you're reading is the frontend exhibit. Behind my products: queue workers, reconciliation jobs, 39 phased rollouts.",
-      stackMatch: ["Next.js 16", "React 19", "BullMQ", "Redis"],
+      stackMatch: ["Next.js 16", "React 19", "Bull", "Redis"],
     },
     {
       label: "Building with LLMs",
@@ -58,7 +58,7 @@ export const pax: CompanyPitch = {
   unlisted: true,
   evidenceOverrides: {
     "vanta-os": {
-      period: "Nov 2025 – 2026",
+      period: "Nov 2025 – present",
       stack: [
         "Next.js 16",
         "React 19",

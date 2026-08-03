@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { acme } from "@/companies/acme";
 
 export const metadata: Metadata = {
   title: "Lab - OG card concepts",
   robots: { index: false, follow: false },
 };
 
-const ACCENT = acme.accent;
-const COMPANY = acme.company.toUpperCase();
-const ROLE = acme.role;
+const ACCENT = "#7c8cf8";
+const COMPANY = "ACME";
+const ROLE = "Senior Full-Stack Engineer";
 
 /** SVG noise, inlined so the cards are one static frame - same trick ports to Satori as a PNG overlay. */
 /** Coarser noise used as an alpha mask to erode the stamp ink like a real rubber stamp. */

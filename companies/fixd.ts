@@ -13,7 +13,7 @@ export const fixd: CompanyPitch = {
   requirements: [
     {
       label: "Production React Native",
-      need: "5+ years building and shipping production React Native apps for iOS and Android",
+      need: "6+ years building and shipping production React Native apps for iOS and Android",
       proofs: ["mudrex", "society-mobile", "vanta-os"],
       claim: "Years of React Native apps built from scratch and shipped - Mudrex to 10M+ downloads, Vanta Society to the App Store.",
       stackMatch: ["React Native", "Expo / React Native", "EAS"],
@@ -28,7 +28,7 @@ export const fixd: CompanyPitch = {
       label: "JavaScript / TypeScript",
       need: "Strong JavaScript/TypeScript",
       proofs: ["vanta-os", "keom", "beans"],
-      claim: "Six years of TypeScript across mobile, web, and Node backends - same language, every layer.",
+      claim: "Five years of TypeScript across mobile, web, and Node backends - same language, every layer.",
       stackMatch: ["TypeScript", "React", "Next.js 16"],
     },
     {

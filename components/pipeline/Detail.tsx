@@ -39,6 +39,7 @@ function LaptopEmbed({ slug }: { slug: string }) {
 export default function Detail({ slug }: { slug: string }) {
   const [c, setC] = useState<PipelineCompany | null>(null);
   const [loaded, setLoaded] = useState(false);
+  const [copyTab, setCopyTab] = useState<"application" | "connection">("application");
   const load = useCallback(async () => {
     const res = await fetch("/api/pipeline");
     if (!res.ok) {
@@ -73,6 +74,10 @@ export default function Detail({ slug }: { slug: string }) {
   }
 
   const d = c.pageDraft;
+  const activeCopyTab =
+    copyTab === "application" && !c.appText ? "connection"
+    : copyTab === "connection" && !c.notes ? "application"
+    : copyTab;
   const Mock = c.research?.widgetConcept ? WIDGET_MOCKS[c.research.widgetConcept.key] : undefined;
   const gate = (name: string) => (
     <h2 className="mb-3 mt-10 font-mono text-xs uppercase tracking-[0.2em] text-white/40">{name}</h2>
@@ -86,18 +91,44 @@ export default function Detail({ slug }: { slug: string }) {
   return (
     <main className="min-h-screen bg-[#050505] px-8 py-10 text-white">
       <div className="mx-auto w-full max-w-6xl">
-      <Link href="/pipeline" className="font-mono text-xs text-white/40 hover:text-white">back</Link>
-      <div className="mt-4 flex items-center gap-4">
+      <header className="flex items-center gap-4">
+        <Link
+          href="/pipeline"
+          aria-label="Back to pipeline"
+          className="group flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 transition-colors hover:border-white/40 hover:bg-white/5"
+        >
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+            <path d="M9.5 2.5 L4.5 7.5 L9.5 12.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="text-white/50 transition-colors group-hover:text-white" />
+          </svg>
+        </Link>
         {c.logo?.path && (
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={c.logo.path} alt="" className="h-10 w-10 rounded-md object-contain" />
+          <img src={c.logo.path} alt="" className="h-11 w-11 rounded-lg border border-white/10 object-contain" />
         )}
-        <div>
-          <h1 className="text-xl font-medium tracking-tight">{c.company}</h1>
-          <p className="text-sm text-white/50">{c.role}</p>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline gap-3">
+            <h1 className="truncate text-xl font-medium tracking-tight">{c.company}</h1>
+            <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-white/30 sm:inline">{c.source}</span>
+          </div>
+          <div className="mt-0.5 flex items-center gap-3">
+            <p className="truncate text-sm text-white/50">{c.role}</p>
+            {c.jdUrl && (
+              <a
+                href={c.jdUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex shrink-0 items-center gap-1 rounded-full border border-white/10 px-2.5 py-0.5 font-mono text-[11px] text-white/60 transition-colors hover:border-white/40 hover:text-white"
+              >
+                {new URL(c.jdUrl).hostname.replace("www.", "")}
+                <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 8.5 L8.5 1.5 M3.5 1.5 H8.5 V6.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            )}
+          </div>
         </div>
         <StatusPill status={c.status} />
-      </div>
+      </header>
 
       {c.status === "page_draft" && c.research && (
         <>
@@ -190,6 +221,11 @@ export default function Detail({ slug }: { slug: string }) {
             <>
               {gate("The people")}
               <div className="rounded-xl border border-white/10 bg-[#0d0d0d] p-4">
+                {c.research.companyLinkedIn && (
+                  <a href={c.research.companyLinkedIn} target="_blank" rel="noreferrer" className="mb-2 inline-flex items-center gap-1.5 font-mono text-xs text-white/60 underline decoration-white/25 hover:text-white">
+                    company LinkedIn
+                  </a>
+                )}
                 <ul className="space-y-1.5 text-sm text-white/70">
                   {c.research.humans.map((h) => (
                     <li key={h.name} className="flex items-center gap-2">
@@ -203,32 +239,54 @@ export default function Detail({ slug }: { slug: string }) {
             </>
           )}
 
-          {c.appText && (
+          {(c.appText || c.notes) && (
             <>
-              {gate("Application text")}
-              <div className="space-y-3">
-                {c.appText.variants.map((v, i) => (
-                  <div key={v.label} className={c.appText?.approvedIndex === i ? "rounded-xl ring-1 ring-white/40" : ""}>
-                    <CopyBlock label={`${v.label}${c.appText?.approvedIndex === i ? " (picked)" : ""}`} text={v.text} />
-                    {c.status === "outreach" && c.appText?.approvedIndex !== i && (
-                      <div className="mt-2">
-                        {approveBtn(`Use "${v.label}"`, { appText: { ...c.appText!, approvedIndex: i } })}
-                      </div>
-                    )}
-                  </div>
-                ))}
+              {gate("Copy")}
+              <div className="mb-4 flex gap-1 rounded-lg border border-white/10 bg-[#0d0d0d] p-1 w-fit">
+                {(
+                  [
+                    ["application", "Application", !!c.appText],
+                    ["connection", "Connection", !!c.notes],
+                  ] as const
+                ).map(([key, label, present]) =>
+                  present ? (
+                    <button
+                      key={key}
+                      onClick={() => setCopyTab(key)}
+                      className={`rounded-md px-4 py-1.5 font-mono text-xs transition-colors ${
+                        activeCopyTab === key
+                          ? "bg-white text-black"
+                          : "text-white/45 hover:text-white"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ) : null
+                )}
               </div>
-            </>
-          )}
 
-          {c.notes && (
-            <>
-              {gate("Connection notes")}
-              <div className="space-y-3">
-                {c.notes.map((n) => (
-                  <CopyBlock key={n.persona} label={`${n.persona}${n.target ? `: ${n.target}` : ""}`} text={n.text} />
-                ))}
-              </div>
+              {activeCopyTab === "application" && c.appText && (
+                <div className="space-y-3">
+                  {c.appText.variants.map((v, i) => (
+                    <div key={v.label} className={c.appText?.approvedIndex === i ? "rounded-xl ring-1 ring-white/40" : ""}>
+                      <CopyBlock label={`${v.label}${c.appText?.approvedIndex === i ? " (picked)" : ""}`} text={v.text} />
+                      {c.status === "outreach" && c.appText?.approvedIndex !== i && (
+                        <div className="mt-2">
+                          {approveBtn(`Use "${v.label}"`, { appText: { ...c.appText!, approvedIndex: i } })}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {activeCopyTab === "connection" && c.notes && (
+                <div className="space-y-3">
+                  {c.notes.map((n) => (
+                    <CopyBlock key={n.persona} label={`${n.persona}${n.target ? `: ${n.target}` : ""}`} text={n.text} />
+                  ))}
+                </div>
+              )}
             </>
           )}
 

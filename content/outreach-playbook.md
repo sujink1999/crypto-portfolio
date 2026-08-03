@@ -61,6 +61,23 @@ The OG card (`app/[company]/opengraph-image.tsx` — "AN INVITATION FOR [company
 - Page must be deployed + publicly reachable before priming.
 - Connection-request notes, email = no card. LinkedIn DM/InMail, Slack, WhatsApp, Telegram, iMessage = card.
 
+## Proven templates (in Sujin's voice — keep the casual register)
+
+### LinkedIn note / DM — founder or hiring manager (after applying)
+```
+Hey [Name], applied for the [Role] role. Instead of a cover letter I built a page mapping your JD to work I've shipped: https://sujin.tech/[slug]. Two minute read, curious what you think.
+```
+
+### DM — founding-team engineer (peer, referral angle)
+```
+Hey [Name] — just applied to [Company] for the [role] role. Instead of a cover letter I built a page for you guys, mapping your JD to work I've shipped:
+
+https://sujin.tech/[slug]
+
+Two minute read. If you like it, would love for you to put it in front of the team.
+```
+Link on its own line so the OG card renders in DMs. Direct ask, no hedging ("if it holds up"-style conditions kill the share). Role name must match the exact listing applied to — and the pitch page's `role` field must match it too.
+
 ## Open questions (unresolved by research)
 - Actual click-through rates on portfolio links in cold outreach.
 - Optimal follow-up spacing.

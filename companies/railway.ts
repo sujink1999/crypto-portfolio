@@ -4,12 +4,12 @@ export const railway: CompanyPitch = {
   "slug": "railway",
   "company": "Railway",
   "role": "Product Engineer (Full-Stack)",
-  "accent": "#a970ff",
-  "accentFrom": "#e0aaff",
+  "accent": "#a78bfa",
+  "accentFrom": "#dcd0fb",
   "story": [
-    "Founding engineer at **Mudrex**, a YC company, app built solo to **10M+ downloads**. Then years on DeFi frontends holding **$10M TVL**. Then I co-founded Vanta, a health platform, and built it end to end.",
-    "You rebuilt your logging stack to handle **1B logs a day**, then shipped **Git for infrastructure**. That's the instinct I run on: take the hard thing, give it a clean interface.",
-    "**21 people**, hundreds of thousands of users, high ownership, almost no meetings. That's the setup I do my best work in."
+    "You rebuilt your logging stack for **1B logs a day**, then shipped **Git for infrastructure**. Twenty-one people, almost no meetings. That is how I think software should be built.",
+    "The closest thing I've built to your Temporal jobs is **Beans**: Bull and Redis workers that executed token launches, trades, and withdrawals unattended, moving more than **$100k an hour** in production.",
+    "Give one engineer the **whole feature**, dashboard to worker, and hold them to the outcome. That is how everything I've shipped got shipped."
   ],
   "requirements": [
     {
@@ -17,7 +17,8 @@ export const railway: CompanyPitch = {
       "need": "Build features end-to-end, from the UI in our dashboard to orchestrating workflows that interact with our microservices using Temporal.",
       "proofs": [
         "vanta-os",
-        "mudrex"
+        "mudrex",
+        "society-mobile"
       ],
       "claim": "I built Vanta end to end: data model, Express APIs, dashboards, App Store release. Before that: Mudrex, solo, to 10M+ downloads.",
       "stackMatch": [
@@ -27,59 +28,63 @@ export const railway: CompanyPitch = {
       ]
     },
     {
-      "label": "Frontend architecture",
-      "need": "A strong understanding of frontend architecture to build interactivity-rich systems for fetching, mutating, and rendering data effectively.",
-      "proofs": [
-        "vanta-os",
-        "society-mobile"
-      ],
-      "claim": "Vanta OS runs on Next.js 16 and React 19: biomarker dashboards, an AI coach, plus a mobile app with custom Skia UI.",
-      "stackMatch": [
-        "Next.js 16",
-        "React 19",
-        "Expo / React Native"
-      ]
-    },
-    {
       "label": "Async job pipelines",
       "need": "Experience managing complex asynchronous backend jobs for something like a build/deploy pipeline.",
       "proofs": [
-        "queues",
-        "beans"
+        "beans",
+        "vanta-os"
       ],
-      "claim": "Beans' launch pipeline ran unattended in production: BullMQ and Redis workers with retries, backups and test coverage, shipped solo in weeks.",
+      "claim": "Beans ran launches, buys, and withdrawals unattended on Bull and Redis workers: idempotent jobs, distributed locks, automatic on-chain refunds on failure.",
       "stackMatch": [
-        "BullMQ",
-        "Redis"
+        "Bull",
+        "Redis",
+        "AWS Lambda",
+        "SQS"
       ]
     },
     {
-      "label": "Rust / systems",
+      "label": "Frontend architecture",
+      "need": "A strong understanding of frontend architecture to build interactivity-rich systems for fetching, mutating, and rendering data effectively.",
+      "proofs": [
+        "keom",
+        "vanta-os",
+        "society-mobile"
+      ],
+      "claim": "I grew a lending protocol frontend from $500k to $10M TVL: live oracle prices, multi-wallet, Cypress e2e coverage.",
+      "stackMatch": [
+        "React",
+        "TypeScript",
+        "Pyth oracles",
+        "Cypress"
+      ]
+    },
+    {
+      "label": "Rust / open source",
       "need": "Experience with, or at least the desire to learn Rust to contribute to our open-source repositories (CLI, Nixpacks, etc).",
       "proofs": [
         "beans"
       ],
-      "claim": "I shipped a production Anchor program in Rust for Beans: bonding curves, staking, NFT claims, tested with bankrun simulations.",
+      "claim": "Beans runs an Anchor program in Rust on Solana mainnet: launches, betting rounds, staking, tested with bankrun simulations.",
       "stackMatch": [
         "Rust / Anchor"
       ]
     },
     {
-      "label": "Ownership & autonomy",
+      "label": "Autonomy, front to back",
       "need": "An ability to autonomously lead, design, and implement great product experiences, from front to back.",
       "proofs": [
         "mudrex",
         "vanta-os"
       ],
-      "claim": "Founding engineer at Mudrex, pre-seed through Series A, app built solo to 10M+ downloads. Then years leading DeFi frontends, then co-founding Vanta.",
+      "claim": "At Mudrex, a YC startup, I built the app solo from scratch to 10M+ downloads, pre-seed through Series A.",
       "stackMatch": [
-        "Next.js 16",
-        "React Native"
+        "React Native",
+        "Next.js 16"
       ]
     }
   ],
   "closing": {
-    "line": "You're 21 people who own everything you ship. I'd like to be the 22nd.",
+    "line": "You make engineers higher leverage. I'd like to help build the thing that does that.",
     "email": "lksujins@gmail.com",
     "github": "https://github.com/sujink1999",
     "resumeUrl": "/Sujin-K-Resume.pdf",

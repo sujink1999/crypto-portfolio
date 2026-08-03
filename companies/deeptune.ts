@@ -16,7 +16,7 @@ export const deeptune: CompanyPitch = {
       label: "Backend & infra",
       need: "You're a strong developer across backend and infrastructure (Python, Go, TypeScript, etc.)",
       proofs: ["vanta-os", "beans", "keom"],
-      claim: "TypeScript end to end: Vanta's Express APIs and data model, BullMQ/Redis worker pipelines, and an on-chain Rust program under simulation tests.",
+      claim: "TypeScript end to end: Vanta's Express APIs and data model, Bull/Redis worker pipelines, and an on-chain Rust program under simulation tests.",
       stackMatch: ["Express 5", "Drizzle", "Rust / Anchor", "TypeScript"],
     },
     {
@@ -30,7 +30,7 @@ export const deeptune: CompanyPitch = {
       label: "Founding DNA",
       need: "You've been a founding engineer, founded your own company, or had a major impact at a top-tier company",
       proofs: ["mudrex", "vanta-os"],
-      claim: "Founding engineer at Mudrex, pre-seed through Series A, app built solo to 10M+ downloads. Then CTO roles, then co-founded Vanta.",
+      claim: "I built Mudrex's app solo to 10M+ downloads, pre-seed through Series A. Senior founding engineer at Beans, founding engineer at Caddi, then co-founded Vanta.",
       stackMatch: ["React Native", "Next.js 16"],
     },
     {

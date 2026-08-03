@@ -15,7 +15,7 @@ export const grayswan: CompanyPitch = {
       label: "TypeScript + frontend",
       need: "Proficiency in TypeScript; experience with frontend frameworks such as React, Vue, or Svelte; solid HTML and CSS",
       proofs: ["vanta-os", "beans", "keom"],
-      claim: "Six years of TypeScript frontends, shipped and live - the work is below, take a look.",
+      claim: "Five years of TypeScript frontends, shipped and live - the work is below, take a look.",
       stackMatch: ["React", "Next.js 16", "TypeScript"],
     },
     {

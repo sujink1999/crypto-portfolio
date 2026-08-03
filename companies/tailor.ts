@@ -14,7 +14,7 @@ export const tailor: CompanyPitch = {
   requirements: [
     {
       label: "React / TS",
-      need: "Deep expertise in React and TypeScript, 5+ years of professional frontend development",
+      need: "Deep expertise in React and TypeScript, 6+ years of professional frontend development",
       proofs: ["vanta-os", "mudrex", "keom"],
       claim: "6+ years of it: 10M+ downloads at Mudrex, then Vanta on Next.js 16 and React 19.",
       stackMatch: ["React 19", "Next.js 16", "TypeScript", "React Native"],
@@ -38,7 +38,7 @@ export const tailor: CompanyPitch = {
       need: "Experience building on headless/composable platforms or enterprise software",
       proofs: ["society-mobile", "beans"],
       claim: "Vanta's store runs on headless Shopify: storefront, embedded admin app, App Bridge.",
-      stackMatch: ["Shopify App Bridge", "Jupiter", "Raydium"],
+      stackMatch: ["Shopify App Bridge", "Raydium"],
     },
     {
       label: "Shipped",

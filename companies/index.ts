@@ -1,5 +1,4 @@
 import type { CompanyPitch } from "./types";
-import { acme } from "./acme";
 import { sadaora } from "./sadaora";
 import { leaflink } from "./leaflink";
 import { fluent } from "./fluent";
@@ -20,7 +19,6 @@ import { colonist } from "./colonist";
 import { zeitlabs } from "./zeitlabs";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
-  acme,
   sadaora,
   leaflink,
   fluent,

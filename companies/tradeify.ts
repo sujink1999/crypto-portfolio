@@ -15,7 +15,7 @@ export const tradeify: CompanyPitch = {
       label: "Full-stack React / Next.js",
       need: "4+ years full-stack; strong frontend with React or Next.js, strong backend with Node.js",
       proofs: ["vanta-os", "keom", "beans"],
-      claim: "Six years shipping React/Next frontends and the Node backends behind them - both ends, same role, every time.",
+      claim: "Five years shipping React/Next frontends and the Node backends behind them - both ends, same role, every time.",
       stackMatch: ["React", "Next.js", "TypeScript", "Express 5"],
     },
     {
@@ -34,7 +34,7 @@ export const tradeify: CompanyPitch = {
       label: "Fintech, trading, crypto",
       need: "Experience in fintech, trading, crypto, or financial systems; real-time market data",
       proofs: ["keom", "mudrex", "beans"],
-      claim: "DeFi money markets, margin trading, a 10M-download trading app - six years of it.",
+      claim: "DeFi money markets, margin trading, a 10M-download trading app - five years of it.",
     },
   ],
   plan90: [

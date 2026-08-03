@@ -97,19 +97,7 @@ export default async function OgImage({
         {/* the wordmark owns the card, unless a real logo is available */}
         {logo ? (
            
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 232,
-              height: 232,
-              borderRadius: 36,
-              backgroundColor: "#ffffff",
-            }}
-          >
-            <img src={logo} width={168} height={168} style={{ objectFit: "contain" }} alt="" />
-          </div>
+          <img src={logo} width={320} height={320} style={{ objectFit: "contain", borderRadius: 48 }} alt="" />
         ) : (
           <div
             style={{
@@ -129,10 +117,10 @@ export default async function OgImage({
         {/* classified: rubber-stamp image struck across the lower half */}
         <img
           src={`data:image/png;base64,${readFileSync(join(process.cwd(), "public", "classified-stamp.png")).toString("base64")}`}
-          width={380}
-          height={242}
+          width={360}
+          height={229}
           alt=""
-          style={{ position: "absolute", top: "50%", opacity: 0.92 }}
+          style={{ position: "absolute", left: 440, top: 385, opacity: 0.95 }}
         />
       </div>
     ),

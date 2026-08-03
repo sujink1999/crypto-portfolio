@@ -7,7 +7,7 @@ export const leaflink: CompanyPitch = {
   accent: "#8b93ff",
   story: [
     "A wholesale marketplace is one of the hardest frontend problems there is - **dense data, real money**, users who live in it all day.",
-    "I've spent six years shipping exactly that: **trading UIs holding $10M**, marketplaces, daily dashboards.",
+    "I've spent five years shipping exactly that: **trading UIs holding $10M**, marketplaces, daily dashboards.",
     'And yes, I\'m genuinely curious about the business of "grass" from your JD xD',
   ],
   requirements: [
@@ -20,9 +20,9 @@ export const leaflink: CompanyPitch = {
     },
     {
       label: "Rich, complex user experiences",
-      need: "5+ years working in rich, complex, and ever-evolving front-end user experiences; improve application performance, accessibility, responsiveness, and reliability",
+      need: "6+ years working in rich, complex, and ever-evolving front-end user experiences; improve application performance, accessibility, responsiveness, and reliability",
       proofs: ["vanta-os", "keom", "beans"],
-      claim: "Six years of rich, complex front-end experiences - live, fast, and mine end to end.",
+      claim: "Five years of rich, complex front-end experiences - live, fast, and mine end to end.",
     },
     {
       label: "Backend services and APIs in Python",

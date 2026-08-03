@@ -151,7 +151,7 @@ Vanta ships on Next.js 16, Express and PostgreSQL. Beans ran BullMQ and Redis wo
 ### Deeptune
 TypeScript end to end: Vanta's Express APIs and data model, BullMQ/Redis worker pipelines, and an on-chain Rust program under simulation tests.
 Vanta's coach agent plans each user's day behind an eval harness, and I run multiple agents daily in my own personal workflows.
-Founding engineer at Mudrex, pre-seed through Series A, app built solo to 10M+ downloads. Then CTO roles, then co-founded Vanta.
+[REMOVED, UNVERIFIED TITLE: "Founding engineer at Mudrex..." shipped on deeptune but the title was invented by an agent. Career facts come only from content/career-facts.md. Verified core: built the Mudrex mobile app from scratch in React Native, 10M+ downloads, pre-seed through Series A.]
 I believe risk is where the reward lives, so the hardest problem in the room is the first one I ask for.
 
 ### Pax
@@ -341,7 +341,62 @@ It would be great if you could put it in front of the team.
 
 ---
 
+## Story structure (locked 2026-08-03)
+
+Beat 1: THEM, PLUS SUJIN'S TAKE. One specific, true thing about the company that only
+someone who actually looked would know (a number from their JD, a product decision, a
+thing they wrote), followed by a plain-words reaction: what Sujin thinks of it or how he
+relates to it ("That is how I think software should be built", "I've spent years in
+exactly that kind of work", "the part that impressed me"). A bare JD acknowledgment with
+no take reads as a summary, not a person. Read the signal right: if the JD says founders
+write scraping code daily, the point is that the WORK is scraping, not that the founders
+are humble. NEVER invent feelings or motives for THEM ("still feels like what the
+founders wanted"), never emotional fluff for the reaction ("this hits home"), never
+claims about how their product feels. The company fact must be observable from the JD,
+site, blog, or numbers.
+
+HIGHLIGHTS: every story beat carries **bold** markers on its numbers and 1-2 key phrases
+(the page renders them as bright emphasis against dim text). A beat with no highlight
+renders flat; a beat that is half-bold renders noisy. Bold the numbers always.
+Beat 2: THE COLLISION. The single piece of Sujin's work that meets beat 1 head on.
+Informational, not braggy: describe what the work was and what it did, plainly. It MUST
+carry 1-2 concrete numbers relevant to the role (10M+ downloads, $10M TVL, $500k to $10M).
+Naming Vanta alone means nothing to a stranger; the number is what lands.
+Beat 3: THE STANCE. Connect the work to what they hire for in plain words (Gray Swan:
+"Small team, no hand-holding, real adversaries. That's the room I work best in."). NEVER
+announce a mapping or pivot ("here's the mapping", "mapped to your JD", "this page is
+that answer"): the page itself renders "So you're looking for a [role]. Let me save you
+the translation." immediately after the story, so any pivot in beat 3 says it twice.
+NEVER say "that's why I want to work here" or any variant; the stance implies it.
+
+What the page renders around the story (writers must know the frame):
+1. "Hey [Company]," greeting  2. the three story beats  3. the page's OWN pivot beat
+("So you're looking for a [role]. Let me save you the translation.")  4. the JD
+requirements with claims  5. the close. Never duplicate the frame in the copy.
+
+Do not open with the credentials block (10M downloads / $10M TVL / Vanta end to end); the claims already carry those numbers. A number belongs in the story only when it is the collision itself. Four pages once shipped with the same shuffled credentials opener; that is the failure mode this section exists to prevent.
+
+## Exhibits per requirement (2026-08-03)
+
+Up to THREE proofs per requirement. The claim does not have to name every chip; extra
+chips showcase breadth and the reviewer can open them. Never trim proofs to match the
+claim's word count.
+
+VARY THE PROJECTS across the page. One project (usually Vanta) must not lead or dominate
+every requirement; the page should show as many different projects as the JD honestly
+allows. Vanta can be mentioned in support anywhere, but if it already led one requirement,
+let a different project lead the next. The point of the page is range, not one flagship
+repeated five times.
+
 ## Banned Patterns
+
+- Imagined thoughts or speech in quotes ("every 'does this work on a phone' moment"). Nobody
+  talks like that in writing; state the fact without the theater.
+- Fragment openers as drama ("**Eight years of health issues.**"). Story beats are proper
+  sentences a person would say, not pitch-deck stingers: "I had health issues for eight
+  years."
+
+**Writerly flourishes.** Simple words only. If a line sounds like an essayist ("a health platform I own down to the animation curve", "a board game lives or dies on that same feel", "a guild spread across continents is a shape I already know from the inside"), rewrite it in plain speech. Rejected by Sujin 2026-08-03.
 
 The following patterns are now banned from all copy. Lines containing these were excluded from the corpus body above and are listed here instead.
 

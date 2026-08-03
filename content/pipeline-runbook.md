@@ -74,11 +74,21 @@ company will read (pageDraft copy, appText variants, connection notes) is writte
 second pass from that research. Sonnet must not write the final copy; Fable must not be spent on
 fact-gathering.
 
+Writer inputs (2026-08-03): the Fable writing pass starts by reading `content/work-index.md`
+and every source it lists, in order. Never hand a writer a curated subset of Sujin's work;
+full knowledge, index-first. After the writer finishes, a SONNET verify agent audits the copy
+against the same sources plus the corpus rules and returns findings; the writer (or Fable in
+session) fixes before anything reaches Sujin's review.
+
 Do not deep-research a `"proposed"` sourced candidate until Sujin accepts it. Once a company is
 accepted (status `"researching"` or later), run one research agent per company, in parallel. Each
 agent writes its results directly into that company's state file and moves its status to
 `"page_draft"` when done (after the Fable writing pass). Each agent produces:
 
+- Logo is mandatory, and the page's `accent` / `accentFrom` MUST be derived from the logo's
+  actual brand colors (accent: the dominant brand color, accentFrom: a lighter tint of it).
+  Never invent a palette; look at the fetched logo file and the company's site.
+- `research.companyLinkedIn`: the company's LinkedIn page URL (linkedin.com/company/...).
 - `research.summary`: 3-4 sentences on the company.
 - `research.hook`: a genuine, specific line about the company (not generic flattery).
 - `research.humans`: the founder/EM plus one team engineer, each with a URL (LinkedIn, GitHub,

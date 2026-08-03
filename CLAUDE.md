@@ -3,7 +3,7 @@
 ## Project Overview
 Sujin's personal portfolio + per-company job-pitch site. NOT crypto-branded - Sujin pitches as a full-stack / frontend engineer; crypto work (Beans, Keom/0VIX) is just part of the evidence, not the identity.
 
-The core product is the **per-company pitch page** at `/[company]` (e.g. `/acme`): a cinematic, premium, story-driven experience addressed directly to a reviewer at that company, mapping their job description to real shipped work. `acme` is the demo/prototype config used to lock the design.
+The core product is the **per-company pitch page** at `/[company]` (e.g. `/mem0`): a cinematic, premium, story-driven experience addressed directly to a reviewer at that company, mapping their job description to real shipped work.
 
 ## Tech Stack
 - **Framework**: Next.js 16 (App Router)
@@ -59,6 +59,12 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 - **Avoid**: resume layouts, floating 3D objects/meshes ("beginner 3D"), gimmicky motion, skill lists, template structures, crypto-terminal aesthetics
 - Per-company accent color (`pitch.accent`) themes the light field and highlights
 
+## UI Rules
+- ALWAYS use the frontend-design skill when making UI changes, including internal tools like the pipeline dashboard. No raw text where an icon belongs ("back"), no default-looking controls. Internal UI gets the same design care as the public site.
+
+## Git Rules
+- NEVER commit unless Sujin explicitly asks. Make the changes, verify them, and stop. He decides when things get committed and what goes in a commit.
+
 ## Coding Conventions
 - Use Tailwind utility classes for styling (no CSS modules)
 - Use `@/*` path alias for imports
@@ -67,9 +73,14 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 - Keep animations performant - prefer CSS transforms and `will-change`
 - No emoji in code or UI unless explicitly requested
 
+## Evidence Rules (hard)
+- Requirement `proofs` may ONLY use these evidence ids: `vanta-os`, `beans`, `keom`, `society-mobile`, `mudrex`. Every other id in evidence.ts has no registered exhibit and renders as an empty frame. vanta-os leads frontend/product beats.
+- Career facts (roles, titles, dates) come ONLY from content/career-facts.md. If a fact is not in that file, DO NOT state it; write around it or ask Sujin. Never invent or infer job titles. ("Founding engineer at Mudrex" shipped on real pages because an agent invented it and nothing checked it.)
+
 ## Copywriting Rules
 - Requirement `claim` lines render as big display text. One or two short sentences, ~15-22 words total. Not longer: a skimming reviewer won't read three sentences of display text. Not shorter either: a bare slogan with no facts reads as vague. Every claim carries 1-2 concrete facts (numbers, named projects, real stack), like "I built Vanta end to end: data model, Express APIs, dashboards, App Store. Before that: Mudrex, solo, to 10M+ downloads."
 - Don't repeat the page's one big theme (e.g. memory for Mem0) across multiple claims. Say it once in the requirement where it belongs; the other claims prove different strengths with different evidence.
+- Story beats follow the locked shape: beat 1 is about THEM (one specific true thing), beat 2 is the collision (the one piece of Sujin's work that meets it), beat 3 pivots to the mapping. Never open with a credentials dump; the claims below carry the numbers. A number appears in the story only when it is the collision itself. Never write the same opener across pages.
 - NEVER cite repo internals as evidence: commit counts ("84 of 91 commits"), phased-rollout counts, PR numbers, test counts. Evidence is product outcomes a reviewer can feel: downloads, TVL, revenue, users, shipped features, App Store releases.
 - The voice reference is content/copy-corpus.md: previously approved copy verbatim. Writers match it, not their own instincts.
 - NEVER use em dashes (—) or hyphens-as-punctuation ( - ) in any copy: pitch pages, outreach, cover letters, UI text, story lines. They read as AI-written. Restructure into separate sentences, or use commas, colons, or periods instead.

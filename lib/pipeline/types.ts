@@ -51,6 +51,8 @@ export interface PipelineCompany {
   research?: {
     summary: string;
     hook: string;
+    /** the company's LinkedIn page URL */
+    companyLinkedIn?: string;
     humans: { name: string; role: string; url?: string }[];
     widgetConcept?: { key: string; description: string };
   };

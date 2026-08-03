@@ -4,10 +4,10 @@ export const atria: CompanyPitch = {
   "slug": "atria",
   "company": "Atria",
   "role": "Software Engineer, Product",
-  "accent": "#d9b47a",
-  "accentFrom": "#f6ead6",
+  "accent": "#5ec99a",
+  "accentFrom": "#c9f5df",
   "story": [
-    "**Eight years of health issues.** Doctors, medications, nothing stuck. What worked was **tracking everything** and treating my body like a data problem.",
+    "I had health issues for **eight years**. What finally worked was **tracking everything** and treating my body like a data problem.",
     "So I co-founded **Vanta**: biomarker dashboards, lab report viewers, wearable reconciliation, an agent reading months of one person's health history. No clinics, just the data problem.",
     "Before that: a trading app built solo to **10M+ downloads**, DeFi frontends holding **$10M TVL**. This page maps your JD to what I shipped."
   ],
@@ -75,7 +75,7 @@ export const atria: CompanyPitch = {
         "mudrex",
         "beans"
       ],
-      "claim": "Six years of production zero to one: Mudrex solo to 10M+ downloads, then Beans, a Solana launcher on my own Anchor program.",
+      "claim": "Five years of production zero to one: Mudrex solo to 10M+ downloads, then Beans, a Solana launcher on my own Anchor program.",
       "stackMatch": [
         "React Native",
         "Next.js",
@@ -93,7 +93,7 @@ export const atria: CompanyPitch = {
   "unlisted": true,
   "evidenceOverrides": {
     "vanta-os": {
-      "period": "Nov 2025 – 2026",
+      "period": "Nov 2025 – present",
       "what": "The Vanta ecosystem: a preventive health product with biomarker dashboards, lab and DEXA report viewers, wearable integrations and an AI coach, plus the Society platform (store, labs, admin) and an App Store mobile app.",
       "proofPoints": [
         "Wearable-data reconciliation engine merging device streams into one member timeline",

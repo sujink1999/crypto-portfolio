@@ -15,7 +15,7 @@ export const material: CompanyPitch = {
       label: "Node.js backend services",
       need: "Strong proficiency in JavaScript/Node.js and building backend services",
       proofs: ["beans", "vanta-os"],
-      claim: "Six years of Node in production - Express APIs, Redis queue workers, LLM pipelines - built and run by me.",
+      claim: "Five years of Node in production - Express APIs, Redis queue workers, LLM pipelines - built and run by me.",
       stackMatch: ["Node.js", "Express", "Redis"],
     },
     {
@@ -30,13 +30,13 @@ export const material: CompanyPitch = {
       need: "Experience building or consuming REST APIs and integrating with third-party services (payments, webhooks, OAuth, etc.)",
       proofs: ["beans", "vanta-os", "society-mobile"],
       claim: "Shopify embedded apps, wearable APIs, Strava, multi-DEX routing - most of what I shipped this year was integrations.",
-      stackMatch: ["Shopify App Bridge", "Strava", "Jupiter", "Raydium"],
+      stackMatch: ["Shopify App Bridge", "Strava", "Raydium"],
     },
     {
       label: "React frontend",
       need: "Solid front-end skills with a modern framework (we use React/Redux)",
       proofs: ["vanta-os", "keom", "mudrex"],
-      claim: "React since 2019 - biomarker dashboards, admin panels, and a lending dApp that held $10M.",
+      claim: "Five years of production React: biomarker dashboards, admin panels, and a lending dApp that held $10M.",
       stackMatch: ["React"],
     },
     {
@@ -66,7 +66,7 @@ export const material: CompanyPitch = {
       ],
     },
     "beans": {
-      stack: ["Next.js", "Node.js / BullMQ / Redis", "Rust / Anchor", "Jupiter", "Raydium"],
+      stack: ["Next.js", "Node.js / Bull / Redis", "Rust / Anchor", "Raydium"],
     },
     "society-mobile": {
       stack: ["Expo / React Native", "Shopify Skia", "FlashList", "Strava API", "EAS"],

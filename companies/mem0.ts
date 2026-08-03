@@ -31,7 +31,7 @@ export const mem0: CompanyPitch = {
       need: "Optimize latency, caching, database queries, and application performance to deliver fast, reliable user experiences",
       proofs: ["mudrex", "beans"],
       claim: "Mudrex scaled to 10M+ downloads. Beans ran its launch pipeline unattended on Redis queue workers.",
-      stackMatch: ["React Native", "BullMQ", "Redis"],
+      stackMatch: ["React Native", "Bull", "Redis"],
     },
     {
       label: "Quality and operations",
@@ -44,8 +44,8 @@ export const mem0: CompanyPitch = {
       label: "Next.js + backend stack",
       need: "Experience building with Next.js, React, REST APIs, PostgreSQL, Redis, background job systems, and modern backend frameworks",
       proofs: ["vanta-os", "beans"],
-      claim: "Vanta ships on Next.js 16, Express and PostgreSQL. Beans ran BullMQ and Redis workers in production.",
-      stackMatch: ["Next.js 16", "React 19", "Drizzle / PostgreSQL", "BullMQ", "Redis"],
+      claim: "Vanta ships on Next.js 16, Express and PostgreSQL. Beans ran Bull and Redis workers in production.",
+      stackMatch: ["Next.js 16", "React 19", "Drizzle / PostgreSQL", "Bull", "Redis"],
     },
   ],
   closing: {
@@ -58,7 +58,7 @@ export const mem0: CompanyPitch = {
   unlisted: true,
   evidenceOverrides: {
     "vanta-os": {
-      period: "Nov 2025 – 2026",
+      period: "Nov 2025 – present",
       proofPoints: [
         "Hand-built agent memory: durable facts, weekly rollups, cache-stable snapshots",
         "LLM daily-plan generation with an eval harness",
@@ -74,7 +74,7 @@ export const mem0: CompanyPitch = {
       ],
     },
     "beans": {
-      stack: ["Next.js", "BullMQ", "Redis", "Rust / Anchor", "Jest"],
+      stack: ["Next.js", "Bull", "Redis", "Rust / Anchor", "Jest"],
     },
     "keom": {
       stack: ["React", "TypeScript", "Pyth oracles", "Cypress"],
