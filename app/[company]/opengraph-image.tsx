@@ -114,24 +114,14 @@ export default async function OgImage({
           </div>
         )}
 
-        {/* classified: stamped in red across the lower half of the name */}
-        <div
-          style={{
-            position: "absolute",
-            top: "56%",
-            display: "flex",
-            transform: "rotate(-7deg)",
-            border: "6px solid #dc2626",
-            color: "#dc2626",
-            padding: "14px 36px",
-            fontSize: 58,
-            letterSpacing: "0.3em",
-            fontWeight: 700,
-            backgroundColor: "rgba(5,5,5,0.55)",
-          }}
-        >
-          CLASSIFIED
-        </div>
+        {/* classified: rubber-stamp image struck across the lower half */}
+        <img
+          src={`data:image/png;base64,${readFileSync(join(process.cwd(), "public", "classified-stamp.png")).toString("base64")}`}
+          width={560}
+          height={352}
+          alt=""
+          style={{ position: "absolute", top: "42%", opacity: 0.92 }}
+        />
       </div>
     ),
     size,
