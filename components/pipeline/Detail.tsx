@@ -85,7 +85,7 @@ export default function Detail({ slug }: { slug: string }) {
 
   return (
     <main className="min-h-screen bg-[#050505] px-8 py-10 text-white">
-      <div className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto w-full max-w-6xl">
       <Link href="/pipeline" className="font-mono text-xs text-white/40 hover:text-white">back</Link>
       <div className="mt-4 flex items-center gap-4">
         {c.logo?.path && (
