@@ -96,7 +96,7 @@ export default async function OgImage({
 
         {/* the wordmark owns the card, unless a real logo is available */}
         {logo ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
+           
           <img src={logo} width={260} height={260} style={{ borderRadius: 40, objectFit: "contain" }} alt="" />
         ) : (
           <div
