@@ -168,6 +168,13 @@ export default function Detail({ slug }: { slug: string }) {
         <>
           {gate("Step 3: live page")}
           <LaptopEmbed slug={c.slug} />
+          <p className="mb-2 mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35">og card (what the link unfurls as)</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/${c.slug}/opengraph-image/0`}
+            alt="OG card preview"
+            className="w-full max-w-lg rounded-xl border border-white/10"
+          />
           <div className="mt-4 flex items-center gap-3">
             <a href={`/${c.slug}`} target="_blank" className="rounded-md border border-white/25 px-3 py-1.5 text-xs hover:bg-white hover:text-black">
               open full tab
