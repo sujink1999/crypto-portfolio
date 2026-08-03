@@ -13,6 +13,11 @@ import { tailor } from "./tailor";
 import { mem0 } from "./mem0";
 import { fieldguide } from "./fieldguide";
 import { deeptune } from "./deeptune";
+import { atria } from "./atria";
+import { railway } from "./railway";
+import { kadoa } from "./kadoa";
+import { colonist } from "./colonist";
+import { zeitlabs } from "./zeitlabs";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   acme,
@@ -29,6 +34,11 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   mem0,
   fieldguide,
   deeptune,
+  atria,
+  railway,
+  kadoa,
+  colonist,
+  zeitlabs,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);
