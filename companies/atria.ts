@@ -7,9 +7,9 @@ export const atria: CompanyPitch = {
   "accent": "#d9b47a",
   "accentFrom": "#f6ead6",
   "story": [
-    "I dealt with **health issues for eight years**. Saw plenty of doctors, tried the medications. What finally moved the needle was **tracking everything** and treating my own body like a data problem.",
-    "That is why I built **Vanta**, a health platform I co-founded: biomarker dashboards, lab report viewers, wearable reconciliation, an agent reading months of one person's health history. No clinics, no physicians, just the data problem.",
-    "Before that: a YC-backed trading app built solo to **10M+ downloads**, DeFi frontends holding **$10M TVL**. You're moving medicine from reactive to preventive, and I have been on both sides of that shift. This page maps your JD to what I shipped."
+    "**Eight years of health issues.** Doctors, medications, nothing stuck. What worked was **tracking everything** and treating my body like a data problem.",
+    "So I co-founded **Vanta**: biomarker dashboards, lab report viewers, wearable reconciliation, an agent reading months of one person's health history. No clinics, just the data problem.",
+    "Before that: a trading app built solo to **10M+ downloads**, DeFi frontends holding **$10M TVL**. This page maps your JD to what I shipped."
   ],
   "requirements": [
     {
@@ -84,7 +84,7 @@ export const atria: CompanyPitch = {
     }
   ],
   "closing": {
-    "line": "You're building the software that makes prevention hold. I've shipped pieces of it already. I'd like to build the rest with you.",
+    "line": "I've built pieces of this already. I'd like to build the rest with you.",
     "email": "lksujins@gmail.com",
     "github": "https://github.com/sujink1999",
     "resumeUrl": "/Sujin-K-Resume.pdf",
