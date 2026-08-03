@@ -96,13 +96,8 @@ export default async function OgImage({
 
         {/* the wordmark owns the card, unless a real logo is available */}
         {logo ? (
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
-            <img src={logo} width={200} height={200} style={{ borderRadius: 32, objectFit: "contain" }} alt="" />
-            <div style={{ display: "flex", fontSize: 64, fontWeight: 600, color: "#ffffff", letterSpacing: "-0.02em" }}>
-              {name}
-              <span style={{ color: accent }}>.</span>
-            </div>
-          </div>
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img src={logo} width={260} height={260} style={{ borderRadius: 40, objectFit: "contain" }} alt="" />
         ) : (
           <div
             style={{
