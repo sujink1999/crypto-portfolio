@@ -5,6 +5,7 @@ import type { PipelineCompany } from "@/lib/pipeline/types";
 import StatusPill from "./StatusPill";
 import CopyBlock from "./CopyBlock";
 import { WIDGET_MOCKS } from "./mocks";
+import { EVIDENCE } from "@/companies/evidence";
 
 export default function Detail({ slug }: { slug: string }) {
   const [c, setC] = useState<PipelineCompany | null>(null);
@@ -105,7 +106,14 @@ export default function Detail({ slug }: { slug: string }) {
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">{r.label}</p>
                 <p className="mt-1 text-xs italic text-white/40">{r.need}</p>
                 <p className="mt-2 text-base text-white/90">{r.claim}</p>
-                <p className="mt-1 font-mono text-[11px] text-white/40">proofs: {r.proofs.join(", ")}</p>
+                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                  <span className="font-mono text-[11px] text-white/35">shows</span>
+                  {r.proofs.map((id, i) => (
+                    <span key={id} className={`rounded-full border px-2.5 py-0.5 font-mono text-[11px] ${i === 0 ? "border-white/30 text-white/90" : "border-white/10 text-white/50"}`}>
+                      {EVIDENCE[id]?.title ?? id}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
             <p className="border-t border-white/10 pt-4 text-sm text-white/70">{d.closing.line}</p>

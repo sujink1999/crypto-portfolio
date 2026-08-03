@@ -6,8 +6,4 @@ import type { ComponentType } from "react";
  * in research.widgetConcept.key. Real implementations live in
  * components/pitch once approved and built.
  */
-import AtriaMock from "./AtriaMock";
-
-export const WIDGET_MOCKS: Record<string, ComponentType> = {
-  biomarkers: AtriaMock,
-};
+export const WIDGET_MOCKS: Record<string, ComponentType> = {};

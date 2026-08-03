@@ -70,6 +70,8 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 ## Copywriting Rules
 - Requirement `claim` lines render as big display text. One or two short sentences, ~15-22 words total. Not longer: a skimming reviewer won't read three sentences of display text. Not shorter either: a bare slogan with no facts reads as vague. Every claim carries 1-2 concrete facts (numbers, named projects, real stack), like "I built Vanta end to end: data model, Express APIs, dashboards, App Store. Before that: Mudrex, solo, to 10M+ downloads."
 - Don't repeat the page's one big theme (e.g. memory for Mem0) across multiple claims. Say it once in the requirement where it belongs; the other claims prove different strengths with different evidence.
+- NEVER cite repo internals as evidence: commit counts ("84 of 91 commits"), phased-rollout counts, PR numbers, test counts. Evidence is product outcomes a reviewer can feel: downloads, TVL, revenue, users, shipped features, App Store releases.
+- The voice reference is content/copy-corpus.md: previously approved copy verbatim. Writers match it, not their own instincts.
 - NEVER use em dashes (—) or hyphens-as-punctuation ( - ) in any copy: pitch pages, outreach, cover letters, UI text, story lines. They read as AI-written. Restructure into separate sentences, or use commas, colons, or periods instead.
 
 ## Connection Notes (LinkedIn outreach)
