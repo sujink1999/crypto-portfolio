@@ -70,7 +70,7 @@ export default function Detail({ slug }: { slug: string }) {
         <StatusPill status={c.status} />
       </div>
 
-      {c.research && (
+      {c.status === "page_draft" && c.research && (
         <>
           {gate("Research")}
           <div className="rounded-xl border border-white/10 bg-[#0d0d0d] p-4 text-sm leading-relaxed text-white/70">
@@ -88,9 +88,9 @@ export default function Detail({ slug }: { slug: string }) {
         </>
       )}
 
-      {d && (
+      {c.status === "page_draft" && d && (
         <>
-          {gate("Gate 1: page copy")}
+          {gate("Step 2: page copy")}
           <div className="space-y-6 rounded-xl border border-white/10 bg-[#0d0d0d] p-6">
             <p className="text-2xl font-medium">Hey {d.company},</p>
             {d.story.map((s, i) => <p key={i} className="text-sm leading-relaxed text-white/70">{s}</p>)}
@@ -121,59 +121,89 @@ export default function Detail({ slug }: { slug: string }) {
           </div>
           {c.status === "page_draft" && (
             <div className="mt-4 flex gap-3">
-              {approveBtn("Approve page copy", { status: "app_text" })}
+              {approveBtn("Approve page copy, start build", { status: "build" })}
               <span className="self-center font-mono text-xs text-white/40">changes: come to chat</span>
             </div>
           )}
         </>
       )}
 
-      {c.appText && c.status !== "page_draft" && (
+      {c.status === "build" && (
         <>
-          {gate("Gate 2: application text")}
-          <div className="space-y-3">
-            {c.appText.variants.map((v, i) => (
-              <div key={v.label} className={c.appText?.approvedIndex === i ? "rounded-xl ring-1 ring-white/40" : ""}>
-                <CopyBlock label={`${v.label}${c.appText?.approvedIndex === i ? " (approved)" : ""}`} text={v.text} />
-                {c.status === "app_text" && (
-                  <div className="mt-2">
-                    {approveBtn(`Approve "${v.label}"`, { status: "notes", appText: { ...c.appText!, approvedIndex: i } })}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-
-      {c.notes && (c.status === "notes" || c.status === "build" || c.status === "pages_ready" || c.status === "applied") && (
-        <>
-          {gate("Gate 3: connection notes")}
-          <div className="space-y-3">
-            {c.notes.map((n) => (
-              <CopyBlock key={n.persona} label={`${n.persona}${n.target ? `: ${n.target}` : ""}`} text={n.text} />
-            ))}
-          </div>
-          {c.status === "notes" && (
-            <div className="mt-4">
-              {approveBtn("Approve notes, start build", {
-                status: "build",
-                notes: c.notes.map((n) => ({ ...n, approved: true })),
-              })}
-            </div>
-          )}
+          {gate("Step 3: building")}
+          <p className="font-mono text-xs text-white/40">config and page being built, come back shortly</p>
         </>
       )}
 
       {c.status === "pages_ready" && (
         <>
-          {gate("Gate 4: review live page and apply")}
-          <div className="flex items-center gap-3">
+          {gate("Step 3: live page")}
+          <iframe src={`/${c.slug}`} title={c.slug} className="h-[75vh] w-full rounded-xl border border-white/10 bg-black" />
+          <div className="mt-4 flex items-center gap-3">
             <a href={`/${c.slug}`} target="_blank" className="rounded-md border border-white/25 px-3 py-1.5 text-xs hover:bg-white hover:text-black">
-              open /{c.slug}
+              open full tab
             </a>
-            {approveBtn("Mark applied", { status: "applied", applied: { done: true, date: new Date().toISOString().slice(0, 10) } })}
+            {approveBtn("Page looks good, show messages", { status: "outreach" })}
           </div>
+        </>
+      )}
+
+      {(c.status === "outreach" || c.status === "applied") && (
+        <>
+          {c.research && c.research.humans.length > 0 && (
+            <>
+              {gate("The people")}
+              <div className="rounded-xl border border-white/10 bg-[#0d0d0d] p-4">
+                <ul className="space-y-1.5 text-sm text-white/70">
+                  {c.research.humans.map((h) => (
+                    <li key={h.name} className="flex items-center gap-2">
+                      <span className="text-white/90">{h.name}</span>
+                      <span className="text-white/40">{h.role}</span>
+                      {h.url && <a href={h.url} target="_blank" rel="noreferrer" className="font-mono text-xs underline decoration-white/30 hover:text-white">profile</a>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
+
+          {c.appText && (
+            <>
+              {gate("Application text")}
+              <div className="space-y-3">
+                {c.appText.variants.map((v, i) => (
+                  <div key={v.label} className={c.appText?.approvedIndex === i ? "rounded-xl ring-1 ring-white/40" : ""}>
+                    <CopyBlock label={`${v.label}${c.appText?.approvedIndex === i ? " (picked)" : ""}`} text={v.text} />
+                    {c.status === "outreach" && c.appText?.approvedIndex !== i && (
+                      <div className="mt-2">
+                        {approveBtn(`Use "${v.label}"`, { appText: { ...c.appText!, approvedIndex: i } })}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {c.notes && (
+            <>
+              {gate("Connection notes")}
+              <div className="space-y-3">
+                {c.notes.map((n) => (
+                  <CopyBlock key={n.persona} label={`${n.persona}${n.target ? `: ${n.target}` : ""}`} text={n.text} />
+                ))}
+              </div>
+            </>
+          )}
+
+          {c.status === "outreach" && (
+            <div className="mt-6">
+              {approveBtn("Mark applied", { status: "applied", applied: { done: true, date: new Date().toISOString().slice(0, 10) } })}
+            </div>
+          )}
+          {c.status === "applied" && c.applied?.date && (
+            <p className="mt-6 font-mono text-xs text-emerald-400/70">applied {c.applied.date}</p>
+          )}
         </>
       )}
       </div>

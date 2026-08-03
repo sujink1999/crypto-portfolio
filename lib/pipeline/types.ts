@@ -9,6 +9,7 @@ export const STATUS_ORDER = [
   "notes",
   "build",
   "pages_ready",
+  "outreach",
   "applied",
 ] as const;
 

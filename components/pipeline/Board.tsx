@@ -23,7 +23,7 @@ const GROUPS: {
   { title: "Proposed: matches", statuses: ["proposed"], tier: "match" },
   { title: "Proposed: longshots", statuses: ["proposed"], tier: "longshot" },
   { title: "In research", statuses: ["researching"] },
-  { title: "Awaiting your review", statuses: ["page_draft", "app_text", "notes", "pages_ready"] },
+  { title: "Awaiting your review", statuses: ["page_draft", "app_text", "notes", "pages_ready", "outreach"] },
   { title: "Approved, building", statuses: ["page_approved", "build"] },
   { title: "Applied", statuses: ["applied"] },
   { title: "Rejected", statuses: ["rejected"] },

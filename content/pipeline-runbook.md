@@ -26,18 +26,22 @@ A minimal `pipeline/<slug>.json` looks like this. See `lib/pipeline/types.ts` fo
 }
 ```
 
-`status` must be one of the values in `STATUS_ORDER` (`lib/pipeline/types.ts`): `proposed`,
-`researching`, `page_draft`, `page_approved`, `app_text`, `notes`, `build`, `pages_ready`,
-`applied`, or the terminal `rejected`.
+`status` must be one of the values in `STATUS_ORDER` (`lib/pipeline/types.ts`). The live flow
+(2026-08-03) is: `proposed` -> `researching` -> `page_draft` (research + page copy shown, Sujin
+approves) -> `build` (Claude writes companies/<slug>.ts) -> `pages_ready` (dashboard embeds the
+live /<slug> page for review) -> `outreach` (people from research + application text + notes,
+all copy-ready) -> `applied`. Terminal: `rejected`. Legacy statuses `page_approved`, `app_text`,
+`notes` remain valid in the type for old files but the dashboard no longer routes through them.
+The detail page renders ONLY the current step's content.
 
 ## 0. State check
 
 Read every file in `pipeline/*.json`. Report to Sujin:
 
-- Companies awaiting Sujin at a gate (status `page_draft`, `app_text`, `notes`, or `pages_ready`,
-  plus `proposed` awaiting an accept/reject decision, i.e. work is done and a decision is needed
+- Companies awaiting Sujin at a step (status `page_draft`, `pages_ready`, or `outreach`, plus
+  `proposed` awaiting an accept/reject decision, i.e. work is done and a decision is needed
   before the pipeline can advance them).
-- Companies mid-build (status `researching`, `page_approved`, or `build`).
+- Companies mid-build (status `researching` or `build`; `build` means Claude owes a config).
 - Batch capacity: the target is 5 companies active at once, where "active" means any status
   before `applied` or `rejected`. If fewer than 5 are active, there is room to intake more.
 
