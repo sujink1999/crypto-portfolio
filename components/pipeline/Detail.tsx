@@ -1,11 +1,40 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { PipelineCompany } from "@/lib/pipeline/types";
 import StatusPill from "./StatusPill";
 import CopyBlock from "./CopyBlock";
 import { WIDGET_MOCKS } from "./mocks";
 import { EVIDENCE } from "@/companies/evidence";
+
+/** Renders the live pitch page at laptop resolution (1440x900), scaled to fit the column. */
+function LaptopEmbed({ slug }: { slug: string }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0.5);
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setScale(el.clientWidth / 1440));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  return (
+    <div
+      ref={wrapRef}
+      className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-black"
+      style={{ height: 900 * scale }}
+    >
+      <iframe
+        src={`/${slug}`}
+        title={slug}
+        width={1440}
+        height={900}
+        className="absolute left-0 top-0 origin-top-left"
+        style={{ transform: `scale(${scale})` }}
+      />
+    </div>
+  );
+}
 
 export default function Detail({ slug }: { slug: string }) {
   const [c, setC] = useState<PipelineCompany | null>(null);
@@ -138,7 +167,7 @@ export default function Detail({ slug }: { slug: string }) {
       {c.status === "pages_ready" && (
         <>
           {gate("Step 3: live page")}
-          <iframe src={`/${c.slug}`} title={c.slug} className="h-[75vh] w-full rounded-xl border border-white/10 bg-black" />
+          <LaptopEmbed slug={c.slug} />
           <div className="mt-4 flex items-center gap-3">
             <a href={`/${c.slug}`} target="_blank" className="rounded-md border border-white/25 px-3 py-1.5 text-xs hover:bg-white hover:text-black">
               open full tab
