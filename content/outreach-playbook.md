@@ -10,6 +10,7 @@ The pitch page is the **proof**, not the delivery. The delivery is short, direct
 
 ### Channels (medium confidence)
 - **LinkedIn DM > cold email**: benchmark data (Pin, 4M+ messages, 2025–26) shows ~17% reply on LinkedIn vs ~5% for automated email. Generic cold email replies: 1–5%. Well-targeted, accomplishment-focused email to a hiring manager: ~5–25% depending on strength of evidence.
+- **Channel decision (Sujin, 2026-08-04)**: LinkedIn is the outreach channel. Email only when the posting itself asks for applications by email (common in HN Who's Hiring ads with a listed founder address); then that address is the channel. The day-4-5 email fallback below still applies.
 - **ATS is safe in parallel**: 92% of surveyed recruiters say their ATS does not auto-reject on formatting/content/design. Put the pitch URL in the resume header and cover letter. Rejection risk = eligibility knockout questions, not links.
 
 ### Message format (medium confidence)

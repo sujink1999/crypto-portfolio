@@ -17,6 +17,13 @@ import { railway } from "./railway";
 import { kadoa } from "./kadoa";
 import { colonist } from "./colonist";
 import { zeitlabs } from "./zeitlabs";
+import { albert } from "./albert";
+import { clickup } from "./clickup";
+import { deepnote } from "./deepnote";
+import { elevenlabs } from "./elevenlabs";
+import { respan } from "./respan";
+import { seeq } from "./seeq";
+import { stacksync } from "./stacksync";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   sadaora,
@@ -37,6 +44,13 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   kadoa,
   colonist,
   zeitlabs,
+  albert,
+  clickup,
+  deepnote,
+  elevenlabs,
+  respan,
+  seeq,
+  stacksync,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);

@@ -5,14 +5,17 @@ file verbatim. If a fact is not here, do not state it. Never invent or upgrade t
 
 ## Roles (exact titles and dates)
 
-- **Co-founder, Vanta** (Sep 2025 - Present). Health/performance platform, built end to end:
-  biomarker dashboards, wearable-data reconciliation (Garmin/WHOOP), LLM daily-plan engine with
-  eval harness, Society community app on the App Store, multi-app web platform (e-commerce,
-  lab-test booking, admin dashboards, Shopify embedded app).
+- **Co-founder, Vanta** (Sep 2025 - Present). Health/performance platform, built end to end.
+  The core product is an AI health coach: an agentic tool-calling chat agent with durable
+  memory, shipped behind an eval harness (see Vanta project facts below). Around it:
+  biomarker dashboards, wearable-data reconciliation (Garmin/WHOOP), daily-plan pipeline,
+  Society community app on the App Store, multi-app web platform (e-commerce, lab-test
+  booking, admin dashboards, Shopify embedded app).
   Copy rule: "I co-founded Vanta" (past-tense founding fact), never present-tense framing.
-- **Senior Founding Engineer, Beans** (Jul 2025 - Sep 2025). Solana token-launch platform as a
-  retro desktop OS; on-chain Anchor (Rust) program with simulation tests; Telegram launch bots
-  and analytics on Bull/Redis worker queues.
+- **Senior Founding Engineer, Beans** (Jul 2025 - Sep 2025). Solana launchpad and trading
+  platform as a retro desktop OS (preferred phrasing: "a Solana launchpad and trading platform",
+  not just "token launcher"); on-chain Anchor (Rust) program with simulation tests; Telegram
+  launch bots and analytics on Bull/Redis worker queues.
 - **Founding Engineer, Caddi** (Jul 2024 - Jun 2025). Chrome extension for swap/bridge from any
   website with route aggregation; AWS Lambda microservices; early Farcaster Frames builder.
 - **Senior Web3 Engineer, 0vix / Gogo Protocol** (May 2022 - Jun 2024). Built and led frontend
@@ -29,6 +32,38 @@ file verbatim. If a fact is not here, do not state it. Never invent or upgrade t
 
 Stack and architecture claims below were verified directly against the local repos.
 Use these instead of inventing stack details.
+
+### Vanta (Sep 2025 - Present)
+
+Vanta is MAINLY an AI health coach: an agentic, tool-calling chat agent. The daily plan
+is a background pipeline whose output surfaces through the coach. Never describe Vanta
+as "a daily-plan engine" as the headline; the agent is the product.
+
+- The coach: chat agent with an OpenAI-style tool-calling loop (up to 5 tool rounds per
+  turn) and 18+ tools: memory search/update, biomarker history, activities, meals, vitals,
+  protocols, supplement stack, journal search, sleep logging, panel cards.
+- Durable memory: slug-keyed fact store with supersession logic (contradictions resolve,
+  e.g. "strictly vegan" then "I eat fish" supersedes to pescatarian) and time-bounded
+  facts (validUntil). Memory extraction runs post-hoc via a separate small model so it
+  never costs the user a synchronous LLM round trip.
+- Context per turn: a byte-stable snapshot (memory facts, journal, biomarkers, 7-day
+  wearable rollup, active protocol and stack, today's plan/meals/vitals) engineered to
+  preserve prompt-cache prefix hits across turns.
+- Governance: higher-stakes writes (protocol/plan changes) return proposed_change objects
+  the user must confirm; the agent proposes, never silently mutates.
+- Conversation modes (onboarding, meal capture, report review, etc.) filter the tool set
+  via a declarative manifest, enforced both at tool exposure and again at dispatch.
+- Eval harness: ~30 scripted end-to-end scenarios (simulated user personas driving real
+  LLM loops with real tool dispatch and DB), assertions on tool calls, replies, and DB
+  state; plus live-model evals run 3 times with majority pass to separate regressions
+  from variance. Explicit anti-hallucination regression tests (model must never invent
+  activity/candidate IDs).
+- Wearable reconciliation engine: two-pass matching of planned activities against real
+  Garmin/WHOOP workouts (type-compatibility groups, timezone-aware date bucketing,
+  cross-midnight handling); ambiguous matches resolved by an LLM tiebreak constrained
+  to the candidate set.
+- Other surfaces: biomarker/lab pipeline (report parsing, panels, PDF/DEXA viewers),
+  Society community app (App Store), e-commerce store on headless Shopify, admin flows.
 
 ### Beans (Jul 2025 - Sep 2025)
 - Handled more than $100k of USD volume per hour (stated by Sujin, 2026-08-03). Safe to

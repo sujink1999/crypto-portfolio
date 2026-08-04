@@ -60,7 +60,9 @@ Fill open batch slots up to 5 active companies, in this order:
    product engineer roles, plausible to hold alongside Vanta. Prefer crypto-native and dev-tools
    companies first.
 
-Write each accepted company as `pipeline/<slug>.json`:
+Write each accepted company as `pipeline/<slug>.json`, and fetch its logo immediately at intake
+(`npx tsx scripts/fetch-logo.ts <slug> <jd-url> <domain>`, stdout is the `logo.path` value) so
+even `proposed` cards render with a logo on the board:
 
 - Sourced candidates start at status `"proposed"` (they still need Sujin's go-ahead before deep
   research begins; see the note in step 2).
@@ -101,6 +103,20 @@ agent writes its results directly into that company's state file and moves its s
   beats, use only the 5 strong exhibits).
 - `appText.variants`: 2-3 portal-text variants covering different angles but the same underlying
   facts.
+- Free-text form questions: Greenhouse/Lever/Ashby postings render the application form on the
+  JD page itself, so the research agent records any free-text questions (e.g. "why us") it finds
+  there, and answers are drafted alongside `appText` for gate 2. A "why us" answer is hook +
+  connection + value in 3-5 sentences: open with one specific true fact about them (a recent
+  launch, a technical bet; never the mission statement), then the genuine reason it resonates,
+  then one concrete accomplishment proving fit. Must fail the competitor-swap test (CLAUDE.md).
+  Gated flows (Workable step 2, Wellfound, LinkedIn, custom portals) can't be pre-drafted; Sujin
+  hits the field while applying and it comes back as a clipboard-style request, drafted then with
+  the same structure.
+- Which JD bullets deserve page beats: must-haves only. A bullet is a must-have if it sits in the
+  top third of the requirements list or is repeated across sections (responsibilities +
+  qualifications + prose). Hedged items ("preferred", "a plus", "familiarity with") are
+  nice-to-haves: skip them or fold them into another beat. Mine the "About the team / What you'll
+  do" prose for the team's real pain point; that is the story-hook material.
 - `notes`: one `PersonaNote` per relevant persona (engineer, cto, ceo, recruiter), following the
   locked connection-note format in `CLAUDE.md`.
 - `research.widgetConcept` (optional): if the company's product begs for an interactive widget in

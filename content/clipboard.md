@@ -1,45 +1,35 @@
-# Clipboard — Atria application (Workable form, 2026-08-03)
+# Clipboard — Zeitlabs pre-screening (2026-08-03)
 
-## Headline
+Resume: content/resume/Sujin-K-Resume-Zeitlabs.pdf
 
-```
-Full-stack product engineer. Co-founded Vanta (consumer health software); built a YC startup's app solo to 10M+ downloads.
-```
-
-## Phone
+## Portfolio link
 
 ```
-+91 7299603606
+https://sujin.tech
 ```
 
-## Address
+(If there's a free-text field anywhere, also drop https://sujin.tech/zeitlabs : the page maps their JD point by point.)
+
+## Complex task done with React.js
 
 ```
-Chennai, India
+Keom's margin trading dApp, which I authored essentially solo. Live oracle prices streaming into open positions, leverage and liquidation math recalculated on every tick, and multi-step transaction flows where the UI state has to stay honest across wallet confirmations, chain reverts, and reconnects. All of it internationalized and covered by Cypress e2e suites, on a protocol that grew from $500k to $10M TVL. The hard part was state design: keeping a UI truthful when the source of truth is a chain that can disagree with what the user just clicked.
 ```
 
-## Summary
+## Landing page you're proud of (URL + Figma)
 
-```
-6+ years building consumer products end to end in TypeScript: React 19 in front, Express 5 and relational schemas behind. I co-founded Vanta, a consumer health platform, and built its wearable reconciliation engine (Garmin/WHOOP), biomarker and lab report viewers, and an LLM daily-plan engine behind an eval harness. Before that: built Mudrex's app (YC W19) solo to 10M+ downloads, and led DeFi frontends through growth from $500k to $10M TVL. Health software is personal for me; I got into it after eight years of my own health issues.
-```
+NEED FROM YOU: which landing and its Figma link.
+- Option A: https://sujin.tech itself (you built it, it is live, and it is the portfolio they'll already be on).
+- Option B: the Vanta OS landing (Mobius WebGL, scroll storytelling); paste its public URL and Figma file link.
 
-## Cover letter
+## React component you're proud of (URL + Figma)
 
-```
-The short version of my background: at Mudrex, a YC-backed startup, I built the mobile app solo to 10M+ downloads, then frontend lead on a lending protocol holding $10M TVL. But the reason I'm writing is personal before it is professional. I dealt with health issues for eight years, saw plenty of doctors, tried the medications, and what finally worked was tracking everything and treating my body as a data problem. That is why I co-founded Vanta, consumer health software, and spent it on exactly the problems your nice-to-haves name: a wearable data reconciliation engine running in production, biomarker and lab and DEXA report viewers, and an agent that reads months of one person's health history. Reconciling noisy device streams with clean lab draws into a single timeline a member can trust is the least glamorous part of preventive health software, and I've done it in production.
+NEED FROM YOU: Figma link if one exists.
+- Option A: the pitch-page story engine on sujin.tech (letter-by-letter text, beat controller, WebGL smoke shader as a programmable scene layer). URL: https://sujin.tech/mem0 as the live example.
+- Option B: a Society mobile component (Skia celebration/streak cards); no public web URL, would need a recording instead.
 
-It all runs on TypeScript: React 19 in front, Express 5 and a relational schema behind it, Sentry on top. That is your stack.
+If no Figma exists for these, say it straight: "Designed in code; I work design-first but without Figma handoff since I design my own interfaces." Zeitlabs has designers, so honesty beats a scrambled file.
 
-What draws me to Atria specifically: memberships at $20k to $75k a year and profitable operations mean the prevention thesis is re-tested at every renewal, by people free to walk. The software has to actually hold. I'd like to help build that.
+## Open source contribution (optional)
 
-Instead of a cover letter I built a page mapping your JD to the work:
-
-https://sujin.tech/atria
-```
-
-## Where did you find this job?
-
-```
-Hacker News (Who's Hiring, July 2026)
-```
+Leave blank unless you have a real one you want to show. (StegCloak is off-limits, and thin PRs look worse than an empty optional field.)

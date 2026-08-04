@@ -33,7 +33,7 @@
 - **Show visually**: Phone-frame screen recordings of animated widgets, streaks, share cards.
 
 ### 5. Beans - Solana Token-Launch Game (`Caddi/beans-ui` + `caddi-dashboard` + `normie-programs`) - Jul 2024 → Jun 2025
-- **What**: Pump.fun-style Solana token launcher rendered as a retro Windows-95 desktop: live token launches as draggable windows, chat bubbles, and physics objects.
+- **What**: Solana launchpad and trading platform (Pump.fun-style) rendered as a retro Windows-95 desktop: live token launches as draggable windows, chat bubbles, and physics objects.
 - **Stack**: Next.js, matter-js physics, react-konva, Apollo/Codex GraphQL, Anchor, Jupiter/Raydium/pump.fun SDKs. On-chain: Rust/Anchor program (new_launch, bet, buy_winner, stake/unstake, nft_claim, migrations) with bankrun simulation tests.
 - **Proof points**: Custom bonding-curve math, homegrown Anchor client layer, physics-driven "flying beans," multi-DEX routing, real smart-contract depth (betting/staking/NFT mechanics).
 - **Show visually**: The desktop-OS UI is the most memorable visual in the whole portfolio - record it live. Pair with a contract-instruction diagram for crypto companies.

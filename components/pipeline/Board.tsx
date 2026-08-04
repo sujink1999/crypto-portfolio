@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { PipelineCompany } from "@/lib/pipeline/types";
 import StatusPill from "./StatusPill";
 
@@ -38,12 +38,27 @@ function CardShell({
   clickable: boolean;
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const cls = "block rounded-xl border border-white/10 bg-[#0d0d0d] p-4";
   if (!clickable) return <div className={cls}>{children}</div>;
+  // Not a <Link>: cards can contain real anchors (posting link), and <a> can't nest in <a>.
   return (
-    <Link href={`/pipeline/${slug}`} className={`${cls} transition-colors hover:border-white/25`}>
+    <div
+      role="link"
+      tabIndex={0}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest("a, button")) return;
+        router.push(`/pipeline/${slug}`);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" && !(e.target as HTMLElement).closest("a, button")) {
+          router.push(`/pipeline/${slug}`);
+        }
+      }}
+      className={`${cls} cursor-pointer transition-colors hover:border-white/25`}
+    >
       {children}
-    </Link>
+    </div>
   );
 }
 
@@ -137,7 +152,7 @@ export default function Board() {
                         </div>
                       )}
                     </div>
-                    {c.status === "proposed" && (
+                    {(c.status === "proposed" || c.status === "researching") && (
                       <div className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 font-mono text-[11px]">
                         <span className="text-white/35">salary</span>
                         <span className="text-white">{c.salary ?? "not listed"}</span>
