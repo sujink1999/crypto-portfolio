@@ -192,14 +192,14 @@ export default function RoleMatch({
       {/* right - one requirement per view: claim over a composed stage.
           loads after the JD has settled in */}
       <div
-        className={`relative min-h-0 flex-1 transition-opacity duration-700 ease-out lg:h-full lg:flex-none ${
+        className={`relative -mx-5 min-h-0 flex-1 transition-opacity duration-700 ease-out lg:mx-0 lg:h-full lg:flex-none ${
           introDone ? "opacity-100" : "opacity-0"
         }`}
       >
         <div
           ref={railRef}
           onScroll={onRailScroll}
-          className={`pitch-carousel h-full snap-y snap-mandatory overflow-y-auto transition-opacity duration-200 ${
+          className={`pitch-carousel h-full snap-y snap-mandatory overflow-x-hidden overflow-y-auto transition-opacity duration-200 ${
             jumping ? "opacity-0" : "opacity-100"
           } ${
             /* with a hand-off handler, the handler is the ONLY exit - native
@@ -215,12 +215,12 @@ export default function RoleMatch({
             return (
               <div
                 key={gi}
-                className="relative flex h-full snap-start flex-col justify-center pt-8 lg:pt-0"
+                className="relative flex h-full snap-start flex-col justify-center px-5 lg:px-0"
               >
                 {/* ghost index - grounds the section */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute top-8 left-0 font-mono text-[4.5rem] leading-none text-white/[0.04] lg:-top-2 lg:text-[11rem]"
+                  className="pointer-events-none absolute top-8 left-5 font-mono text-[4.5rem] leading-none text-white/[0.04] lg:-top-2 lg:left-0 lg:text-[11rem]"
                 >
                   {String(gi + 1).padStart(2, "0")}
                 </span>
@@ -261,7 +261,7 @@ export default function RoleMatch({
           })}
         </div>
         {/* scroll affordance - counter + a dropping chevron */}
-        <div className="pointer-events-none absolute bottom-1 right-0 flex items-center gap-2.5">
+        <div className="pointer-events-none absolute bottom-1 right-5 flex items-center gap-2.5 lg:right-0">
           <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-white/25">
             {String(activeReq + 1).padStart(2, "0")} / {String(requirements.length).padStart(2, "0")}
           </p>

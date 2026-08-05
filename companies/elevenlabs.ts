@@ -7,9 +7,9 @@ export const elevenlabs: CompanyPitch = {
   "accent": "#E8E8E8",
   "accentFrom": "#8A8A8A",
   "story": [
-    "You closed 2025 past **$330M ARR**, and your JD still reads like a seed startup: **lean autonomous teams**, engineers scoping proof-of-concept products directly with partner customers. That's the fast paced environment I thrive in.",
-    "At Vanta, the health platform I co-founded, I scoped and shipped a **conversational coach agent** myself: a tool-calling loop with **18+ tools**, durable memory, an eval harness, and the web and App Store apps around it.",
-    "**6+ years** of owning features from the React frontend to the pipeline behind them. The rest of this page maps your JD to what shipped."
+    "You closed 2025 past **$330M ARR**, and your JD still reads like a seed startup: **lean autonomous teams** scoping proof-of-concept products directly with partner customers.",
+    "At Vanta, the health platform I co-founded, I scoped and shipped a **conversational coach agent** myself: a tool-calling loop with **18+ tools**, durable memory, and the web and App Store apps around it.",
+    "**6+ years** owning features from the React frontend to the pipeline behind them. The rest of this page maps your JD to what shipped."
   ],
   "requirements": [
     {

@@ -186,14 +186,18 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
           {pitch.story.map((line, i) => (
             <p
               key={i}
-              className={`story-line max-w-5xl text-balance text-lg md:text-2xl font-normal leading-normal tracking-tight text-white/55 ${section(1)}`}
+              className={`story-line max-w-5xl text-pretty text-lg md:text-2xl font-normal leading-normal tracking-tight text-white/55 ${section(1)}`}
               style={{ "--d": `${0.15 + i * 0.3}s` } as React.CSSProperties}
             >
-              {/* **text** renders white against the muted line */}
-              {line.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
+              {/* **text** and "quoted text" render white against the muted line */}
+              {line.split(/(\*\*[^*]+\*\*|"[^"]+")/).map((part, j) =>
                 part.startsWith("**") ? (
                   <span key={j} className="font-medium text-white">
                     {part.slice(2, -2)}
+                  </span>
+                ) : part.startsWith('"') ? (
+                  <span key={j} className="font-medium text-white">
+                    {part.replace(/\*\*/g, "")}
                   </span>
                 ) : (
                   part
