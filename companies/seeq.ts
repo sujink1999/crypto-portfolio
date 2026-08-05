@@ -7,9 +7,9 @@ export const seeq: CompanyPitch = {
   "accent": "#7FA8B8",
   "accentFrom": "#C4D8E0",
   "story": [
-    "Your JD wants engineers who'll \"**adopt fresh technologies**\", not just maintain. I take that seriously: I have a **Claude agent** that researches what's new in tech every morning, mails me what I should know, and **reads it to me in voice**.",
-    "And I've built UIs where the data moves in real time and mistakes cost money: **Beans**, a token launchpad with **live trading** on bonding curves, and a lending protocol's frontend I grew from **$500k to $10M TVL**.",
-    "You want **one engineer** to own a feature from the React surface down to the data layer, and pull the team forward on the way. That's how I've built everything below."
+    "Your JD wants engineers who'll \"**adopt fresh technologies**\". I take that seriously: a **Claude agent** researches what's new in tech every morning and **reads it to me in voice**.",
+    "And I've built UIs where mistakes cost money: **Beans**, a token launchpad with **live trading**, and a lending frontend I grew from **$500k to $10M TVL**.",
+    "You want **one engineer** to own a feature from the React surface down to the data layer. That's everything below."
   ],
   "requirements": [
     {

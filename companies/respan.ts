@@ -7,9 +7,9 @@ export const respan: CompanyPitch = {
   "accent": "#EDEDED",
   "accentFrom": "#9A9A9A",
   "story": [
-    "You process **1B+ logs and 2T+ tokens a month**, and the frontend has to keep that legible: trace trees with hundreds of steps, log explorers that stay fast while rows stream in. That is a real UI problem, not a CRUD app.",
-    "I've shipped UIs where the data is the product. **Keom**, a margin and lending protocol whose frontend I ran from **$500k to $10M TVL**: live oracle prices, open positions, real money on every render. And **Beans**, a token launchpad rendered as a full retro desktop with draggable windows and physics.",
-    "Fifteen people and a platform this dense need the frontend owned, not just staffed: architecture, design system, performance. That's the kind of work I love owning."
+    "You just bet the company on one idea: the rebrand from Keywords AI to Respan says **watching agents fail isn't enough**, the loop has to close itself. Trace, eval, fix.",
+    "I've felt why that matters as a user, not an applicant. At Vanta, the health platform I co-founded, I run **LLM pipelines behind an eval harness**, and when an agent misbehaves I'm the one digging through raw logs to find which step lied. You're building the thing I kept wishing existed.",
+    "And the frontend is where that promise gets kept: **1B+ logs and 2T+ tokens a month** that have to stay legible. You're hiring someone to **own that surface**. That's the case below."
   ],
   "requirements": [
     {
