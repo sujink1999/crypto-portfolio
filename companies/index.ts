@@ -23,6 +23,7 @@ import { deepnote } from "./deepnote";
 import { elevenlabs } from "./elevenlabs";
 import { respan } from "./respan";
 import { seeq } from "./seeq";
+import { supabase } from "./supabase";
 import { stacksync } from "./stacksync";
 import { deeply } from "./deeply";
 import { numeral } from "./numeral";
@@ -53,6 +54,7 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   elevenlabs,
   respan,
   seeq,
+  supabase,
   stacksync,
   deeply,
   numeral,
