@@ -24,6 +24,9 @@ import { elevenlabs } from "./elevenlabs";
 import { respan } from "./respan";
 import { seeq } from "./seeq";
 import { stacksync } from "./stacksync";
+import { deeply } from "./deeply";
+import { numeral } from "./numeral";
+import { reveleer } from "./reveleer";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   sadaora,
@@ -51,6 +54,9 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   respan,
   seeq,
   stacksync,
+  deeply,
+  numeral,
+  reveleer,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);

@@ -34,6 +34,8 @@ export interface Requirement {
 export interface CompanyPitch {
   slug: string;
   company: string;
+  /** Overrides the name in "Hey X," / "An invitation for X" (e.g. a founder's first name); company still brands the OG card */
+  greetName?: string;
   role: string;
   /** Hex color used to theme the page (defaults to site accent) */
   accent?: string;

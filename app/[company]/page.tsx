@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { company } = await params;
   const pitch = COMPANIES[company];
   if (!pitch) return {};
-  const title = `Hey ${pitch.company} - I'm Sujin`;
+  const title = `Hey ${pitch.greetName ?? pitch.company} - I'm Sujin`;
   const description = `An invitation written for ${pitch.company}. A two-minute read.`;
   return {
     title: `Sujin K - for ${pitch.company}`,

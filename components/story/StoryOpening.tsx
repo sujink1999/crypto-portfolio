@@ -147,7 +147,7 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
           <h1 className="text-5xl md:text-7xl font-medium tracking-[-0.02em]">
             {greetStarted && (
               <TypedText
-                text={`Hey ${pitch.company},`}
+                text={`Hey ${pitch.greetName ?? pitch.company},`}
                 charDelay={55}
                 startDelay={300}
                 gradientFrom={1}
@@ -438,7 +438,7 @@ export default function StoryOpening({ pitch }: { pitch: CompanyPitch }) {
         </div>
         <p className="font-mono text-[10px] md:text-[11px] tracking-[0.45em] text-white/50 uppercase">
           <TypedText
-            text={`An invitation for ${pitch.company}`}
+            text={`An invitation for ${pitch.greetName ?? pitch.company}`}
             charDelay={28}
             startDelay={300}
           />
