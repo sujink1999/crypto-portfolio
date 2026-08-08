@@ -3,7 +3,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { PipelineCompany } from "@/lib/pipeline/types";
 import StatusPill from "./StatusPill";
-import CopyBlock from "./CopyBlock";
+import Runsheet from "./Runsheet";
+import DraftReview from "./DraftReview";
+import ApplicationPanel from "./ApplicationPanel";
+import Loader from "./Loader";
+import { Icons } from "./Metrics";
 import { WIDGET_MOCKS } from "./mocks";
 import { EVIDENCE } from "@/companies/evidence";
 
@@ -39,7 +43,6 @@ function LaptopEmbed({ slug }: { slug: string }) {
 export default function Detail({ slug }: { slug: string }) {
   const [c, setC] = useState<PipelineCompany | null>(null);
   const [loaded, setLoaded] = useState(false);
-  const [copyTab, setCopyTab] = useState<"application" | "connection">("application");
   const load = useCallback(async () => {
     const res = await fetch("/api/pipeline");
     if (!res.ok) {
@@ -56,41 +59,54 @@ export default function Detail({ slug }: { slug: string }) {
     load();
   }, [load]);
 
+  const [saving, setSaving] = useState(false);
   const patch = async (p: Partial<PipelineCompany>) => {
-    await fetch("/api/pipeline", {
-      method: "PATCH",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ slug, patch: p }),
-    });
-    load();
+    setSaving(true);
+    try {
+      await fetch("/api/pipeline", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ slug, patch: p }),
+      });
+      await load();
+    } finally {
+      setSaving(false);
+    }
   };
 
   if (!c) {
     return (
-      <main className="min-h-screen bg-[#050505] p-8 font-mono text-xs text-white/40">
-        {loaded ? "not in pipeline" : "loading"}
+      <main className="flex min-h-screen items-center justify-center bg-[#050505] p-8">
+        {loaded ? (
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-white/35">Not in pipeline</p>
+        ) : (
+          <Loader />
+        )}
       </main>
     );
   }
 
   const d = c.pageDraft;
-  const activeCopyTab =
-    copyTab === "application" && !c.appText ? "connection"
-    : copyTab === "connection" && !c.notes ? "application"
-    : copyTab;
   const Mock = c.research?.widgetConcept ? WIDGET_MOCKS[c.research.widgetConcept.key] : undefined;
   const gate = (name: string) => (
     <h2 className="mb-3 mt-10 font-mono text-xs uppercase tracking-[0.2em] text-white/40">{name}</h2>
   );
   const approveBtn = (label: string, p: Partial<PipelineCompany>) => (
-    <button onClick={() => patch(p)} className="rounded-md border border-emerald-400/40 bg-emerald-400/10 px-3 py-1.5 text-xs text-emerald-300 hover:bg-emerald-400 hover:text-black">
+    <button
+      onClick={() => patch(p)}
+      disabled={saving}
+      className="inline-flex items-center gap-2 rounded-md border border-emerald-400/25 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300/90 transition-[color,background-color,border-color,transform] hover:bg-emerald-400 hover:text-black active:scale-[0.98] disabled:cursor-wait disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-emerald-300/90"
+    >
+      {saving && (
+        <span className="h-3 w-3 animate-spin rounded-full border border-emerald-300/30 border-t-emerald-300" />
+      )}
       {label}
     </button>
   );
 
   return (
     <main className="min-h-screen bg-[#050505] px-8 py-10 text-white">
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="pipeline-card-in mx-auto w-full max-w-6xl">
       <header className="flex items-center gap-4">
         <Link
           href="/pipeline"
@@ -108,10 +124,19 @@ export default function Detail({ slug }: { slug: string }) {
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline gap-3">
             <h1 className="truncate text-xl font-medium tracking-tight">{c.company}</h1>
-            <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-white/30 sm:inline">{c.source}</span>
+            <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-white/30 sm:inline">{c.source.channel}</span>
           </div>
           <div className="mt-0.5 flex items-center gap-3">
             <p className="truncate text-sm text-white/50">{c.role}</p>
+            {c.size && (
+              <span
+                title="Company size (headcount)"
+                className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[11px] text-white/50"
+              >
+                <span className="opacity-60">{Icons.size}</span>
+                {c.size}
+              </span>
+            )}
             {c.jdUrl && (
               <a
                 href={c.jdUrl}
@@ -130,12 +155,31 @@ export default function Detail({ slug }: { slug: string }) {
         <StatusPill status={c.status} />
       </header>
 
+      {c.draft && (c.status === "researching" || c.status === "page_draft") && (
+        <>
+          {gate("Draft copy")}
+          <DraftReview
+            key={c.updatedAt}
+            draft={c.draft}
+            saving={saving}
+            onSave={(next) => patch({ draft: next })}
+          />
+          {c.status === "page_draft" && !c.pageDraft && (
+            <div className="mt-4 flex gap-3">
+              {approveBtn("Approve copy, start build", { status: "build" })}
+              <span className="self-center font-mono text-xs text-white/40">
+                Page assembly + answer drafting happen in chat after this
+              </span>
+            </div>
+          )}
+        </>
+      )}
+
       {c.status === "page_draft" && c.research && (
         <>
           {gate("Research")}
-          <div className="rounded-xl border border-white/10 bg-[#0d0d0d] p-4 text-sm leading-relaxed text-white/70">
+          <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5 text-sm leading-relaxed text-white/70">
             <p>{c.research.summary}</p>
-            <p className="mt-2 text-white/90">Hook: {c.research.hook}</p>
             <ul className="mt-2 list-inside list-disc text-white/60">
               {c.research.humans.map((h) => (
                 <li key={h.name}>
@@ -151,7 +195,7 @@ export default function Detail({ slug }: { slug: string }) {
       {c.status === "page_draft" && d && (
         <>
           {gate("Step 2: page copy")}
-          <div className="space-y-6 rounded-xl border border-white/10 bg-[#0d0d0d] p-6">
+          <div className="space-y-6 rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
             <p className="text-2xl font-medium">Hey {d.company},</p>
             {d.story.map((s, i) => <p key={i} className="text-sm leading-relaxed text-white/70">{s}</p>)}
             {Mock && (
@@ -182,7 +226,7 @@ export default function Detail({ slug }: { slug: string }) {
           {c.status === "page_draft" && (
             <div className="mt-4 flex gap-3">
               {approveBtn("Approve page copy, start build", { status: "build" })}
-              <span className="self-center font-mono text-xs text-white/40">changes: come to chat</span>
+              <span className="self-center font-mono text-xs text-white/40">Changes: come to chat</span>
             </div>
           )}
         </>
@@ -191,7 +235,7 @@ export default function Detail({ slug }: { slug: string }) {
       {c.status === "build" && (
         <>
           {gate("Step 3: building")}
-          <p className="font-mono text-xs text-white/40">config and page being built, come back shortly</p>
+          <p className="font-mono text-xs text-white/40">Config and page being built, come back shortly</p>
         </>
       )}
 
@@ -207,8 +251,12 @@ export default function Detail({ slug }: { slug: string }) {
             className="w-full max-w-lg rounded-xl border border-white/10"
           />
           <div className="mt-4 flex items-center gap-3">
-            <a href={`/${c.slug}`} target="_blank" className="rounded-md border border-white/25 px-3 py-1.5 text-xs hover:bg-white hover:text-black">
-              open full tab
+            <a
+              href={`/${c.slug}`}
+              target="_blank"
+              className="rounded-md border border-white/20 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/80 transition-colors hover:bg-white hover:text-black"
+            >
+              Open full tab
             </a>
             {approveBtn("Page looks good, show messages", { status: "outreach" })}
           </div>
@@ -217,78 +265,23 @@ export default function Detail({ slug }: { slug: string }) {
 
       {(c.status === "outreach" || c.status === "applied") && (
         <>
-          {c.research && c.research.humans.length > 0 && (
-            <>
-              {gate("The people")}
-              <div className="rounded-xl border border-white/10 bg-[#0d0d0d] p-4">
-                {c.research.companyLinkedIn && (
-                  <a href={c.research.companyLinkedIn} target="_blank" rel="noreferrer" className="mb-2 inline-flex items-center gap-1.5 font-mono text-xs text-white/60 underline decoration-white/25 hover:text-white">
-                    company LinkedIn
-                  </a>
-                )}
-                <ul className="space-y-1.5 text-sm text-white/70">
-                  {c.research.humans.map((h) => (
-                    <li key={h.name} className="flex items-center gap-2">
-                      <span className="text-white/90">{h.name}</span>
-                      <span className="text-white/40">{h.role}</span>
-                      {h.url && <a href={h.url} target="_blank" rel="noreferrer" className="font-mono text-xs underline decoration-white/30 hover:text-white">profile</a>}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </>
+          {gate("Outreach runsheet")}
+          <Runsheet c={c} onPatch={(outreach) => patch({ outreach })} />
+          {(c.outreach ?? []).length === 0 && c.research && c.research.humans.length > 0 && (
+            <div className="mt-3 rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">From research</p>
+              <ul className="space-y-1.5 text-sm text-white/70">
+                {c.research.humans.map((h) => (
+                  <li key={h.name} className="flex items-center gap-2">
+                    <span className="text-white/90">{h.name}</span>
+                    <span className="text-white/40">{h.role}</span>
+                    {h.url && <a href={h.url} target="_blank" rel="noreferrer" className="font-mono text-xs underline decoration-white/30 hover:text-white">profile</a>}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
 
-          {(c.appText || c.notes) && (
-            <>
-              {gate("Copy")}
-              <div className="mb-4 flex gap-1 rounded-lg border border-white/10 bg-[#0d0d0d] p-1 w-fit">
-                {(
-                  [
-                    ["application", "Application", !!c.appText],
-                    ["connection", "Connection", !!c.notes],
-                  ] as const
-                ).map(([key, label, present]) =>
-                  present ? (
-                    <button
-                      key={key}
-                      onClick={() => setCopyTab(key)}
-                      className={`rounded-md px-4 py-1.5 font-mono text-xs transition-colors ${
-                        activeCopyTab === key
-                          ? "bg-white text-black"
-                          : "text-white/45 hover:text-white"
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  ) : null
-                )}
-              </div>
-
-              {activeCopyTab === "application" && c.appText && (
-                <div className="space-y-3">
-                  {c.appText.variants.map((v, i) => (
-                    <div key={v.label} className={c.appText?.approvedIndex === i ? "rounded-xl ring-1 ring-white/40" : ""}>
-                      <CopyBlock label={`${v.label}${c.appText?.approvedIndex === i ? " (picked)" : ""}`} text={v.text} />
-                      {c.status === "outreach" && c.appText?.approvedIndex !== i && (
-                        <div className="mt-2">
-                          {approveBtn(`Use "${v.label}"`, { appText: { ...c.appText!, approvedIndex: i } })}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {activeCopyTab === "connection" && c.notes && (
-                <div className="space-y-3">
-                  {c.notes.map((n) => (
-                    <CopyBlock key={n.persona} label={`${n.persona}${n.target ? `: ${n.target}` : ""}`} text={n.text} />
-                  ))}
-                </div>
-              )}
-            </>
-          )}
 
           {c.status === "outreach" && (
             <div className="mt-6">
@@ -296,8 +289,20 @@ export default function Detail({ slug }: { slug: string }) {
             </div>
           )}
           {c.status === "applied" && c.applied?.date && (
-            <p className="mt-6 font-mono text-xs text-emerald-400/70">applied {c.applied.date}</p>
+            <p className="mt-6 font-mono text-xs text-emerald-400/70">Applied {c.applied.date}</p>
           )}
+        </>
+      )}
+
+      {c.application && (
+        <>
+          {gate("Application form")}
+          <ApplicationPanel
+            key={c.updatedAt}
+            app={c.application}
+            saving={saving}
+            onSave={(next) => patch({ application: next })}
+          />
         </>
       )}
       </div>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import DeviceFrame from "./DeviceFrame";
+import DeviceFrame, { ScaledScreen } from "./DeviceFrame";
 import StackTags from "./StackMatch";
 import type { Slide } from "./demos/SlideshowPhone";
 
@@ -25,6 +25,8 @@ export type Exhibit = {
     | { kind: "slides"; srcs: Slide[] }
     | { kind: "image"; src: string }
     | { kind: "live"; node: ReactNode; logical?: { w: number; h: number } }
+    /** frameless live component - the widget IS the exhibit, no device chrome */
+    | { kind: "bare"; node: ReactNode; logical: { w: number; h: number } }
     | { kind: "empty"; monogram: string };
 };
 
@@ -81,6 +83,20 @@ function SlidesScreen({ srcs, playing }: { srcs: Slide[]; playing: boolean }) {
 
 function ExhibitMedia({ ex, playing }: { ex: Exhibit; playing: boolean }) {
   const m = ex.media;
+  if (m.kind === "bare") {
+    return (
+      <div
+        className="w-full"
+        style={{ aspectRatio: `${m.logical.w} / ${m.logical.h}` }}
+      >
+        <ScaledScreen device={ex.device} logical={m.logical}>
+          <div className="pointer-events-none h-full w-full select-none" aria-hidden>
+            {m.node}
+          </div>
+        </ScaledScreen>
+      </div>
+    );
+  }
   if (m.kind === "live") {
     return (
       <DeviceFrame device={ex.device} logical={m.logical}>
@@ -140,7 +156,7 @@ const PHONE_SLOTS = [
 ];
 /* extension popups sit between the two */
 const EXT_SLOTS = [
-  "absolute bottom-0 left-[10%] w-[26%]",
+  "absolute bottom-0 left-[9%] w-[28%]",
   "absolute top-0 right-[17%] w-[17%]",
   "absolute bottom-[4%] right-0 w-[15%]",
 ];

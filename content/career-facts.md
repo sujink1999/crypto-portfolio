@@ -12,6 +12,10 @@ file verbatim. If a fact is not here, do not state it. Never invent or upgrade t
   Society community app on the App Store, multi-app web platform (e-commerce, lab-test
   booking, admin dashboards, Shopify embedded app).
   Copy rule: "I co-founded Vanta" (past-tense founding fact), never present-tense framing.
+  Product naming for copy (Sujin, 2026-08-08): Vanta's three surfaces are the
+  **community app** (Society, App Store), the **Health OS** (coach + biomarker dashboards +
+  wearable integrations; the vanta-os product), and the **marketplace** (e-commerce store +
+  lab-test booking). Use "Health OS", not "AI agent", when naming the product in copy.
 - **Senior Founding Engineer, Beans** (Jul 2025 - Sep 2025). Solana launchpad and trading
   platform as a retro desktop OS (preferred phrasing: "a Solana launchpad and trading platform",
   not just "token launcher"); on-chain Anchor (Rust) program with simulation tests; Telegram
@@ -138,6 +142,10 @@ as "a daily-plan engine" as the headline; the agent is the product.
   may back the quality, but the claim text must never call Mudrex a founding role.
 - Experience total: 6+ years (Sujin's call, 2026-08-03: use 6+ everywhere, including the
   resume when it is next touched).
+- Framework gaps (e.g. Vue vs React) are NOT a weakness to confess (Sujin, 2026-08-08).
+  Sujin's call: Vue is easy to change to and learn; frameworks are the cheap part. Copy may
+  acknowledge the gap in one confident clause, never as an apology or a dedicated
+  weakness beat. What transfers (state discipline, CSS, API/wallet layers) is the story.
 
 ## Known past error
 

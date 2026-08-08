@@ -28,6 +28,8 @@ import { stacksync } from "./stacksync";
 import { deeply } from "./deeply";
 import { numeral } from "./numeral";
 import { reveleer } from "./reveleer";
+import { injectiveLabs } from "./injective-labs";
+import { flick } from "./flick";
 
 export const COMPANIES: Record<string, CompanyPitch> = {
   sadaora,
@@ -59,6 +61,8 @@ export const COMPANIES: Record<string, CompanyPitch> = {
   deeply,
   numeral,
   reveleer,
+  "injective-labs": injectiveLabs,
+  flick,
 };
 
 export const PITCH_SLUGS = Object.keys(COMPANIES);

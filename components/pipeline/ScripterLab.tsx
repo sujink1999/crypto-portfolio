@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { LAB_COMPANIES } from "@/lib/scripter-lab/companies";
 import { EVIDENCE } from "@/companies/evidence";
+import DraftLab from "./DraftLab";
 
 /** Renders **bold** markers the way the story engine does. */
 function Emph({ text }: { text: string }) {
@@ -39,6 +40,7 @@ function FrameLine({ children }: { children: React.ReactNode }) {
 
 export default function ScripterLab() {
   const [idx, setIdx] = useState(0);
+  const [mode, setMode] = useState<"final" | "drafts">("final");
   const { pitch, jdSummary } = LAB_COMPANIES[idx];
 
   return (
@@ -48,11 +50,32 @@ export default function ScripterLab() {
           <div>
             <h1 className="text-xl font-medium tracking-tight">Scripter lab</h1>
             <p className="mt-1 text-sm text-white/40">
-              Five fictional companies. Full copy, judged inside the page frame.
+              {mode === "final"
+                ? "Five fictional companies. Full copy, judged inside the page frame."
+                : "Drafter output: one optimized line per beat and claim."}
             </p>
+          </div>
+          <div className="flex gap-4">
+            {(["final", "drafts"] as const).map((m) => (
+              <button
+                key={m}
+                onClick={() => setMode(m)}
+                className={`border-b pb-0.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors ${
+                  mode === m
+                    ? "border-white text-white"
+                    : "border-transparent text-white/40 hover:text-white"
+                }`}
+              >
+                {m === "final" ? "Final copy" : "Drafts"}
+              </button>
+            ))}
           </div>
         </header>
 
+        {mode === "drafts" ? (
+          <DraftLab />
+        ) : (
+          <>
         <nav className="mb-10 flex flex-wrap gap-2">
           {LAB_COMPANIES.map((c, i) => (
             <button
@@ -128,6 +151,8 @@ export default function ScripterLab() {
             <p className="mt-2 text-xl text-white/80">{pitch.closing.line}</p>
           </div>
         </section>
+          </>
+        )}
       </div>
     </main>
   );

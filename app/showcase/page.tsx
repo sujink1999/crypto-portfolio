@@ -14,6 +14,12 @@ const showcases = [
     tag: "Interactive port",
   },
   {
+    href: "/showcase/reel-editor",
+    title: "Reel Editor",
+    subtitle: "AI video editor - real rendered reel synced to the cut the AI wrote",
+    tag: "Live artifact",
+  },
+  {
     href: "/showcase/society",
     title: "Vanta Society",
     subtitle: "Consumer mobile app - key screens recreated on web",

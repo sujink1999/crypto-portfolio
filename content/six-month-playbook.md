@@ -36,6 +36,7 @@ Synthesized 2026-08-01 from a four-agent research sweep: (1) remote job markets,
 
 ### Interview conversion rules (from research)
 - **Timezone**: preempt on every first call with a named window: "I work 7-10am PT overlap (7:30-10:30pm IST) for standups and pairing, async the rest." Never vague "I'm flexible." Ask what cadence actually needs coverage.
+- **Location (2026-08-07)**: never volunteered. Forced profile/application fields say "Bali, Indonesia" (nomadic, true). If it comes up live: "I'm in India for a bit." Tax/KYC/contracts stay India exactly. Full rules in remote-sourcing-playbook.md.
 - **Vanta**: locked framing, "I co-founded Vanta," past tense. Do not volunteer detail in early screens; disclose honestly near offer or if asked directly. Expect an IP carve-out addendum, not a rejection. One-liner if asked early: "I co-founded a startup this year; it has its own team and I'm not operationally full-time on it. Happy to walk through specifics for IP paperwork."
 - **AI in interviews**: ask the recruiter during scheduling whether AI assistance is allowed or expected (normal question in 2026). Prep both modes. Never let a tool answer a follow-up you cannot defend line by line.
 - **Speed**: ask every recruiter for the loop-to-offer timeline on call one; request same-week bundled rounds; once at final round anywhere, tell every other active recruiter and ask them to accelerate; once any offer lands, broadcast a 2-week decision deadline to all pending processes.

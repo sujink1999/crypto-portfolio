@@ -45,3 +45,5 @@ CLAUDE.local.md
 
 # job pipeline state (private)
 /pipeline/
+.env*.local
+pipeline/dblog.jsonl

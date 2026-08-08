@@ -1,0 +1,188 @@
+/* Reel Editor showcase — "Instrument" black + brass */
+
+.re-root {
+  overflow: hidden;
+  --re-ink: #09090b;
+  --re-s1: #0e0e11;
+  --re-s2: #131318;
+  --re-s3: #1a1a21;
+  --re-line: rgba(255, 255, 255, 0.07);
+  --re-line-2: rgba(255, 255, 255, 0.13);
+  --re-t0: #f4f3ef;
+  --re-t1: rgba(244, 243, 239, 0.78);
+  --re-t2: rgba(244, 243, 239, 0.52);
+  --re-t3: rgba(244, 243, 239, 0.34);
+  --re-t4: rgba(244, 243, 239, 0.2);
+  --re-brass: #f0b429;
+  --re-brass-dim: rgba(240, 180, 41, 0.14);
+  --re-brass-line: rgba(240, 180, 41, 0.45);
+  background: var(--re-ink);
+  color: var(--re-t0);
+  position: relative;
+}
+
+/* film grain */
+.re-root::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: re-grain 0.9s steps(4) infinite;
+}
+
+@keyframes re-grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -2%); }
+  75% { transform: translate(-1%, 2%); }
+  100% { transform: translate(2%, -1%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .re-root::before { animation: none; }
+}
+
+/* one living light source */
+.re-glow {
+  position: absolute;
+  top: -20vh;
+  left: 50%;
+  width: 90vw;
+  height: 70vh;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 180, 41, 0.07) 0%,
+    rgba(240, 180, 41, 0.02) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.re-display {
+  font-family: var(--font-re-grotesk), sans-serif;
+}
+
+.re-mono {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+/* raised surface with glass top highlight */
+.re-panel {
+  background: linear-gradient(180deg, var(--re-s2), var(--re-s1));
+  border: 1px solid var(--re-line);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* timeline blocks */
+.re-seg {
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.re-seg[data-active="true"] {
+  background: var(--re-brass-dim);
+  border-color: var(--re-brass-line);
+}
+
+.re-marker {
+  transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.re-marker[data-state="live"] {
+  background: var(--re-brass);
+  box-shadow: 0 0 12px rgba(240, 180, 41, 0.8);
+}
+
+.re-marker[data-state="past"] {
+  background: rgba(240, 180, 41, 0.35);
+}
+
+.re-marker[data-state="idle"] {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* playhead */
+.re-playhead {
+  will-change: transform;
+}
+
+.re-playhead::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--re-brass);
+}
+
+/* fx feed rows */
+.re-fxrow {
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.25s ease;
+}
+
+.re-fxrow[data-state="live"] {
+  color: var(--re-t0);
+  background: var(--re-brass-dim);
+  border-color: var(--re-brass-line);
+}
+
+/* scroll reveal */
+.re-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.re-reveal[data-shown="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* pipeline rail node */
+.re-node {
+  position: relative;
+}
+
+.re-node::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  right: -1.5rem;
+  top: 5px;
+  height: 1px;
+  background: var(--re-line);
+}
+
+.re-node:first-child::before { left: 50%; }
+.re-node:last-child::before { right: 50%; }
+
+@media (max-width: 767px) {
+  .re-node::before { display: none; }
+}
+
+.re-node-dot {
+  position: relative;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+  border: 1px solid var(--re-brass-line);
+  background: var(--re-ink);
+}
+
+.re-node-dot::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 9999px;
+  background: var(--re-brass);
+  opacity: 0.85;
+}

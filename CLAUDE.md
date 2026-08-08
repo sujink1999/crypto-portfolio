@@ -74,8 +74,33 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 - No emoji in code or UI unless explicitly requested
 
 ## Evidence Rules (hard)
-- Requirement `proofs` may ONLY use these evidence ids: `vanta-os`, `beans`, `keom`, `society-mobile`, `mudrex`. Every other id in evidence.ts has no registered exhibit and renders as an empty frame. vanta-os leads frontend/product beats.
+- Requirement `proofs` may ONLY use these evidence ids: `vanta-os`, `beans`, `keom`, `society-mobile`, `mudrex`, `reel-editor`, `caddi-lambda`. Every other id in evidence.ts has no registered exhibit and renders as an empty frame. vanta-os leads frontend/product beats; reel-editor leads creative-tools / AI-video beats (Flick etc.); caddi-lambda (bridge-widget screenshot via the image fallback, extension frame) leads bridging / cross-chain / wallet-integration beats (first used: injective-labs).
 - Career facts (roles, titles, dates) come ONLY from content/career-facts.md. If a fact is not in that file, DO NOT state it; write around it or ask Sujin. Never invent or infer job titles. ("Founding engineer at Mudrex" shipped on real pages because an agent invented it and nothing checked it.)
+
+## Pipeline DB Is the Source of Truth (hard)
+- ALL pipeline company state (research, JD, priority, draft copy, outreach contacts, status) lives in Neon Postgres via lib/pipeline/store.ts. `pipeline/*.json` is a stale archive. Before ANY work on a pipeline company (drafting, outreach, page build, answering questions about it), FIRST read its DB row:
+  `npx dotenv -e .env.local -- npx tsx -e "import { readCompany } from './lib/pipeline/store'; readCompany('<slug>').then(c => console.log(JSON.stringify(c, null, 2)))"`
+  Never re-research or ask for information that a researcher/drafter stage already wrote to the row.
+- What the row holds by status (cumulative; each stage adds fields):
+  - `proposed` (scout): company, role, source, jdUrl, jdText, posted, compensation, hq, size, hiring, tier, `priority` {level, reason, rank}.
+  - `researching` (researcher): adds `research` {summary, humans, companyLinkedIn, extras like mustHaves/accent/formQuestions}, logo; often `application` {formUrl, questions} and `outreach` targets.
+  - `page_draft` (drafter): adds `draft` {story beats, claims, verifierNotes}; awaiting Sujin's copy review BEFORE the page is built.
+  - `build` / `pages_ready`: adds `pageDraft` (full CompanyPitch shape); `draft` is cleared once pageDraft is assembled.
+  - `outreach` / `applied`: outreach target statuses (sent/replied), application question drafts/statuses, `applied` {done, date}.
+- Every ad-hoc subagent prompt that touches a pipeline company MUST include this read command and tell the agent the DB row is the source of truth. Defined agents in .claude/agents/ already have it; hand-written Agent prompts are where this keeps getting dropped.
+
+## Pipeline Intake Rules
+- After EVERY sourcing/job-fetch run completes, set `priority: { level, reason }` on each
+  proposed company IN THE DATABASE via lib/pipeline/store.ts patchCompany (state lives in Neon Postgres; pipeline/*.json is a stale archive). Levels: high | medium | low.
+  Score from three factors: (1) posted-date freshness (fresh listings decay fast; >2 months old
+  is low until verified live), (2) relevance to Sujin's profile (frontend / full-stack / product,
+  crypto / dev-tools / consumer scale), (3) attainability: can Sujin actually get it (Sujin is based in
+  India, so worldwide-remote or India-eligible only; roles pinned to a specific country
+  (e.g. Remote - Singapore, Remote - USA only) without sponsorship are not attainable;
+  also weigh seniority band and applicant competition). The reason is one sentence naming the deciding factors. Additionally set
+  `priority.rank` (1-10) on ONLY the top 10 proposed candidates overall; ranks are relative and
+  re-numbered from scratch after every sourcing run (a new strong find bumps everything below
+  it). The board shows the rank chip and sorts by it; levels are data-only sort fallback.
 
 ## Copywriting Rules
 - Requirement `claim` lines render as big display text. One or two short sentences, ~15-22 words total. Not longer: a skimming reviewer won't read three sentences of display text. Not shorter either: a bare slogan with no facts reads as vague. Every claim carries 1-2 concrete facts (numbers, named projects, real stack), like "I built Vanta end to end: data model, Express APIs, dashboards, App Store. Before that: Mudrex, solo, to 10M+ downloads."
@@ -90,16 +115,20 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 
 ## Connection Notes (LinkedIn outreach)
 - Never pitch credentials in a connection note (no downloads, YC, years of experience).
-- Locked format (Pax/Penny note, 2026-07-30):
+- Locked format (updated 2026-08-05; shortened for curiosity: name the role (routes the reader, marks you as applicant not vendor), keep the hook in "built you a page", cut the #300 middle sentence):
 
-  Hey [Name], I applied for the [Role] role. Instead of a cover letter I built a page mapping your JD to work I've shipped:
+  Hey [Name], I applied for the [Role] role. Instead of a cover letter I built you a page:
 
   https://sujin.tech/[slug]
 
-  Two minute read, curious what you think.
+  Two minute read.
 
+- Engineer (peer) persona keeps the longer second line: "I built a page just for this application: your JD mapped to work I've shipped:" (the short "built you a page" form is for CEO/founder/recruiter).
 - Link always with https://, on its own line.
-- Closer varies by persona: CEO/founder and recruiter get "Two minute read, curious what you think." Software engineer (peer): never ask them to review it, no hedging ("if it feels worth it") — say "It would be great if you could put it in front of the team."
+- Closer varies by persona: CEO/founder and recruiter get "Two minute read." Software engineer (peer): never ask them to review it, no hedging ("if it feels worth it") — say "It would be great if you could put it in front of the team."
+
+## Clipboard
+- When Sujin says "the clipboard", he means content/clipboard.md: the file where finalized copy-paste text (outreach messages, application answers) gets logged, newest entry at the top, each with a heading, the destination form/URL, and the text in a fenced code block.
 
 ## Chat Output Formatting
 - When giving copy-paste text (outreach messages, notes, emails), NEVER use blockquotes — the left border makes terminal copying painful. Use plain fenced code blocks instead.

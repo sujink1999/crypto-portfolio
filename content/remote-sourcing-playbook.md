@@ -27,7 +27,11 @@ It happens, and the pattern is consistent: early-stage startups block on payroll
 
 ### Location-preempt line (one line, appended to outreach or cover letter, never a paragraph)
 
-I'm based in India but work US-overlapping hours, and I'm set up as an independent contractor, invoiced directly, paid via Deel or Wise, so there's no visa or payroll setup on your end.
+I work US-overlapping hours and I'm set up as an independent contractor, invoiced directly, paid via Deel or Wise, so there's no visa or payroll setup on your end.
+
+### Location framing (Sujin, 2026-08-07)
+
+Never volunteer location. When a field forces one, use "Bali, Indonesia" / "Bali, remote" (true: nomadic, lived there 3 months in 2026, willing to return; reads better than India to reviewers). Tax residency, bank accounts, KYC, and contract addresses stay India, exactly. Live in interviews, if asked: "I'm in India for a bit." Timezone line stays the IST window since calls happen from India.
 
 ## Agencies and talent networks, this-week priority
 

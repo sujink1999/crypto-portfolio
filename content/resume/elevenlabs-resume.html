@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sujin K Resume</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: letter; margin: 0; }
+  html { -webkit-print-color-adjust: exact; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 9.6px;
+    line-height: 1.42;
+    width: 8.5in;
+    padding: 0.5in 0.6in 0.45in;
+  }
+  a { color: #1a1a1a; text-decoration: none; }
+  h1 { font-size: 21px; letter-spacing: -0.3px; font-weight: 700; }
+  .role-tag { font-size: 10.5px; color: #444; margin-top: 2px; }
+  .contact { margin-top: 5px; font-size: 9px; color: #333; }
+  .contact span { margin: 0 4px; color: #999; }
+  .portfolio-callout {
+    margin: 10px 0 2px;
+    padding: 6px 9px;
+    background: #f4f4f4;
+    border-radius: 4px;
+    font-size: 9.3px;
+    color: #333;
+  }
+  .portfolio-callout a { font-weight: 600; border-bottom: 1px solid #bbb; }
+  .summary { margin-top: 8px; font-size: 9.8px; color: #222; }
+  h2 {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 1.4px;
+    color: #666; font-weight: 700;
+    margin: 12px 0 5px; padding-bottom: 3px; border-bottom: 1px solid #ddd;
+  }
+  .job { margin-bottom: 8px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-size: 10.3px; font-weight: 700; }
+  .job-title .co { font-weight: 600; color: #444; }
+  .job-meta { font-size: 8.8px; color: #777; white-space: nowrap; }
+  .stack { font-size: 8.6px; color: #888; margin-top: 1px; }
+  ul { margin: 2px 0 0 12px; }
+  li { margin-bottom: 1.5px; }
+  .skills, .edu { font-size: 9.4px; }
+  .skills b { font-weight: 600; }
+  .skills div { margin-bottom: 1.5px; }
+  .yoe { text-transform: none; letter-spacing: 0.2px; color: #888; font-weight: 600; }
+  .one-liner { font-size: 9.4px; color: #333; margin-top: 1px; }
+  .earlier { margin-bottom: 5px; }
+</style>
+</head>
+<body>
+
+<h1>Sujin K</h1>
+<div class="role-tag">Full-Stack Engineer · Python, TypeScript/React, end-to-end features across front and back ends</div>
+<div class="contact">
+  <a href="mailto:lksujins@gmail.com">lksujins@gmail.com</a><span>·</span>
+  <a href="https://sujin.tech">sujin.tech</a><span>·</span>
+  <a href="https://github.com/sujink1999">github.com/sujink1999</a><span>·</span>
+  <a href="https://www.linkedin.com/in/sujink/">linkedin.com/in/sujink</a><span>·</span>
+  Remote (global)
+</div>
+
+<div class="portfolio-callout">
+  The easier way to review this: <a href="https://sujin.tech/elevenlabs">sujin.tech/elevenlabs</a>, a page mapping ElevenLabs' JD to the work below, with live demos.
+</div>
+
+<div class="summary">
+  6+ years shipping end-to-end features across front and back ends with high ownership: built a YC startup's app solo
+  to 10M+ downloads, then co-founded Vanta, a health platform where I built everything from the TypeScript/React
+  frontend to the Express APIs, data model, and a production tool-calling LLM agent behind an eval harness. Python in
+  production too: a FastAPI ML microservice with word2vec embeddings and scikit-learn classifiers.
+</div>
+
+<h2>Experience <span class="yoe">· 6+ years</span></h2>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Co-founder <span class="co">· Vanta</span></div>
+    <div class="job-meta">Sep 2025 – Present</div>
+  </div>
+  <div class="stack">TypeScript · React 19 / Next.js · Express 5 · React Native (Expo) · PostgreSQL / Drizzle · LLM pipelines</div>
+  <ul>
+    <li>Co-founded Vanta, a health/performance platform, and built the product end to end: data model, Express APIs, dashboards, and the App Store release.</li>
+    <li>Scoped and built the core product as a proof of concept, then hardened it: an AI health coach, an agentic tool-calling chat agent with 18+ tools, durable memory with contradiction-resolving fact supersession, and propose-and-confirm governance for plan changes.</li>
+    <li>Test design in practice: shipped the agent behind an eval harness of ~30 end-to-end scenarios with real tool dispatch and DB assertions, plus anti-hallucination regression tests.</li>
+    <li>Built third-party integrations across the platform: Garmin and WHOOP wearable APIs merged by a reconciliation engine into one trustworthy record, Shopify embedded app, headless e-commerce store.</li>
+    <li>Managed the datasets behind the product: biomarker and lab pipelines with PDF lab-report and DEXA parsing and rendering, and a daily-plan pipeline that adjusts to recovery signals.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Senior Founding Engineer <span class="co">· Beans</span></div>
+    <div class="job-meta">Jul 2025 – Sep 2025</div>
+  </div>
+  <div class="stack">Next.js · Node.js · Bull / Redis · AWS Lambda · Rust / Anchor</div>
+  <ul>
+    <li>Built a Solana launchpad and trading platform whose infrastructure held under real money: worker queues executing launches, trades, and withdrawals unattended at $100k of trades an hour, with idempotent jobs, distributed locks, and automatic on-chain refunds on failure.</li>
+    <li>Wrote the on-chain Anchor (Rust) program with simulation tests, and a cloud event pipeline decoding on-chain events in AWS Lambda through SQS into MySQL.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Founding Engineer <span class="co">· Caddi</span></div>
+    <div class="job-meta">Jul 2024 – Jun 2025</div>
+  </div>
+  <div class="stack">Browser extensions · AWS Lambda · Next.js</div>
+  <ul>
+    <li>Built a Chrome extension for swapping and bridging from any website, with a route checker comparing quotes across 19+ liquidity sources and flagging better routes.</li>
+    <li>Ran it on serverless AWS Lambda microservices on cloud infrastructure; early builder on Farcaster Frames.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Senior Web3 Engineer <span class="co">· 0vix / Gogo Protocol</span></div>
+    <div class="job-meta">May 2022 – Jun 2024</div>
+  </div>
+  <div class="stack">React · TypeScript · Cypress · i18n · multi-chain</div>
+  <ul>
+    <li>Built and led frontend development of the GOGOcoin and 0vix protocols, including UI/UX; primary author of the margin-trading and lending dApps, where security awareness is the job: a misrendered number is someone's money.</li>
+    <li>Helped grow protocol TVL from $500K to $10M by introducing pre-mining rewards; shipped fully internationalized, Cypress-tested frontends.</li>
+  </ul>
+</div>
+
+<div class="job earlier">
+  <div class="job-head">
+    <div class="job-title">Software Engineer <span class="co">· Mudrex (YC W19)</span></div>
+    <div class="job-meta">Sep 2021 – May 2022</div>
+  </div>
+  <div class="one-liner">Built the Mudrex mobile app from scratch in React Native, now 10M+ downloads; pre-seed through Series A.</div>
+</div>
+
+<div class="job earlier">
+  <div class="job-head">
+    <div class="job-title">Founding Engineer <span class="co">· Swix DAO</span></div>
+    <div class="job-meta">Mar 2022 – Jun 2022</div>
+  </div>
+  <div class="one-liner">Built the MVP of a crypto-native Airbnb using React, Node.js, and Web3.js.</div>
+</div>
+
+<div class="job earlier">
+  <div class="job-head">
+    <div class="job-title">Software Engineer 1 <span class="co">· Futuryze Digital Venture Studio</span></div>
+    <div class="job-meta">Feb 2021 – Oct 2021</div>
+  </div>
+  <div class="one-liner">Backend (Node.js) and UI (React) for the Fireside app; shipped iOS/Android apps with Flutter.</div>
+</div>
+
+<h2>Selected Projects</h2>
+<div class="skills">
+  <div><b>FincorpX (2024):</b> document-AI expense backend with a Python ML microservice: FastAPI serving word2vec (gensim) embeddings into chained scikit-learn classifiers in production; receipt OCR (Azure Form Recognizer, Veryfi), QuickBooks OAuth2 sync, live WhatsApp finance bot.</div>
+</div>
+
+<h2>Skills</h2>
+<div class="skills">
+  <div><b>Python:</b> FastAPI · scikit-learn · word2vec / gensim · ML classifiers in production</div>
+  <div><b>Web development:</b> TypeScript · React / Next.js · Redux · Tailwind · Framer Motion · browser extensions</div>
+  <div><b>Backend &amp; APIs:</b> Node.js / Express · PostgreSQL / MySQL · Drizzle · Redis / Bull · GraphQL · software design patterns · data structures</div>
+  <div><b>Cloud infrastructure:</b> AWS Lambda · SQS · Vercel · scalability, performance, and security under real-money load</div>
+  <div><b>AI:</b> LLM pipelines · agentic tool-calling · durable memory · eval harnesses · Claude / OpenAI APIs</div>
+  <div><b>Testing:</b> test design · Cypress e2e · Jest · LLM eval harnesses · anti-hallucination regression tests</div>
+</div>
+
+<h2>Education</h2>
+<div class="edu">B.E. Computer Science, SSN College of Engineering, Chennai (2017 – 2021)</div>
+
+</body>
+</html>

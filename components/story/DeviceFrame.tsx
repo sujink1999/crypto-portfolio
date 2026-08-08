@@ -17,7 +17,7 @@ const LOGICAL = {
 
 type Device = keyof typeof LOGICAL;
 
-function ScaledScreen({
+export function ScaledScreen({
   device,
   logical,
   children,
@@ -75,28 +75,39 @@ export default function DeviceFrame({
       <ScaledScreen device={d} logical={logical}>{children}</ScaledScreen>
     );
   if (device === "extension") {
-    /* a browser-popup rectangle - the shape a pinned extension opens into */
+    /* the popup hangs off its pinned toolbar icon - reads as "living on any site" */
     return (
       <div className="w-full [perspective:1200px]">
         <div
-          className="story-tilt relative mx-auto flex w-full flex-col overflow-hidden rounded-xl border border-white/15 bg-black shadow-[0_24px_60px_-12px_rgba(0,0,0,0.8)]"
-          style={{ aspectRatio: "380 / 560" }}
+          className="story-tilt relative mx-auto w-full"
+          style={{ aspectRatio: "420 / 640" }}
         >
-          {/* toolbar strip - marks it as a chrome extension */}
-          <div className="flex h-[7%] shrink-0 items-center gap-2 border-b border-white/10 px-3">
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="rgba(255,255,255,0.45)"
-              strokeWidth="1.5"
-              aria-hidden
-            >
-              <path d="M10 3h4v3a2 2 0 1 0 4 0h3v4h-3a2 2 0 1 0 0 4h3v4h-4v-3a2 2 0 1 0-4 0v3H6v-4H3v-4h3a2 2 0 1 0 0-4H3V6h4V3h3Z" />
-            </svg>
+          {/* browser toolbar */}
+          <div className="absolute inset-x-0 top-0 flex h-[8%] items-center gap-2 rounded-xl border border-white/15 bg-white/[0.05] px-3 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.8)]">
+            <div className="flex shrink-0 gap-[5px]" aria-hidden>
+              <span className="h-[7px] w-[7px] rounded-full bg-white/15" />
+              <span className="h-[7px] w-[7px] rounded-full bg-white/15" />
+              <span className="h-[7px] w-[7px] rounded-full bg-white/15" />
+            </div>
+            {/* the extension icon, in its clicked state - popup hangs off it */}
+            <span className="grid h-[24px] w-[24px] shrink-0 place-items-center rounded-md bg-white/15 ring-1 ring-white/20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/extension.png" alt="" className="h-[15px] w-[15px] opacity-80" />
+            </span>
+            {/* address pill - deliberately anonymous: the point is "any site" */}
+            <div className="flex h-[58%] min-w-0 flex-1 items-center gap-1.5 rounded-full bg-black/60 px-3 ring-1 ring-white/10">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2.5" aria-hidden>
+                <rect x="4" y="10" width="16" height="11" rx="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+              <span className="truncate font-mono text-[9px] tracking-[0.08em] text-white/35">any-site.xyz</span>
+            </div>
           </div>
-          <div className="min-h-0 flex-1 overflow-hidden">{screen("extension")}</div>
+
+          {/* the popup itself - aspect matches the widget screenshot so nothing crops */}
+          <div className="absolute left-[3%] top-[9.5%] z-10 w-[88%] overflow-hidden rounded-xl border border-white/15 bg-[#0a0a0a] shadow-[0_32px_70px_-10px_rgba(0,0,0,0.9)]">
+            <div style={{ aspectRatio: "608 / 948" }}>{screen("extension")}</div>
+          </div>
         </div>
       </div>
     );

@@ -21,6 +21,7 @@
 - **Show visually**: Architecture flow diagram (store/labs/admin under one shell) + store & labs UI recordings.
 
 ### 3. Vanta OS v1 Web (`Vanta/vanta-os` + `os-backend` + `labs-backend`) - Nov 2025 → Jul 2026
+(In copy, name this product "the Health OS"; Vanta's three surfaces are the community app, the Health OS, and the marketplace.)
 - **What**: The actual product - health/performance "central brain": today view, biomarker dashboards, fuel/stack tracking, AI chat coach, cohort-gated onboarding, wearables (Garmin, WHOOP).
 - **Stack**: Next.js 16, React 19, Recharts, Google OAuth. Backend: Express 5, Drizzle, LLM daily-plan generation with an eval harness, wearable-data reconciliation engine (39 phased rollouts logged).
 - **Proof points**: Real shipped product with health-data complexity; LLM evals; wearable reconciliation; cohort routing; branded micro-interactions (silver shimmer wordmark, ambient ring/Möbius atmospherics).
@@ -49,6 +50,9 @@
 ---
 
 ## TIER 2 - Strong supporting
+
+### Content Intelligence / Reel Editor (`Vanta/vanta-court`) - Jun 2026 → now
+AI-assisted vertical-video editor + content cockpit. Scripts in Postgres; WhisperX word-level transcripts; an AI "brain step" matches spoken takes to the script, picks the cleanest retake, and writes `cut.json`; Remotion renders with burned captions, face-scan-driven caption/widget placement, punch-in camera effects; live Next.js 15 editor tab (Remotion player, drag-trim timeline, b-roll picker over a tagged Postgres media library); one-command render + Drive upload. Treat as TIER 1 for creative-tools / AI-video companies (Flick etc.): it is literally a homegrown AI filmmaking pipeline.
 
 ### TokenFolio (`TokenFolio/tokenfolio-ui`) - Feb 2023 → Mar 2024
 Investor/token-sale platform: KYC via Onfido, Auth0, deals/token sales, allocation staking, ApexCharts. 98/214 commits. Good "regulated fintech + crypto" story.

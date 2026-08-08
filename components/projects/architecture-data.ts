@@ -130,3 +130,26 @@ export const VANTA_ARCHITECTURE: ProjectArchitecture = {
     { from: "llm", to: "express", label: "Daily plans" },
   ],
 };
+
+export const REEL_EDITOR_ARCHITECTURE: ProjectArchitecture = {
+  projectId: "reel-editor",
+  nodes: [
+    { id: "clips", label: "Raw Takes", category: "Footage", worked: true, x: 10, y: 30 },
+    { id: "scriptdb", label: "Postgres Scripts", category: "Database", worked: true, x: 10, y: 66 },
+    { id: "whisperx", label: "WhisperX", category: "Transcription", worked: true, x: 30, y: 30 },
+    { id: "claude", label: "Claude Cut Brain", category: "AI", worked: true, x: 50, y: 48 },
+    { id: "facescan", label: "Face Scan", category: "Vision", worked: true, x: 50, y: 84 },
+    { id: "editor", label: "Next.js Live Editor", category: "Frontend", worked: true, x: 70, y: 16 },
+    { id: "remotion", label: "Remotion Render", category: "Render", worked: true, x: 70, y: 48 },
+    { id: "drive", label: "Drive Delivery", category: "Delivery", worked: true, x: 88, y: 48 },
+  ],
+  edges: [
+    { from: "clips", to: "whisperx", label: "Audio" },
+    { from: "whisperx", to: "claude", label: "Word timings" },
+    { from: "scriptdb", to: "claude", label: "Script" },
+    { from: "claude", to: "remotion", label: "cut.json" },
+    { from: "facescan", to: "remotion", label: "Caption posY" },
+    { from: "editor", to: "remotion", label: "video.json" },
+    { from: "remotion", to: "drive", label: "Upload" },
+  ],
+};

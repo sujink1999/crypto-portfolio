@@ -158,6 +158,49 @@ body {
   .scroll-arrow { animation: none; }
 }
 
+/* pipeline: card entrance (skeleton -> content), tab content fade, ghost skeleton pulse */
+@keyframes pipeline-rise-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pipeline-card-in {
+  animation: pipeline-rise-in 260ms ease-out both;
+}
+@keyframes pipeline-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pipeline-fade-in {
+  animation: pipeline-fade-in 260ms ease-out both;
+}
+
+/* pipeline: centered loader - an arc orbiting a thin ring, quiet and thin */
+@keyframes pipeline-orbit {
+  to { transform: rotate(360deg); }
+}
+.pipeline-loader-arc {
+  animation: pipeline-orbit 900ms linear infinite;
+  transform-origin: center;
+}
+
+/* internal dashboard: interactive things get a pointer (Tailwind v4 preflight resets buttons to default) */
+button:not(:disabled),
+select,
+[role="link"],
+[role="tab"] {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pipeline-card-in,
+  .pipeline-fade-in {
+    animation: none;
+  }
+  .pipeline-loader-arc {
+    animation-duration: 3s;
+  }
+}
+
 /* pitch: hand-drawn underline - draws in whenever it (re)mounts */
 .draw-stroke {
   stroke-dasharray: 1;

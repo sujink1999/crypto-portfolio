@@ -3,6 +3,9 @@
 // The COMPANY'S OWN SITE is the source of truth: header logo <img> and
 // apple-touch-icon on the homepage first, then the JD page's logo/og:image,
 // then Google favicon service as last resort.
+// NOTE: this only writes the FILE (public/logos/<slug>.<ext>). The board shows
+// nothing until the row is registered too:
+//   patchCompany(slug, { logo: { sourceUrl, path: "/logos/<file>", approved: false } })
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 

@@ -1,4 +1,6 @@
 import type { Evidence } from "@/companies/types";
+import EditorSuite from "@/components/showcase/reel-editor/EditorSuite";
+import "@/components/showcase/reel-editor/reel-editor.css";
 import type { Exhibit } from "./ExhibitStage";
 import type { Slide } from "./demos/SlideshowPhone";
 
@@ -56,6 +58,20 @@ const EXHIBITS: Record<string, Omit<Exhibit, "id" | "title">> = {
           className="h-full w-full border-0"
         />
       ),
+    },
+  },
+  "reel-editor": {
+    device: "laptop",
+    // frameless: the editor suite IS the exhibit, rendered directly (no
+    // iframe, no device chrome), autoplaying muted with the synced timeline
+    media: {
+      kind: "bare",
+      node: (
+        <div className="re-root h-full w-full overflow-hidden rounded-xl p-3">
+          <EditorSuite compact autoplay />
+        </div>
+      ),
+      logical: { w: 1100, h: 780 },
     },
   },
   mudrex: {

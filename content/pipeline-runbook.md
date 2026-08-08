@@ -1,5 +1,28 @@
 # Pipeline Runbook
 
+> **PARTIALLY STALE (2026-08-08). Read this first.** The full rewrite is step 10 of
+> plans/pipeline-v2.md and is HELD; until then, these corrections OVERRIDE anything
+> below that contradicts them:
+> - State lives in **Neon Postgres** via `lib/pipeline/store.ts`. `pipeline/*.json`
+>   is an inert migration archive; never read or write it as state. New scout finds
+>   use it only as staging: file -> validate-pipeline.ts -> import-pipeline.ts.
+> - Statuses `page_approved`, `app_text`, `notes` were **removed from the schema**;
+>   writing them fails zod. Flow: proposed -> researching -> page_draft -> build ->
+>   pages_ready -> outreach -> applied (rejected from anywhere).
+> - The appText and generated-PersonaNotes gates below are **dead concepts**. Current
+>   flow: drafter writes ONE optimized `draft` per company (variant system removed
+>   2026-08-08) -> copy-verifier lands `draft.verifierNotes` -> the MAIN SESSION then
+>   sets status `page_draft` (= draft ready for review) -> Sujin reviews/edits on
+>   /pipeline/<slug> (DraftReview) and clicks "Approve copy, start build" (-> `build`)
+>   -> page assembly in chat -> build. Application answers live in
+>   `application.questions` (ApplicationPanel) and are drafted by
+>   .claude/agents/answer-drafter.md (Fable) ONLY after copy approval (status
+>   build+); outreach notes are template-computed in the Runsheet.
+> - The drafter reads the rolling reference pack (scripts/draft-refs.ts) +
+>   career-facts + evidence whitelist, not the old five-file chain.
+> - Local browser passes are `/local-scout` (intake) and `/local-research`
+>   (accepted companies), run BY SUJIN in his own `claude --model sonnet` session.
+
 This is the operating procedure for the job-application pipeline. It is written for a future
 Claude session: when Sujin says "run the pipeline" (optionally pasting job links), work through
 the steps below in order.
@@ -53,6 +76,22 @@ Fill open batch slots up to 5 active companies, in this order:
    Fetch each JD: Work at a Startup and Wellfound JD pages are public and can be fetched directly;
    LinkedIn is best-effort (if the fetch fails or is blocked, ask Sujin to paste the JD text
    instead).
+   Board access recipes (2026-08-05): job boards block bare scripted fetches. Scouts must use,
+   in order of preference: (a) official ATS JSON APIs — Ashby `api.ashbyhq.com/posting-api/job-board/<slug>`,
+   Greenhouse `boards-api.greenhouse.io/v1/boards/<slug>/jobs?content=true`, Lever
+   `api.lever.co/v0/postings/<slug>?mode=json`, RemoteOK `remoteok.com/api`, Remotive
+   `remotive.com/api/remote-jobs`, HN via the Algolia API, WeWorkRemotely via RSS; (b) curl with
+   full browser headers (`-A "Mozilla/5.0 ... Chrome/126"` plus Accept/Accept-Language,
+   `--compressed`) — this unblocks cryptocurrencyjobs.co; (c) Wellfound, Work at a Startup, and
+   cryptojobslist.com are Cloudflare/login-gated and only reachable via the claude-in-chrome
+   extension in Sujin's browser session — sweep those in-session, not from a headless scout.
+   Wellfound specifically (learned 2026-08-05, after missing Deeply): never judge it by the
+   default "Recommended" sort, which front-loads promoted agency spam. Sort by newest, page
+   through with a salary-floor eye, and run separate searches for "product engineer",
+   "product builder", and "founding engineer" in addition to the Engineering facet — the best
+   generalist roles are often categorized under Product, not Engineering. A sweep that samples
+   only the top of a feed must be reported as a sample, not as coverage.
+
 2. **Top up with sourced candidates** from: Work at a Startup search, the current HN Who's Hiring
    thread, Greenhouse/Lever/Ashby boards of known target companies, RemoteOK, WeWorkRemotely,
    web3.career, and cryptocurrencyjobs.co.
@@ -66,6 +105,11 @@ even `proposed` cards render with a logo on the board:
 
 - Sourced candidates start at status `"proposed"` (they still need Sujin's go-ahead before deep
   research begins; see the note in step 2).
+- Sourcing agents do the intake themselves (Sujin's rule, 2026-08-05): the scout writes each
+  accepted candidate's `pipeline/<slug>.json` directly and runs the fetch-logo script itself
+  (verifying the fetched image is actually that company's logo), returning only a summary. The
+  main session reviews the resulting files; it never transcribes agent prose into state files
+  field by field.
 - Pasted links Sujin already chose can skip straight to status `"researching"`.
 
 ## 2. Research fan-out (one agent per accepted company, parallel)
@@ -124,6 +168,15 @@ agent writes its results directly into that company's state file and moves its s
   `components/pipeline/mocks/index.tsx` so it can be previewed during the gate review.
 
 ## 3. Gates (Sujin, on /pipeline)
+
+> **DEAD SECTION (2026-08-08): do not execute.** Gates 2/3, `appText`, `notes`,
+> `page_approved`, and `app_text` no longer exist (removed from the schema; writes
+> fail zod). The live flow is ONE gate: Sujin reviews the drafter's `draft` on
+> /pipeline/<slug> (DraftReview), approves -> status `build`. Application answers
+> are drafted by answer-drafter AFTER that approval and reviewed in the
+> ApplicationPanel; outreach notes are template-computed in the Runsheet. Build is
+> per-company, not a batch gate. Kept below only as history until the step-10
+> rewrite:
 
 There are three sequential gates, each reviewed by Sujin on the `/pipeline/<slug>` detail page:
 

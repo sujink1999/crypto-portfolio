@@ -40,7 +40,7 @@ export const EVIDENCE: Record<string, Evidence> = {
     device: "laptop",
     title: "Vanta",
     period: "Nov 2025 – present",
-    what: "The Vanta ecosystem: the marketing/investor landing with custom WebGL, the Vanta OS product (biomarker dashboards, AI chat coach, wearable integrations), and the Society platform - web store, labs, admin, and the App Store mobile app.",
+    what: "The Vanta ecosystem: the marketing/investor landing with custom WebGL, the Health OS (biomarker dashboards, AI coach, wearable integrations), and the Society platform - web store, labs, admin, and the App Store mobile app.",
     link: "https://vanta-os.com/prometheus",
     stack: ["Next.js 16", "React 19", "Express 5", "Drizzle", "LLM pipelines"],
     proofPoints: [
@@ -91,6 +91,19 @@ export const EVIDENCE: Record<string, Evidence> = {
       "Zero-to-one under YC-startup constraints",
     ],
     media: { kind: "image", src: "/projects/mudrex-1.png", alt: "Mudrex mobile app" },
+  },
+  "reel-editor": {
+    id: "reel-editor",
+    device: "laptop",
+    title: "Reel Editor",
+    period: "Jun 2026 – present",
+    what: "An AI-assisted video editor and content cockpit built for Vanta's growth engine: scripts live in Postgres, an AI reads word-level WhisperX transcripts to pick the best takes and cut against the script, and a live Next.js editor with a Remotion timeline previews, trims, captions, and renders the final vertical reel.",
+    stack: ["Next.js 15", "React 19", "Remotion", "WhisperX", "Postgres", "ffmpeg"],
+    proofPoints: [
+      "AI brain step: transcript-vs-script matching picks the cleanest take across retakes and writes the cut",
+      "Live editor tab: Remotion player preview, drag-trim timeline, b-roll picker over a tagged Postgres media library",
+      "Face-scan-driven caption and widget placement, punch-in camera moves, one-command render and Drive upload",
+    ],
   },
   "tokenfolio": {
     id: "tokenfolio",

@@ -8,9 +8,11 @@ import {
   CADDI_ARCHITECTURE,
   KEOM_ARCHITECTURE,
   MUDREX_ARCHITECTURE,
+  REEL_EDITOR_ARCHITECTURE,
   VANTA_ARCHITECTURE,
 } from "@/components/projects/architecture-data";
 import DeviceFrame from "./DeviceFrame";
+import EditorSuite from "@/components/showcase/reel-editor/EditorSuite";
 import ProjectCase from "./ProjectCase";
 import EmbedBrowser from "./EmbedBrowser";
 import SlideshowPhone from "./demos/SlideshowPhone";
@@ -27,7 +29,14 @@ const CaddiWidget = dynamic(() => import("@/components/caddi/CaddiWidget"), {
 });
 
 /** Evidence ids that have a full case view behind them. */
-export const CASE_IDS = ["beans", "keom", "caddi-lambda", "mudrex", "vanta-os"] as const;
+export const CASE_IDS = [
+  "beans",
+  "keom",
+  "caddi-lambda",
+  "mudrex",
+  "vanta-os",
+  "reel-editor",
+] as const;
 
 export const hasCase = (id: string) =>
   (CASE_IDS as readonly string[]).includes(id);
@@ -166,6 +175,38 @@ export default function CaseHost({
         onClose={close}
       />
     ),
+    "reel-editor": (
+      <ProjectCase
+        evidence={EVIDENCE["reel-editor"]}
+        index={5}
+        checked={checked}
+        sections={[
+          {
+            title: "The Editor, Live",
+            body: "A real rendered reel next to the timeline the AI wrote for it: four clip segments, ten effect events, eleven sound cues, word-level captions. Press play and the markers fire in sync with the video. The inspector shows the AI's verbatim editing notes for whichever segment is playing.",
+            node: (
+              <div className="re-root overflow-hidden rounded-2xl p-4">
+                <EditorSuite />
+              </div>
+            ),
+          },
+          {
+            title: "About the Project",
+            body: "An AI-assisted video editor built for Vanta's content engine, not as a demo. I shoot the takes and approve the cut; the machine does everything between. It has taken 40+ reels from script to render, posting to a real Instagram account.",
+          },
+          {
+            title: "The Workflow",
+            body: "Scripts live in Postgres and every take is transcribed with WhisperX at word level. The AI reads the transcripts against the script, picks the cleanest take per line, and writes the cut with in and out points chosen on motion and face visibility. A face scan maps where the face sits in each segment, so captions and widgets land where the face is not. Remotion composites captions, tap bubbles, file cards, sound effects, and music, then one command renders, uploads to Drive, and records it in the database. A human approves before anything renders, and posting stays manual.",
+          },
+          {
+            title: "Role",
+            body: "Sole builder: the pipeline scripts, the cut and caption tooling, the face scan, the Remotion compositions, and the live Next.js editor with its timeline, inspector, and b-roll picker over a tagged media library.",
+          },
+        ]}
+        architecture={REEL_EDITOR_ARCHITECTURE}
+        onClose={close}
+      />
+    ),
     mudrex: (
       <ProjectCase
         evidence={EVIDENCE["mudrex"]}
@@ -220,7 +261,7 @@ export default function CaseHost({
           },
           {
             title: "About the Project",
-            body: "Vanta OS is the central brain for high-performance living: biomarker dashboards, fuel and stack tracking, an AI chat coach, and cohort-gated onboarding. Garmin and WHOOP data flows through a reconciliation engine into LLM-generated daily plans, with an eval harness keeping the pipeline honest.",
+            body: "The Health OS is the central brain for high-performance living: biomarker dashboards, fuel and stack tracking, an AI coach, and cohort-gated onboarding. Garmin and WHOOP data flows through a reconciliation engine into LLM-generated daily plans, with an eval harness keeping the pipeline honest.",
           },
         ]}
         architecture={VANTA_ARCHITECTURE}
