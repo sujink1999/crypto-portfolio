@@ -65,6 +65,10 @@ A **cinematic beat-driven story**, not a scrolling page. The reader advances bea
 ## Git Rules
 - NEVER commit unless Sujin explicitly asks. Make the changes, verify them, and stop. He decides when things get committed and what goes in a commit.
 
+## Deploy Rules
+- Deploys happen through commit + git push (Vercel git integration), NEVER via `vercel --prod` / CLI uploads.
+- When Sujin says "deploy", that is the moment to ASK for the commit: state what will be committed and pushed in one line, get his nod, then push. Never silently pick a deploy route.
+
 ## Coding Conventions
 - Use Tailwind utility classes for styling (no CSS modules)
 - Use `@/*` path alias for imports
